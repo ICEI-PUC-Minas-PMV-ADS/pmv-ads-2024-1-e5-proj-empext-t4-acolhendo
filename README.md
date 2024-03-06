@@ -1,23 +1,23 @@
-# TÍTULO DO PROJETO
+# Acolhendo
 
-`CURSO`
+`Análise e Desenvolvimento de Siatemas`
 
-`DISCIPLINA`
+`Eixo 5 - Projeto: Desenvolvimento de um Sistema Sociotécnico Inovador - Turma 04`
 
-`SEMESTRE`
+`2024/1`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto do website Acolhendo visa fornecer um espaço virtual dedicado a oferecer apoio, recursos e informações essenciais para pessoas que enfrentam a jornada do câncer. A ONG Acolhendo está comprometida em tornar essa experiência mais tranquila, fornecendo palestras, acompanhamentos, dicas de alimentação e facilitando doações para aqueles que enfrentam essa batalha.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Carlos Eduardo Pereira Marques
+* Gabriel José Puddo Cardoso
+* Guilherme de Oliveira Costa
+* João Victor Lessa Henrique
 
 ## Orientador
 
-* Nome completo do professor 1
+* João Carlos Oliveira Caetano
 
 ## Instruções de utilização
 
