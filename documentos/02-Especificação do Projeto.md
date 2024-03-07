@@ -57,7 +57,7 @@ As tabelas abaixo apresentam os requisitos funcionais e não funcionais da aplic
 | RFN-04| O sistema deve ter um tempo de resposta rápido para as interações do usuário                                | Alta       |
 | RFN-05| O sistema deve ser escalável, capaz de lidar com um aumento significativo no número de usuários             | Alta       |
 | RFN-06| O sistema deve garantir disponibilidade, com um tempo de inatividade planejado mínimo                        | Média      |
-| RFN-07| O sistema deve ser compatível com os principais navegadores web e sistemas operacionais                     | Média      |
+| RFN-07| O sistema deve ser compatível com os principais navegadores web e sistemas operacionais                     | Baixa      |
 | RFN-08| O sistema deve ser desenvolvido de acordo com as melhores práticas de desenvolvimento de software          | Média      |
 | RFN-09| O sistema deve estar em conformidade com as regulamentações de proteção de dados e privacidade              | Média      |
 
