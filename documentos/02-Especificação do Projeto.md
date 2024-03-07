@@ -19,36 +19,52 @@ Colocar a imagem do modelo construído apresentando a proposta de solução.
 
 ## Requisitos
 
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
+As tabelas abaixo apresentam os requisitos funcionais e não funcionais da aplicação, definindo o escopo do projeto. Também, há as restrições e a maneira que utilizamos para determinar a prioridade das tarefas que serão realizadas.
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+| RF    | Descrição                                                                                                   | Prioridade |
+|-------|-------------------------------------------------------------------------------------------------------------|------------|
+| RF-01 | Autenticação de dois fatores para o login do admin                                                          | Alta       |
+| RF-02 | O sistema deverá permitir ao administrador criar artigos                                                    | Alta       |
+| RF-03 | O sistema deverá permitir ao administrador editar artigos                                                   | Alta       |
+| RF-04 | O sistema deverá permitir ao administrador excluir artigos                                                  | Alta       |
+| RF-05 | O sistema deverá permitir ao administrador realizar upload de imagens                                       | Alta       |
+| RF-06 | O sistema deverá permitir ao administrador realizar exclusão de imagens                                      | Alta       |
+| RF-07 | O sistema deverá permitir ao administrador realizar edições de imagens (colocar legenda, por exemplo)                                      | Alta       |
+| RF-08 | O sistema deverá permitir ao administrador criar eventos                                                    | Alta       |
+| RF-09 | O sistema deverá permitir ao administrador editar eventos                                                   | Alta       |
+| RF-10 | O sistema deverá permitir ao administrador excluir eventos                                                  | Alta       |
+| RF-11 | O sistema deverá permitir ao administrador criar informações de nutrição                                    | Alta       |
+| RF-12 | O sistema deverá permitir ao administrador editar informações de nutrição                                   | Alta       |
+| RF-13 | O sistema deverá permitir ao administrador excluir informações de nutrição                                  | Alta       |
+| RF-14 | O sistema deverá permitir ao administrador editar informações da empresa, como email, telefone, Instagram, Facebook e YouTube | Alta       |
+| RF-15 | O sistema deverá permitir ao administrador criar banners                                                    | Alta       |
+| RF-16 | O sistema deverá permitir ao administrador editar banners                                                   | Alta       |
+| RF-17 | O sistema deverá permitir ao administrador excluir banners                                                  | Alta       |
+| RF-18 | O sistema deverá incluir um cabeçalho na interface com links para as telas de artigos, nutrição, eventos, contato e doações | Média      |
+| RF-19 | O sistema deverá implementar um carrossel na interface principal exibindo eventos                           | Média      |
+| RF-20 | O sistema deverá implementar um carrossel na interface principal exibindo informações de nutrição          | Média      |
+| RF-21 | O sistema deverá implementar um carrossel na interface principal exibindo artigos                           | Média      |
+| RF-22 | O sistema deverá incluir um formulário de contato para os usuários entrarem em contato com a empresa       | Média      |
+| RF-23 | O sistema deverá incluir um rodapé na interface do sistema com informações adicionais                       | Baixa      |
+
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+| RFN   | Descrição                                                                                                   | Prioridade |
+|-------|-------------------------------------------------------------------------------------------------------------|------------|
+| RFN-01| O sistema deve garantir segurança no login através de criptografia | Alta       |
+| RFN-02| O sistema deve ser responsivo, adaptando-se a diferentes dispositivos e tamanhos de tela                  | Alta       |
+| RFN-03| O sistema deve ser de fácil utilização, com uma interface intuitiva e amigável                              | Alta       |
+| RFN-04| O sistema deve ter um tempo de resposta rápido para as interações do usuário                                | Alta       |
+| RFN-05| O sistema deve ser escalável, capaz de lidar com um aumento significativo no número de usuários             | Alta       |
+| RFN-06| O sistema deve garantir disponibilidade, com um tempo de inatividade planejado mínimo                        | Média      |
+| RFN-07| O sistema deve ser compatível com os principais navegadores web e sistemas operacionais                     | Média      |
+| RFN-08| O sistema deve ser desenvolvido de acordo com as melhores práticas de desenvolvimento de software          | Média      |
+| RFN-09| O sistema deve estar em conformidade com as regulamentações de proteção de dados e privacidade              | Média      |
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
 
 ## Restrições
 
@@ -57,13 +73,18 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|02| A aplicação deverá ser construída por alunos do curso de Tecnologia em Análise e Desenvolvimento de Sistemas Virtual da PUCMinas, do eixo 5       |
+|03| A plicação deverá estar no github, bem como sua documentação|
+|04| A aplicação deverá estar hospedada em algum provedor de domínio como hostinger, hostigator, uol, etc|
+|05| A aplicação usará Prisma como ORM, Express como framework de Node e Postgress como banco de dados. Utilizaremos Angular no frontend|
+|06| A aplicação não terá mobile|
+|07| A hospedagem deverá ser doada pelo grupo|
 
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
 
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+## Matriz de Rastreabilidade de Requisitos
+
+![matrizRastreabilidade](../documentos/img/02-matriz-rastreabilidade.png)
+
 
 ## Diagrama de Casos de Uso
 
