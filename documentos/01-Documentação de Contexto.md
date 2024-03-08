@@ -1,19 +1,36 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+## Acolhendo a dor com amor
+
+O diagnóstico de câncer é um momento desafiador e muitas vezes solitário na vida de um indivíduo. As pessoas diagnosticadas não apenas enfrentam os desafios físicos e emocionais do tratamento, mas também podem se sentir perdidas em relação às opções de apoio disponíveis. Elas podem se sentir isoladas, enfrentar dificuldades financeiras devido aos custos do tratamento, ter necessidades de informação não atendidas e podem lutar para encontrar apoio emocional e prático.
+
+Reconhecendo essa necessidade, surge o projeto "Acolhendo a dor com amor", uma iniciativa dedicada a oferecer suporte abrangente para pessoas diagnosticadas com câncer durante e após o tratamento.
+
+O Acolhendo tem como objetivos:
+
+1. Fornecer um ponto centralizado de acesso a informações e recursos para pacientes com câncer e seus familiares.
+2. Oferecer apoio prático e emocional durante todo o processo de tratamento e recuperação.
+3. Promover a conscientização sobre o câncer e suas diferentes formas de tratamento.
+4. Facilitar formas de doação para garantir que o projeto possa continuar apoiando aqueles que mais necessitam.
+
+A necessidade de apoio holístico para pacientes com câncer é inegável. Muitos enfrentam desafios que vão além da esfera médica, e é essencial que tenham acesso a recursos e apoio para enfrentar esses desafios. O Acolhendo visa preencher essa lacuna, oferecendo uma plataforma abrangente para aqueles que buscam apoio durante sua jornada contra o câncer.
+
+O público-alvo inclui:
+
+- Pacientes diagnosticados com câncer de todas as idades.
+- Familiares e cuidadores de pacientes com câncer.
+- Profissionais de saúde que trabalham no tratamento de câncer.
+- Pessoas interessadas em apoiar a causa do câncer através de doações ou voluntariado.
+
+Com um site dedicado, o projeto Acolhendo busca ampliar seu alcance e oferecer uma plataforma interativa e informativa para aqueles que buscam apoio durante sua jornada contra o câncer. O site irá fornecer informações essenciais sobre os serviços oferecidos pela ONG, galerias de fotos de eventos e histórias inspiradoras, detalhes sobre como doar e se envolver, além de recursos valiosos para ajudar os pacientes a navegar por sua jornada de tratamento e recuperação.
+
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação. 
-        (trazer o problema que a organização está enfrentando, não é pra trazer o que vai ser a solução)
+O "Acolhendo" enfrenta o desafio de expandir seu alcance e fornecer uma quantidade mais ampla de informações e recursos para pessoas diagnosticadas com câncer e suas famílias. Atualmente, o acesso a informações sobre os serviços oferecidos pela ONG, eventos, formas de doação e apoio disponível é limitado. Isso resulta em uma lacuna no apoio necessário para auxiliar os pacientes durante sua jornada de tratamento e recuperação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
+Suas atividades incluem palestras, encontros presenciais, doações de alimentos, dicas de nutrição, realização de desejos para casos mais delicados, ajuda com moradia e outros tipos de assistência prática e emocional. A organização opera principalmente em comunidades locais, mas também busca expandir seu alcance online.
 
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+O desafio é melhorar a comunicação, o alcance e o acesso às informações sobre os serviços da ONG, facilitando o apoio necessário para pacientes com câncer e suas famílias em diferentes fases de sua jornada.
 
 ## Objetivos 
 
