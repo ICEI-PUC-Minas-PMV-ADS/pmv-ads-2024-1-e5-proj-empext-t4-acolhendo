@@ -1,6 +1,6 @@
 # Especificações do Projeto
 
-`<span style="color:red">`Pré-requisitos: `<a href="1-Documentação de Contexto.md">` Documentação de Contexto`</a>`
+`<span style="color:red">`Pré-requisitos: `<a href="1-Documentação de Contexto.md">` Documentação de Contexto `</a>`
 
 Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
 
@@ -8,7 +8,29 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Arquitetura e Tecnologias
 
-o	Descreva brevemente a arquitetura definida para o projeto e as tecnologias a serem utilizadas. Sugere-se a criação de um diagrama de componentes da solução.
+**Front-end:**
+
+- **Framework:** Angular
+- **Linguagem de Programação:** TypeScript
+
+**Back-end:**
+
+- **Framework:** Express.js
+- **Linguagem de Programação:** TypeScript
+
+**Banco de Dados:**
+
+- **Sistema de Gerenciamento de Banco de Dados (SGBD):** PostgreSQL
+- **ORM (Object-Relational Mapping):** Prisma
+
+**IDE:**
+
+- **Ambiente de Desenvolvimento Integrado:** Visual Studio Code (VSCode)
+
+**Hospedagem**
+
+- **Ambiente de Preview e Desenvolvimento:** Vercel
+- **Ambiente de Produção:** Hostinger
 
 ## Project Model Canvas
 
@@ -84,7 +106,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Modelo ER (Projeto Conceitual)
 
-![1710087568191](image/02-EspecificaçãodoProjeto/1710087568191.png)
+![1710087568191](img/modelo-er.png)
 
 ## Projeto da Base de Dados
 
