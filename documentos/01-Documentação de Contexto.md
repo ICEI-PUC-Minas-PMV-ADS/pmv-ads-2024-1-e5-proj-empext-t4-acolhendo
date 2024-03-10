@@ -34,27 +34,27 @@ O desafio é melhorar a comunicação, o alcance e o acesso às informações so
 
 ## Objetivos 
 
-Desenvolver um software que atenda às necessidades da organização "Acolhendo", fornecendo uma plataforma online abrangente para fornecer informações, recursos e apoio para pessoas diagnosticadas com câncer e suas famílias.
+Desenvolver um site que atenda às necessidades da organização "Acolhendo", fornecendo uma plataforma online abrangente para fornecer informações, recursos e apoio para pessoas diagnosticadas com câncer e suas famílias.
 
 Objetivos Específicos:
 
 Identificar e compreender os requisitos específicos da organização "Acolhendo" em termos de informações a serem disponibilizadas, funcionalidades desejadas e experiência do usuário esperada.
-Pesquisar e selecionar as tecnologias mais adequadas para o desenvolvimento do software, considerando aspectos como acessibilidade, escalabilidade e facilidade de manutenção.
+Pesquisar e selecionar as tecnologias mais adequadas para o desenvolvimento dosite, considerando aspectos como acessibilidade, escalabilidade e facilidade de manutenção.
 
-Criar um design intuitivo e responsivo para o software, garantindo que seja fácil de usar e acessível em diferentes dispositivos e plataformas.
+Criar um design intuitivo e responsivo para o site, garantindo que seja fácil de usar e acessível em diferentes dispositivos e plataformas.
 
 Desenvolver e implementar as funcionalidades principais do software, incluindo a apresentação de informações sobre os serviços da ONG, formas de doação, calendário de eventos e recursos de apoio.
-Testar o software para garantir sua funcionalidade, usabilidade e segurança, realizando testes de usabilidade com usuários reais e identificando possíveis falhas e melhorias.
-Lançar o software e promovê-lo entre a comunidade de pacientes com câncer, profissionais de saúde e outros públicos-alvo relevantes, visando aumentar o alcance e impacto da organização "Acolhendo".
+Testar o site para garantir sua funcionalidade, usabilidade e segurança, realizando testes de usabilidade com usuários reais e identificando possíveis falhas e melhorias.
+Lançar o software e promovê-lo entre a comunidade de pacientes com câncer, profissionais de saúde e outros públicos-alvo relevantes, visando aumentar o alcance e impacto do "Acolhendo".
 
 ## Justificativa
 
-Trabalhar com a aplicação proposta pela organização "Acolhendo" é de suma importância devido ao impacto significativo que pode ter na vida de pessoas diagnosticadas com câncer e suas famílias. O câncer é uma doença que não afeta apenas o corpo físico, mas também tem um grande impacto emocional, social e financeiro nos pacientes e em seus entes queridos. Portanto, fornecer um apoio abrangente e acessível para essas pessoas é essencial para ajudá-las a enfrentar os desafios associados ao diagnóstico e tratamento do câncer.
+Trabalhar com a aplicação proposta para "Acolhendo" é de suma importância devido ao impacto significativo que pode ter na vida de pessoas diagnosticadas com câncer e suas famílias. O câncer é uma doença que não afeta apenas o corpo físico, mas também tem um grande impacto emocional, social e financeiro nos pacientes e em seus entes queridos. Portanto, fornecer um apoio abrangente e acessível para essas pessoas é essencial para ajudá-las a enfrentar os desafios associados ao diagnóstico e tratamento do câncer.
 
-A escolha dos objetivos específicos foi baseada na necessidade de compreender profundamente os requisitos da organização "Acolhendo" e desenvolver um software que atenda de forma eficaz às suas necessidades e às necessidades de seus usuários. A identificação e compreensão dos requisitos específicos são fundamentais para garantir que o software desenvolvido seja verdadeiramente útil e relevante para a organização e seu público-alvo.
+A escolha dos objetivos específicos foi baseada na necessidade de compreender profundamente os requisitos da organização "Acolhendo" e desenvolver um site que atenda de forma eficaz às suas necessidades e às necessidades de seus usuários. A identificação e compreensão dos requisitos específicos são fundamentais para garantir que o software desenvolvido seja verdadeiramente útil e relevante para a organização e seu público-alvo.
 
 Além disso, a escolha de aprofundar em aspectos como design intuitivo e responsivo, desenvolvimento e implementação de funcionalidades principais e teste de usabilidade é motivada pela importância de criar uma plataforma online que seja fácil de usar, acessível em diferentes dispositivos e plataformas e que forneça uma experiência positiva para os usuários.
 
-Para garantir que as decisões tomadas durante o desenvolvimento do software sejam baseadas em informações sólidas e relevantes, o grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos. Essas ferramentas podem ajudar a esclarecer detalhes do problema enfrentado pela organização "Acolhendo", entender as necessidades e preferências dos usuários e garantir que o software desenvolvido atenda às expectativas e necessidades reais.
+Para garantir que as decisões tomadas durante o desenvolvimento do site sejam baseadas em informações sólidas e relevantes, o grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos. Essas ferramentas podem ajudar a esclarecer detalhes do problema enfrentado pelo "Acolhendo", entender as necessidades e preferências dos usuários e garantir que o site desenvolvido atenda às expectativas e necessidades reais.
 
-A organização "Acolhendo" é uma ONG dedicada a fornecer apoio abrangente para pessoas diagnosticadas com câncer e suas famílias. Suas atividades incluem palestras, encontros presenciais, doações de alimentos, dicas de nutrição, realização de desejos para casos mais delicados, ajuda com moradia e outros tipos de assistência prática e emocional. A organização opera principalmente em comunidades locais, mas também busca expandir seu alcance online. A equipe inclui voluntários, profissionais de saúde, membros da comunidade e especialistas em diferentes áreas de suporte. O desenvolvimento do software para a organização "Acolhendo" é uma oportunidade para os estudantes universitários aplicarem seus conhecimentos em tecnologia para criar uma solução que possa impactar positivamente a vida de muitas pessoas afetadas pelo câncer.
+O "Acolhendo" é uma ONG dedicada a fornecer apoio abrangente para pessoas diagnosticadas com câncer e suas famílias. Suas atividades incluem palestras, encontros presenciais, doações de alimentos, dicas de nutrição, realização de desejos para casos mais delicados, ajuda com moradia e outros tipos de assistência prática e emocional. A organização opera principalmente em comunidades locais, mas também busca expandir seu alcance online. A equipe inclui voluntários, profissionais de saúde, membros da comunidade e especialistas em diferentes áreas de suporte. O desenvolvimento do site para a o "Acolhendo" é uma oportunidade para os estudantes universitários aplicarem seus conhecimentos em tecnologia para criar uma solução que possa impactar positivamente a vida de muitas pessoas afetadas pelo câncer.
