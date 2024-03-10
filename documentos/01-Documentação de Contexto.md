@@ -34,28 +34,27 @@ O desafio é melhorar a comunicação, o alcance e o acesso às informações so
 
 ## Objetivos 
 
-Objetivos específicos: orientação dos requisitos (passos pra chegar no objetivo geral)
+Desenvolver um software que atenda às necessidades da organização "Acolhendo", fornecendo uma plataforma online abrangente para fornecer informações, recursos e apoio para pessoas diagnosticadas com câncer e suas famílias.
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+Objetivos Específicos:
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Identificar e compreender os requisitos específicos da organização "Acolhendo" em termos de informações a serem disponibilizadas, funcionalidades desejadas e experiência do usuário esperada.
+Pesquisar e selecionar as tecnologias mais adequadas para o desenvolvimento do software, considerando aspectos como acessibilidade, escalabilidade e facilidade de manutenção.
+
+Criar um design intuitivo e responsivo para o software, garantindo que seja fácil de usar e acessível em diferentes dispositivos e plataformas.
+
+Desenvolver e implementar as funcionalidades principais do software, incluindo a apresentação de informações sobre os serviços da ONG, formas de doação, calendário de eventos e recursos de apoio.
+Testar o software para garantir sua funcionalidade, usabilidade e segurança, realizando testes de usabilidade com usuários reais e identificando possíveis falhas e melhorias.
+Lançar o software e promovê-lo entre a comunidade de pacientes com câncer, profissionais de saúde e outros públicos-alvo relevantes, visando aumentar o alcance e impacto da organização "Acolhendo".
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+Trabalhar com a aplicação proposta pela organização "Acolhendo" é de suma importância devido ao impacto significativo que pode ter na vida de pessoas diagnosticadas com câncer e suas famílias. O câncer é uma doença que não afeta apenas o corpo físico, mas também tem um grande impacto emocional, social e financeiro nos pacientes e em seus entes queridos. Portanto, fornecer um apoio abrangente e acessível para essas pessoas é essencial para ajudá-las a enfrentar os desafios associados ao diagnóstico e tratamento do câncer.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
+A escolha dos objetivos específicos foi baseada na necessidade de compreender profundamente os requisitos da organização "Acolhendo" e desenvolver um software que atenda de forma eficaz às suas necessidades e às necessidades de seus usuários. A identificação e compreensão dos requisitos específicos são fundamentais para garantir que o software desenvolvido seja verdadeiramente útil e relevante para a organização e seu público-alvo.
 
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Além disso, a escolha de aprofundar em aspectos como design intuitivo e responsivo, desenvolvimento e implementação de funcionalidades principais e teste de usabilidade é motivada pela importância de criar uma plataforma online que seja fácil de usar, acessível em diferentes dispositivos e plataformas e que forneça uma experiência positiva para os usuários.
 
-## Relação com a Extensão Universitária
+Para garantir que as decisões tomadas durante o desenvolvimento do software sejam baseadas em informações sólidas e relevantes, o grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos. Essas ferramentas podem ajudar a esclarecer detalhes do problema enfrentado pela organização "Acolhendo", entender as necessidades e preferências dos usuários e garantir que o software desenvolvido atenda às expectativas e necessidades reais.
 
-Relacionar a situação-problema da organização com o impacto social esperado com a implantação do sistema sociotécnico.
-
-## Descrição do Parceiro
-
-Apresente uma descrição resumida sobre a organização onde o projeto será desenvolvido para que possa ser compreendido o cenário sistema sociotécnico.
+A organização "Acolhendo" é uma ONG dedicada a fornecer apoio abrangente para pessoas diagnosticadas com câncer e suas famílias. Suas atividades incluem palestras, encontros presenciais, doações de alimentos, dicas de nutrição, realização de desejos para casos mais delicados, ajuda com moradia e outros tipos de assistência prática e emocional. A organização opera principalmente em comunidades locais, mas também busca expandir seu alcance online. A equipe inclui voluntários, profissionais de saúde, membros da comunidade e especialistas em diferentes áreas de suporte. O desenvolvimento do software para a organização "Acolhendo" é uma oportunidade para os estudantes universitários aplicarem seus conhecimentos em tecnologia para criar uma solução que possa impactar positivamente a vida de muitas pessoas afetadas pelo câncer.
