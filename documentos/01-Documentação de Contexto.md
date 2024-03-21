@@ -26,7 +26,8 @@ Com um site dedicado, o projeto Acolhendo busca ampliar seu alcance e oferecer u
 
 
 ## Problema
-O "Acolhendo" enfrenta o desafio de expandir seu alcance e fornecer uma quantidade mais ampla de informações e recursos para pessoas diagnosticadas com câncer e suas famílias. Atualmente, o acesso a informações sobre os serviços oferecidos pela ONG, eventos, formas de doação e apoio disponível é limitado. Isso resulta em uma lacuna no apoio necessário para auxiliar os pacientes durante sua jornada de tratamento e recuperação.
+
+O Acolhendo enfrenta o desafio de expandir seu alcance e fornecer uma quantidade mais ampla de informações e recursos para pessoas diagnosticadas com câncer e suas famílias. Atualmente, o acesso a informações sobre os serviços oferecidos pela ONG, eventos, formas de doação e apoio disponível é limitado. Isso resulta em uma lacuna no apoio necessário para auxiliar os pacientes durante sua jornada de tratamento e recuperação.
 
 Suas atividades incluem palestras, encontros presenciais, doações de alimentos, dicas de nutrição, realização de desejos para casos mais delicados, ajuda com moradia e outros tipos de assistência prática e emocional. A organização opera principalmente em comunidades locais, mas também busca expandir seu alcance online.
 
@@ -43,18 +44,21 @@ Pesquisar e selecionar as tecnologias mais adequadas para o desenvolvimento dosi
 
 Criar um design intuitivo e responsivo para o site, garantindo que seja fácil de usar e acessível em diferentes dispositivos e plataformas.
 
-Desenvolver e implementar as funcionalidades principais do software, incluindo a apresentação de informações sobre os serviços da ONG, formas de doação, calendário de eventos e recursos de apoio.
+Desenvolver e implementar as funcionalidades principais do site, incluindo a apresentação de informações sobre os serviços da ONG, formas de doação, calendário de eventos e recursos de apoio.
 Testar o site para garantir sua funcionalidade, usabilidade e segurança, realizando testes de usabilidade com usuários reais e identificando possíveis falhas e melhorias.
-Lançar o software e promovê-lo entre a comunidade de pacientes com câncer, profissionais de saúde e outros públicos-alvo relevantes, visando aumentar o alcance e impacto do "Acolhendo".
+Lançar o software e promovê-lo entre a comunidade de pacientes com câncer, profissionais de saúde e outros públicos-alvo relevantes, visando aumentar o alcance e impacto do Acolhendo.
+
+Estes objetivos específicos visam atender aos requisitos funcionais estabelecidos, garantindo que o site Acolhendo seja desenvolvido de forma a atender às necessidades da organização e de seus usuários.
 
 ## Justificativa
 
-Trabalhar com a aplicação proposta para "Acolhendo" é de suma importância devido ao impacto significativo que pode ter na vida de pessoas diagnosticadas com câncer e suas famílias. O câncer é uma doença que não afeta apenas o corpo físico, mas também tem um grande impacto emocional, social e financeiro nos pacientes e em seus entes queridos. Portanto, fornecer um apoio abrangente e acessível para essas pessoas é essencial para ajudá-las a enfrentar os desafios associados ao diagnóstico e tratamento do câncer.
+A criação do site Acolhendo é de suma importância devido ao impacto significativo que pode ter na vida de pessoas diagnosticadas com câncer e suas famílias. O câncer é uma doença que não afeta apenas o corpo físico, mas também tem um grande impacto emocional, social e financeiro nos pacientes e em seus entes queridos. Portanto, fornecer um apoio abrangente e acessível para essas pessoas é essencial para ajudá-las a enfrentar os desafios associados ao diagnóstico e tratamento.
 
-A escolha dos objetivos específicos foi baseada na necessidade de compreender profundamente os requisitos da organização "Acolhendo" e desenvolver um site que atenda de forma eficaz às suas necessidades e às necessidades de seus usuários. A identificação e compreensão dos requisitos específicos são fundamentais para garantir que o software desenvolvido seja verdadeiramente útil e relevante para a organização e seu público-alvo.
+Os objetivos específicos foram baseados na necessidade de compreender profundamente os requisitos da organização e desenvolver um site que atenda de forma eficaz às suas necessidades e às necessidades de seus usuários. A identificação e compreensão dos requisitos específicos foram fundamentais para garantir que o site seja verdadeiramente útil e relevante para a organização e seu público-alvo.
 
-Além disso, a escolha de aprofundar em aspectos como design intuitivo e responsivo, desenvolvimento e implementação de funcionalidades principais e teste de usabilidade é motivada pela importância de criar uma plataforma online que seja fácil de usar, acessível em diferentes dispositivos e plataformas e que forneça uma experiência positiva para os usuários.
+Além disso, a escolha de aprofundar em aspectos como design intuitivo e responsivo, desenvolvimento e implementação de funcionalidades principais e teste de usabilidade é motivada pela importância de se criar uma plataforma online que seja fácil de usar, acessível em diferentes dispositivos e plataformas e que forneça uma experiência positiva para os usuários.
 
-Para garantir que as decisões tomadas durante o desenvolvimento do site sejam baseadas em informações sólidas e relevantes, o grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos. Essas ferramentas podem ajudar a esclarecer detalhes do problema enfrentado pelo "Acolhendo", entender as necessidades e preferências dos usuários e garantir que o site desenvolvido atenda às expectativas e necessidades reais.
+As decisões tomadas durante o desenvolvimento do site são baseadas em informações sólidas e relevantes, o grupo de trabalho faz uso de questionários, entrevistas e dados fornecidos pela ONG. Esses dados ajudam a esclarecer detalhes do problema enfrentado pelo Acolhendo, entender as necessidades e preferências dos usuários e garantir que o site desenvolvido atenda às expectativas e necessidades reais.
 
-O "Acolhendo" é uma ONG dedicada a fornecer apoio abrangente para pessoas diagnosticadas com câncer e suas famílias. Suas atividades incluem palestras, encontros presenciais, doações de alimentos, dicas de nutrição, realização de desejos para casos mais delicados, ajuda com moradia e outros tipos de assistência prática e emocional. A organização opera principalmente em comunidades locais, mas também busca expandir seu alcance online. A equipe inclui voluntários, profissionais de saúde, membros da comunidade e especialistas em diferentes áreas de suporte. O desenvolvimento do site para a o "Acolhendo" é uma oportunidade para os estudantes universitários aplicarem seus conhecimentos em tecnologia para criar uma solução que possa impactar positivamente a vida de muitas pessoas afetadas pelo câncer.
+O Acolhendo é uma ONG dedicada a fornecer apoio abrangente para pessoas diagnosticadas com câncer e suas famílias. Suas atividades incluem palestras, encontros presenciais, doações de alimentos, dicas de nutrição, realização de desejos para casos mais delicados, ajuda com moradia e outros tipos de assistência prática e emocional. A organização opera principalmente em comunidades locais, mas também busca expandir seu alcance online. A equipe inclui voluntários, profissionais de saúde, membros da comunidade e especialistas em diferentes áreas de suporte. O desenvolvimento do site para a o "Acolhendo" é uma oportunidade para os estudantes universitários aplicarem seus conhecimentos em tecnologia para criar uma solução que possa impactar positivamente a vida de muitas pessoas afetadas pelo câncer.
+
