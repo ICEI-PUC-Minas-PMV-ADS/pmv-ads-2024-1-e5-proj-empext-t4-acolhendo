@@ -1,0 +1,4 @@
+// FIX para borda dentro do input quando outline
+.mdc-notched-outline__notch {
+    border-right: none !important;
+}

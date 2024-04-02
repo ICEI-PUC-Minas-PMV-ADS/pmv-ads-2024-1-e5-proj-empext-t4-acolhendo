@@ -1,0 +1,88 @@
+:root {
+    --color-primary: #2eaadf;
+    --color-secondary: #0e5884;
+    --color-danger: #e60513;
+    --color-success: #3e9e12;
+    --color-warning: #f16d00;
+
+    --color-primary-border: #2eaadf33;
+
+    --color-escura: #434240;
+    --color-fundo-menu: #171c21;
+
+    --color-texto-claro: #bcbec0;
+    --color-fundo-texto: white;
+    --color-fundo-login: #f1f2f2;
+
+    --color-primary-rgb: 46, 170, 223;
+    --color-secondary-rgb: 14, 88, 132;
+    --color-danger-rgb: 230, 5, 20;
+    --color-success-rgb: 62, 158, 18;
+    --color-warning-rgb: 241, 109, 0;
+}
+
+$custom-primary-palette: (
+    50 : #ffffff,
+    100 : #d2edf8,
+    200 : #a1d9f1,
+    300 : #63c0e7,
+    400 : #49b5e3,
+    500 : #2eaadf,
+    600 : #209acf,
+    700 : #1c86b4,
+    800 : #18739a,
+    900 : #135f7f,
+    A100 : #2eaadf,
+    A200 : #2eaadf,
+    A400 : #2eaadf,
+    A700 : #2eaadf,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$custom-secondary-palette: (
+    50 : #92d4fb,
+    100 : #48b8f8,
+    200 : #12a3f6,
+    300 : #0778b9,
+    400 : #06659b,
+    500 : #05527e,
+    600 : #043f61,
+    700 : #032c43,
+    800 : #011926,
+    900 : #000508,
+    A100 : #05527e,
+    A200 : #05527e,
+    A400 : #05527e,
+    A700 : #05527e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
