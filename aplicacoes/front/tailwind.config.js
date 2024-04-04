@@ -3,29 +3,31 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 const primary = {
-    50: '#ffffff',
-    100: '#d2edf8',
-    200: '#a1d9f1',
-    300: '#63c0e7',
-    400: '#49b5e3',
-    500: '#2eaadf',
-    600: '#209acf',
-    700: '#1c86b4',
-    800: '#18739a',
-    900: '#135f7f'
+    50: '#FDF2F6',
+    100: '#FCE7EF',
+    200: '#FBCFE1',
+    300: '#F8A9C7',
+    400: '#F373A0',
+    500: '#E93F76',
+    600: '#D92959',
+    700: '#BC1A41',
+    800: '#9C1837',
+    900: '#821931',
+    950: '#4F0818',
 };
 
 const secondary = {
-    50: '#92d4fb',
-    100: '#48b8f8',
-    200: '#12a3f6',
-    300: '#0778b9',
-    400: '#06659b',
-    500: '#05527e',
-    600: '#043f61',
-    700: '#032c43',
-    800: '#011926',
-    900: '#000508'
+    50: '#EAFEFF',
+    100: '#CAFBFF',
+    200: '#9CF5FF',
+    300: '#57EBFF',
+    400: '#0CD6FF',
+    500: '#00BAEA',
+    600: '#0092C4',
+    700: '#0075A0',
+    800: '#0B5D7F',
+    900: '#0E4D6B',
+    950: '#02324A',
 }
 
 module.exports = {
@@ -43,7 +45,7 @@ module.exports = {
             },
             secondary: {
                 ...secondary,
-                DEFAULT: secondary[500]
+                DEFAULT: secondary[700]
             },
             fundo: '#1b1c1f'
         }),

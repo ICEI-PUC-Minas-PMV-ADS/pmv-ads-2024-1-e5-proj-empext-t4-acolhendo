@@ -1,8 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { Subject } from 'rxjs';
 
@@ -11,7 +7,7 @@ import { Subject } from 'rxjs';
     templateUrl: './header.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterModule, MatTooltipModule, MatButtonModule, MatMenuModule, MatDividerModule]
+    imports: [RouterModule]
 })
 export class HeaderComponent {
 
@@ -19,19 +15,11 @@ export class HeaderComponent {
 
     usuario: any;
 
-    constructor(
-        // private _authService: AuthService,
-    ) {
+    constructor() {
         
     }
 
     ngOnInit() {
-
-        // UserService.observer
-        //     .pipe(takeUntil(this._unsubscribeAll))
-        //     .subscribe(usuario => {
-        //         this.usuario = usuario;
-        //     });
 
     }
 
@@ -39,12 +27,6 @@ export class HeaderComponent {
 
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
-
-    }
-
-    signOut() {
-
-        // this._authService.signOut();
 
     }
 

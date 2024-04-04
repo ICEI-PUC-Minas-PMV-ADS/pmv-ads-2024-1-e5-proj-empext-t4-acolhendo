@@ -1,0 +1,10 @@
+.slick-dots {
+    li button:before {
+        font-size: 0.4rem !important;
+    }
+
+    li.slick-active button:before {
+        color: var(--color-secondary) !important;
+        opacity: 0.8 !important;
+    }
+}

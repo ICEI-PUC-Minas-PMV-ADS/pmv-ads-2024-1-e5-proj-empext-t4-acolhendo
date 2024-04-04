@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { CoreModule } from './core/core.module';
-// import { HTTPStatus } from './core/services/httpstatus.service';
+import { HTTPStatus } from './core/services/httpstatus.service';
 
 @Component({
     selector: 'app-root',
@@ -16,13 +16,13 @@ export class AppComponent {
     loading: boolean = false;
 
     constructor(
-        // private _httpStatus: HTTPStatus
+        private _httpStatus: HTTPStatus
     ) {
 
-        // this._httpStatus.getHttpStatus()
-        //     .subscribe((status: boolean) => {
-        //         this.loading = status;
-        //     });
+        this._httpStatus.getHttpStatus()
+            .subscribe((status: boolean) => {
+                this.loading = status;
+            });
 
     }
 
