@@ -2,24 +2,24 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../shared/shared.module';
-import { NutricaoComponent } from './features/shell/nutricao.component';
-import { NutricaoService } from './data-access/nutricao.service';
-import { NutricaoFormComponent } from './features/form/form.component';
-import { NutricaoArtigoComponent } from './features/artigo/artigo.component';
+import { EventoComponent } from './features/shell/evento.component';
+import { EventoService } from './data-access/evento.service';
+import { EventoFormComponent } from './features/form/form.component';
+import { EventoArtigoComponent } from './features/artigo/artigo.component';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { HTMLNoCssComponent } from '../../shared/components/html-no-css/html-no-css';
 
 const ModuleRoute: Route[] = [
     {
-        path: '', component: NutricaoComponent
+        path: '', component: EventoComponent
     },
     {
-        path: 'artigo', component: NutricaoArtigoComponent
+        path: 'artigo', component: EventoArtigoComponent
     },
     {
         path: 'form',
         canActivate: [AuthGuard],
-        component: NutricaoFormComponent
+        component: EventoFormComponent
     },
 ];
 
@@ -30,12 +30,12 @@ const ModuleRoute: Route[] = [
         HTMLNoCssComponent
     ],
     declarations: [
-        NutricaoComponent,
-        NutricaoArtigoComponent,
-        NutricaoFormComponent
+        EventoComponent,
+        EventoArtigoComponent,
+        EventoFormComponent
     ],
     providers: [
-        NutricaoService
+        EventoService
     ]
 })
-export class NutricaoModule { }
+export class EventoModule { }

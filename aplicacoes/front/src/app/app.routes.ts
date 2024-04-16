@@ -20,7 +20,15 @@ export const appRoutes: Route[] = [
             {
                 path: 'nutricao',
                 loadChildren: () => import('./modules/nutricao/nutricao.module').then(m => m.NutricaoModule)
-            }
+            },
+           {
+                path: 'evento',
+                loadChildren: () => import('./modules/eventos/evento.module').then(m => m.EventoModule)
+            },
+            {
+              path: 'artigo',
+              loadChildren: () => import('./modules/artigoT/artigoT.module').then(m => m.ArtigoTModule)
+          }
         ]
     },
     // AUTH
@@ -33,7 +41,7 @@ export const appRoutes: Route[] = [
             layout: 'default'
         },
         children: [
-            
+
         ]
     },
     // NO AUTH
