@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model artigo {
+  id            Int       @id @default(autoincrement())
+  titulo        String?   @db.VarChar
+  imagem_capa   String?   @db.VarChar
+  tipo          Int?      @db.SmallInt
+  texto         String?   @db.VarChar
+  data_inclusao DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+model banner {
+  id                  Int             @id @default(autoincrement())
+  titulo              String?         @db.VarChar
+  ativo               Boolean?        @default(false)
+  quantidade_exibicao Int?            @default(1)
+  banner_imagem       banner_imagem[]
+}
+
+model banner_imagem {
+  id             Int      @id @default(autoincrement())
+  banner_id      Int?
+  ativo          Boolean?
+  ordem          Int?     @default(1)
+  imagem_desktop String?  @db.VarChar
+  imagem_mobile  String?  @db.VarChar
+  banner         banner?  @relation(fields: [banner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model empresa {
+  email     String? @db.VarChar
+  telefone  String? @db.VarChar
+  instagram String? @db.VarChar
+  facebook  String? @db.VarChar
+  youtube   String? @db.VarChar
+  chave_pix String? @db.VarChar
+  banco     String? @db.VarChar
+  agencia   String? @db.VarChar
+  conta     String? @db.VarChar
+  cnpj      BigInt?
+  nome      String? @db.VarChar
+
+  @@ignore
+}
+
+model galeria {
+  id             Int              @id @default(autoincrement())
+  titulo         String?          @db.VarChar
+  ativo          Boolean?         @default(false)
+  imagem_capa    String?          @db.VarChar
+  tela_principal Boolean?         @default(true)
+  galeria_imagem galeria_imagem[]
+}
+
+model galeria_imagem {
+  id         Int      @id @default(autoincrement())
+  galeria_id Int?
+  ativo      Boolean?
+  imagem     String?  @db.VarChar
+  galeria    galeria? @relation(fields: [galeria_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model usuario {
+  email String  @id @db.VarChar
+  senha String? @db.VarChar
+}
