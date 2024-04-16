@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 import { LocalStorageService } from './local-storage.service';
 import { UserService } from './user.service';
@@ -11,6 +11,9 @@ import { AuthUtils } from '../uteis/auth.utils';
 export class AuthService {
 
     authenticated: boolean = false;
+
+    // TODO: APENAS PARA TESTE
+    public static usuarioAdminObservable: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(
         private _localStorage: LocalStorageService,
@@ -26,6 +29,15 @@ export class AuthService {
 
     get token(): string {
         return this._localStorage.get('token') ?? '';
+    }
+
+    // TODO: APENAS PARA TESTE
+    set usuarioAdmin(admin: boolean) {
+        this.authenticated = admin;
+        AuthService.usuarioAdminObservable.next(admin);
+    }
+    get usuarioAdmin(): boolean {
+        return AuthService.usuarioAdminObservable.getValue();
     }
 
     signOut() {

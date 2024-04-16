@@ -30,9 +30,14 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({
     exports: [
+        DirectivesModule,
+
         CommonModule,
         HttpClientModule,
         FormsModule,
@@ -64,7 +69,8 @@ import { MatRippleModule } from '@angular/material/core';
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule,
-        MatRippleModule
+        MatRippleModule,
+        MatSlideToggleModule
     ]
 })
 export class SharedModule { }

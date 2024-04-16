@@ -15,7 +15,7 @@ export const AuthGuard: CanActivateFn | CanActivateChildFn = (route, state) => {
 
                 if (!authenticated) {
 
-                    router.navigate(["login"]);
+                    router.navigate(["home"]);
 
                     return of(false);
 

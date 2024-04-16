@@ -16,6 +16,10 @@ export const appRoutes: Route[] = [
             {
                 path: 'home',
                 loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+            },
+            {
+                path: 'nutricao',
+                loadChildren: () => import('./modules/nutricao/nutricao.module').then(m => m.NutricaoModule)
             }
         ]
     },

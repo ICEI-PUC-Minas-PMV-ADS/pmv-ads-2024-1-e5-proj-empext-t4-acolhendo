@@ -1,0 +1,39 @@
+<div class="flex flex-col w-full p-10">
+    <div class="flex">
+        <button
+            mat-icon-button
+            matTooltip="Voltar"
+            (click)="voltar()">
+            <span class="material-icons">
+                arrow_back
+            </span>
+        </button>
+
+        <div *onlyAdmin class="flex w-full justify-end">
+            <button
+                mat-raised-button
+                [color]="'primary'"
+                matTooltip="Editar artigo"
+                (click)="editar()">
+                <span class="material-icons">
+                    edit
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <h1 class="flex flex-col md:flex-row w-full justify-center md:justify-around mb-8">
+        <img class="w-4/6 md:w-52" [src]="artigo.imagemCapa">
+        <div class="flex items-center justify-center px-4 text-xl">
+            {{ artigo?.titulo }}
+        </div>
+    </h1>
+
+    <section class="">
+        <html-no-css [texto]="artigo.texto"></html-no-css>
+
+        <div class="w-full flex justify-end">
+            <span class="text-xs">Adicionado {{ artigo.dataInclusao | date: 'dd/MM/YYYY HH:mm' }}</span>
+        </div>
+    </section>
+</div>

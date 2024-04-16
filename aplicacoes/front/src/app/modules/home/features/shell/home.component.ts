@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { SlickCarouselService } from '../../../../core/services/slick-carousel.service';
 
 @Component({
@@ -86,7 +86,8 @@ export class HomeComponent {
     ];
 
     constructor(
-        private _slickCarouselService: SlickCarouselService
+        private _slickCarouselService: SlickCarouselService,
+        private _cd: ChangeDetectorRef
     ) {
 
     }
@@ -99,16 +100,17 @@ export class HomeComponent {
             dots: this.banner.length > 1
         });
 
-        this.slickCarouselConfigNutri = this._slickCarouselService.getConfig({
-            autoplay: true,
-            dots: this.nutricao.length > 4,
-            slidesToShow: 4
-        });
-
         this.slickCarouselConfigEvent = this._slickCarouselService.getConfig({
             autoplay: true,
             dots: this.eventos.length > 4,
             slidesToShow: 4
+        });
+
+        this.slickCarouselConfigNutri = this._slickCarouselService.getConfig({
+            autoplay: true,
+            dots: this.nutricao.length > 3,
+            infinite: true,
+            slidesToShow: 3
         });
 
         this.slickCarouselConfigArt = this._slickCarouselService.getConfig({
@@ -116,6 +118,8 @@ export class HomeComponent {
             dots: this.artigos.length > 4,
             slidesToShow: 4
         });
+
+        this._cd.detectChanges();
 
     }
 

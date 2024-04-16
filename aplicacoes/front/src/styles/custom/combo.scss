@@ -1,0 +1,43 @@
+.clear-combo {
+    font-size: 18px;
+    color: #696969;
+}
+
+.select-combo {
+    .mat-mdc-option {
+        align-items: center;
+        padding: 0;
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+        margin-left: 0.3rem;
+    }
+
+    .mat-mdc-form-field.mat-form-field-appearance-fill .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-form-field-infix {
+        display: block;
+    }
+    
+    .loading {
+        mat-icon {
+            animation-name: rotate;
+            animation-duration: 1.2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-play-state: running;
+        }
+    }
+    
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg)
+        }
+    
+        to {
+            transform: rotate(360deg)
+        }
+    }
+}
+
+.mat-mdc-option .mdc-list-item__primary-text {
+    width: 100% !important;
+}

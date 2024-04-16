@@ -9,4 +9,14 @@
         <a class="text-sm md:text-xl" routerLink="/artigos">Artigos</a>
         <a class="text-sm md:text-xl" routerLink="/galeria">Galeria</a>
     </div>
+    
+    <div class="flex items-center justify-center">
+        <mat-slide-toggle
+            class="example-margin"
+            [color]="'primary'"
+            [(ngModel)]="usuarioAdmin"
+            (change)="changeUsuarioAdmin()">
+            Admin
+        </mat-slide-toggle>
+    </div>
 </div>
