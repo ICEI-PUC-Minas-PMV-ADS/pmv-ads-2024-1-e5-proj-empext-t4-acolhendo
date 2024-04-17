@@ -26,7 +26,7 @@ export class EventoService {
                 id: i,
                 ativo: true,
                 tipo: eArtigo.EVENTO,
-                imagemCapa: 'assets/nutricao/n1.png',
+                imagemCapa: 'assets/eventos/e1.png',
                 titulo: `${i} Evento`,
                 texto: `
                 <p>Evento</p>

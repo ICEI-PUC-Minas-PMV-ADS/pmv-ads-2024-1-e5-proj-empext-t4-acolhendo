@@ -117,7 +117,7 @@ export class ArtigoTComponent {
 
     novoArtigo() {
 
-        this._router.navigate(['/artigoT/form']);
+        this._router.navigate(['/artigo/form']);
 
     }
 

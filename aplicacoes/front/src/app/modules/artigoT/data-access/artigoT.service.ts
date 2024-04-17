@@ -26,7 +26,7 @@ export class ArtigoTService {
                 id: i,
                 ativo: true,
                 tipo: eArtigo.ARTIGO,
-                imagemCapa: 'assets/nutricao/n1.png',
+                imagemCapa: 'assets/artigo/a1.png',
                 titulo: `${i} Artigo`,
                 texto: `
                 <p>Artigo</p>
