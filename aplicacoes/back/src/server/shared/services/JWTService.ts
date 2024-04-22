@@ -2,7 +2,7 @@ import * as JWT from 'jsonwebtoken'
 import 'dotenv/config'
 
 interface IJWTData {
-    uid: number
+    email: string
 }
 
 const signIn = (data: IJWTData): string | 'JWT_NOT_FOUND' => {

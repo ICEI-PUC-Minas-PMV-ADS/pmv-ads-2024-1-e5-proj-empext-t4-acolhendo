@@ -1,64 +1,61 @@
 
 export interface IUsuario {
-    email: string;
-    senha: string;
+    email: string
+    senha: string
 }
 
 export interface IEmpresa {
-    email: string;
-    telefone: string;
-    instagram: string;
-    facebook: string;
-    youtube: string;
-}
-
-export interface IDoacao {
-    chave_pix: string;
-    banco: string;
-    agencia: string;
-    conta: string;
-    cnpj: bigint;
-    nome: string;
+    email: string
+    telefone: string
+    instagram: string
+    facebook: string
+    youtube: string
+    chave_pix: string
+    banco: string
+    agencia: string
+    conta: string
+    cnpj: bigint
+    nome: string
 }
 
 export interface IGaleria {
-    id: number;
-    titulo: string;
-    ativo: boolean;
-    imagem_capa: string;
-    tela_principal: boolean;
+    id: number
+    titulo: string
+    ativo: boolean
+    imagem_capa: string
+    tela_principal: boolean
 }
 
 export interface IGaleriaImagem {
-    id: number;
-    galeria_id: number;
-    ativo: boolean;
-    imagem: string;
+    id: number
+    galeria_id: number
+    ativo: boolean
+    imagem: string
 }
 
 export interface IBanner {
-    id: number;
-    titulo: string;
-    ativo: boolean;
-    quantidade_exibicao: number;
+    id: number
+    titulo: string
+    ativo: boolean
+    quantidade_exibicao: number
 }
 
 export interface IBannerImagem {
-    id: number;
-    banner_id: number;
-    ativo: boolean;
-    ordem: number;
-    imagem_desktop: string;
-    imagem_mobile: string;
+    id: number
+    banner_id: number
+    ativo: boolean
+    ordem: number
+    imagem_desktop: string
+    imagem_mobile: string
 }
 
 export interface IArtigo {
-    id: number;
-    titulo: string;
-    imagem_capa: string;
-    tipo: number;
-    texto: string;
-    data_inclusao: Date;
+    id: number
+    titulo: string
+    imagem_capa: string
+    tipo: number
+    texto: string
+    data_inclusao: Date
 }
 
 export interface IUpdateUsuario {
