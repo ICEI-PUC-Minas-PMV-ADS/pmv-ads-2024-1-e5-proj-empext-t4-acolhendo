@@ -32,17 +32,17 @@ export const login = async (
         })
     }
 
-    // const passwordMatch = await PasswordCrypto.verifyPassword(
-    //     senha,
-    //     result.senha
-    // )
-    // if (!passwordMatch) {
-    //     return response.status(StatusCodes.UNAUTHORIZED).json({
-    //         errors: {
-    //             default: 'Email ou senha inválidos',
-    //         },
-    //     })
-    // }
+    const passwordMatch = await PasswordCrypto.verifyPassword(
+        senha,
+        result.senha
+    )
+    if (!passwordMatch) {
+        return response.status(StatusCodes.UNAUTHORIZED).json({
+            errors: {
+                default: 'Email ou senha inválidos',
+            },
+        })
+    }
 
     const accessToken = JWTService.signIn({ email: result.email})
     if (accessToken === 'JWT_NOT_FOUND') {

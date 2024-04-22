@@ -18,7 +18,7 @@ describe('Usuario - GetUser', () => {
             .get('/api/v1/user-data')
             .set('Authorization', `Bearer ${accessToken}`)
             .send({
-                email: "usuario@teste.com"
+                email: 'usuario@teste.com'
             })
         expect(output.statusCode).toEqual(StatusCodes.OK)
         expect(output.body).toHaveProperty('email')
@@ -29,7 +29,7 @@ describe('Usuario - GetUser', () => {
         const output = await testServer
             .get('/api/v1/user-data')
             .send({
-                email: "usuario@teste.com"
+                email: 'usuario@teste.com'
             })
         expect(output.statusCode).toEqual(StatusCodes.UNAUTHORIZED)
         expect(output.body).toHaveProperty('errors.default');
@@ -39,7 +39,7 @@ describe('Usuario - GetUser', () => {
         const output = await testServer
             .get('/api/v1/user-data')
             .send({
-                email: "usuario@teste.cocccm"
+                email: 'usuario@teste.cocccm'
             })
         expect(output.statusCode).toEqual(StatusCodes.UNAUTHORIZED)
         expect(output.body).toHaveProperty('errors.default');
