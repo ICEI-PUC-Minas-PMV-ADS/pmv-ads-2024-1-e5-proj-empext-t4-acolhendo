@@ -72,3 +72,12 @@ model usuario {
   email String  @id @db.VarChar
   senha String? @db.VarChar
 }
+
+model reset_code {
+  id             Int      @id @default(autoincrement())
+  email          String   @db.VarChar(255)
+  reset_code     String   @db.Char(6)
+  requested_date DateTime @db.Timestamp(6)
+  expiring_date  DateTime @db.Timestamp(6)
+  used           Boolean
+}

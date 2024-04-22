@@ -29,6 +29,6 @@ export const authValidator: RequestHandler = (request, response, next) => {
             }
         })
     }
-    request.headers.idUsuario = jwtData.uid.toString()
+    request.headers.idUsuario = jwtData.email.toString()
     return next()
 }

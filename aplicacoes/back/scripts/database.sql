@@ -67,6 +67,17 @@ CREATE TABLE IF NOT EXISTS teste.artigo (
     data_inclusao TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Criar tabela de reset code
+CREATE TABLE teste.reset_code (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  reset_code CHAR(6) NOT NULL,
+  requested_date TIMESTAMP NOT NULL,
+  expiring_date TIMESTAMP NOT NULL,
+  used bool NOT NULL
+);
+
+
 -- Inserir valores de exemplo
 INSERT INTO teste.usuario (email, senha) VALUES ('usuario@teste.com', 'senha123');
 
