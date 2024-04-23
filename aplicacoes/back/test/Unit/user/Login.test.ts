@@ -7,6 +7,7 @@ describe('Usuário - Login', () => {
             email: 'usuario@teste.com',
             senha: 'senha123',
         });
+        console.log(output)
         expect(output.statusCode).toBe(StatusCodes.OK);
         expect(output.body).toHaveProperty('accessToken');
     });

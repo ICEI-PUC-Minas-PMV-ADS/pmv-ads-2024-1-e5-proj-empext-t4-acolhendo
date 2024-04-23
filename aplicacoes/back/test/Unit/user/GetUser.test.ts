@@ -20,6 +20,7 @@ describe('Usuario - GetUser', () => {
             .send({
                 email: 'usuario@teste.com'
             })
+        console.log(output.body)
         expect(output.statusCode).toEqual(StatusCodes.OK)
         expect(output.body).toHaveProperty('email')
         expect(output.body).toHaveProperty('senha')

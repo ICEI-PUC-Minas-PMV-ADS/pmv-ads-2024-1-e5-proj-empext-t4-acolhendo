@@ -1,4 +1,4 @@
-// export * from './article'
+export * from './article'
 // export * from './banner'
 // export * from './company'
 // export * from './gallery'
