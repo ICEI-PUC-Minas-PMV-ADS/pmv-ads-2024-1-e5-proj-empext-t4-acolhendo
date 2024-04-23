@@ -34,8 +34,8 @@ model banner_imagem {
   banner         banner?  @relation(fields: [banner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model empresa {
+  id        Int     @id @default(autoincrement())
   email     String? @db.VarChar
   telefone  String? @db.VarChar
   instagram String? @db.VarChar
@@ -45,10 +45,8 @@ model empresa {
   banco     String? @db.VarChar
   agencia   String? @db.VarChar
   conta     String? @db.VarChar
-  cnpj      BigInt?
+  cnpj      String? @db.VarChar
   nome      String? @db.VarChar
-
-  @@ignore
 }
 
 model galeria {
