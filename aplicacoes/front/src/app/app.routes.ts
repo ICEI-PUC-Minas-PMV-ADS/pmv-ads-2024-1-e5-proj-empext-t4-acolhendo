@@ -51,7 +51,7 @@ export const appRoutes: Route[] = [
         canActivateChild: [NoAuthGuard],
         component: LayoutComponent,
         data: {
-            layout: 'default'
+            layout: ''
         },
         children: [
             {
