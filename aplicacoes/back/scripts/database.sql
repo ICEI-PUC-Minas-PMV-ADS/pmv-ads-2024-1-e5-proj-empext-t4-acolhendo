@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS teste.usuario (
 
 -- Criar tabela 'empresa'
 CREATE TABLE IF NOT EXISTS teste.empresa (
+    id SERIAL PRIMARY KEY,
     email VARCHAR,
     telefone VARCHAR,
     instagram VARCHAR,
@@ -18,7 +19,7 @@ CREATE TABLE IF NOT EXISTS teste.empresa (
     banco VARCHAR,
     agencia VARCHAR,
     conta VARCHAR,
-    cnpj BIGINT,
+    cnpj VARCHAR,
     nome VARCHAR
 );
 
@@ -76,7 +77,6 @@ CREATE TABLE teste.reset_code (
   expiring_date TIMESTAMP NOT NULL,
   used bool NOT NULL
 );
-
 
 -- Inserir valores de exemplo
 INSERT INTO teste.usuario (email, senha) VALUES ('usuario@teste.com', 'senha123');

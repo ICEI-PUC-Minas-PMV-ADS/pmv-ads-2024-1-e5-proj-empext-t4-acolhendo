@@ -14,8 +14,23 @@ export interface IEmpresa {
     banco: string
     agencia: string
     conta: string
-    cnpj: bigint
+    cnpj: string
     nome: string
+}
+
+export interface IUpdateEmpresa {
+    id?: number
+    email?: string
+    telefone?: string
+    instagram?: string
+    facebook?: string
+    youtube?: string
+    chave_pix?: string
+    banco?: string
+    agencia?: string
+    conta?: string
+    cnpj?: string
+    nome?: string
 }
 
 export interface IGaleria {
@@ -56,6 +71,15 @@ export interface IArtigo {
     tipo: number
     texto: string
     data_inclusao: Date
+}
+
+export interface IUpdateArtigo {
+    id: number
+    titulo?: string
+    imagem_capa?: string
+    tipo?: number
+    texto?: string
+    data_inclusao?: Date
 }
 
 export interface IUpdateUsuario {
