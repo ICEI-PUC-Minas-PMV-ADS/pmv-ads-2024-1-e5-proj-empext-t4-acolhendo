@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { UserController, ArticleController } from '../controllers';
+import { UserController, ArticleController, CompanyController } from '../controllers';
 import { authValidator } from '../shared/middleware';
 
 const router = Router()
 
 // Company
-router.get('/company', authValidator)            // A API deverá fornecer um endpoint GET para retornar os dados da empresa
-router.put('/company', authValidator)      // A API deverá fornecer um endpoint PUT para atualizar os dados da empresa
+router.get('/company', authValidator, CompanyController.getCompanyDataValidation, CompanyController.getCompanyData)            // A API deverá fornecer um endpoint GET para retornar os dados da empresa
+router.put('/company', authValidator, CompanyController.updateCompanyByIdValidation, CompanyController.updateCompanyById)      // A API deverá fornecer um endpoint PUT para atualizar os dados da empresa
 
 router.get('/banner', authValidator) // A API deverá fornecer um endpoint GET para retornar todos banners
 router.post('/banner', authValidator) // A API deverá fornecer um endpoint POST para criar um novo banner
