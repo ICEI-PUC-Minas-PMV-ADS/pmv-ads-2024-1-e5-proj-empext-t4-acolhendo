@@ -28,7 +28,11 @@ export const appRoutes: Route[] = [
             {
               path: 'artigo',
               loadChildren: () => import('./modules/artigoT/artigoT.module').then(m => m.ArtigoTModule)
-          }
+            },
+            {
+              path: 'fale-conosco',
+              loadChildren: () => import('./modules/fale-conosco/faleConosco.module').then(m => m.FaleConoscoModule)
+            }
         ]
     },
     // AUTH
