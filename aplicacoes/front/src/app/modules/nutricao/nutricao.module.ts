@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
+import { QuillModule } from 'ngx-quill';
 
 import { SharedModule } from '../../shared/shared.module';
 import { NutricaoComponent } from './features/shell/nutricao.component';
@@ -7,7 +8,6 @@ import { NutricaoService } from './data-access/nutricao.service';
 import { NutricaoFormComponent } from './features/form/form.component';
 import { NutricaoArtigoComponent } from './features/artigo/artigo.component';
 import { AuthGuard } from '../../core/guards/auth.guard';
-import { HTMLNoCssComponent } from '../../shared/components/html-no-css/html-no-css';
 
 const ModuleRoute: Route[] = [
     {
@@ -27,7 +27,7 @@ const ModuleRoute: Route[] = [
     imports: [
         RouterModule.forChild(ModuleRoute),
         SharedModule,
-        HTMLNoCssComponent
+        QuillModule.forRoot()
     ],
     declarations: [
         NutricaoComponent,

@@ -8,8 +8,9 @@ import { MatTabsConfig, MAT_TABS_CONFIG } from '@angular/material/tabs';
 import { MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { provideQuillConfig } from 'ngx-quill';
 
 import { appRoutes } from './app.routes';
 import { getPortuguesePaginatorIntl } from './core/uteis/portuguese-paginator';
@@ -53,7 +54,7 @@ const MatFormFieldAppearance: MatFormFieldDefaultOptions = {
 export const appConfig: ApplicationConfig = {
     providers: [
         AuthService,
-        provideRouter(appRoutes),
+        provideRouter(appRoutes, withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'top' })),
         provideAnimations(),
         provideHttpClient(withInterceptors([httpInterceptor])),
         { provide: MatPaginatorIntl, useValue: getPortuguesePaginatorIntl() },
@@ -68,5 +69,36 @@ export const appConfig: ApplicationConfig = {
         { provide: MAT_TABS_CONFIG, useValue: customTabDefaults },
         { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: MatFormFieldAppearance },
+        provideQuillConfig({
+            modules: {
+                syntax: true,
+                toolbar: [
+                    [
+                        { 'size': ['small', false, 'large', 'huge'] },
+                        { 'header': [1, 2, 3, 4, 5, 6, false] }
+                    ],
+                    [],
+                    [
+                        'bold', 'italic', 'underline', 'strike',
+                        { 'color': [] }, { 'background': [] }
+                    ],
+                    [],
+                    [
+                        'link', 'image'
+                    ],
+                    [
+                        { 'script': 'sub'}, { 'script': 'super' }
+                    ],
+                    [],
+                    [
+                        { 'align': [] },
+                        { 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' },
+                        { 'indent': '-1'}, { 'indent': '+1' }
+                    ],
+                    [],
+                    [{ 'direction': 'rtl' }, 'clean'],
+                ]
+            }
+        })
     ]
 };

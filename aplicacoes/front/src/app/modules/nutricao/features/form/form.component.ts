@@ -41,7 +41,7 @@ export class NutricaoFormComponent {
             tipo: [eArtigo.NUTRICAO, []],
             imagemCapa: [null, [Validators.required]],
             titulo: [null, [Validators.required]],
-            texto: [null, [Validators.required]],
+            texto: [null, []],
             telaPrincipal: [true, []],
         });
 

@@ -1,0 +1,25 @@
+<div class="w-full px-2 md:px-4 py-1">
+    <ngx-slick-carousel
+        #slickModal="slick-carousel"
+        [config]="slickCarouselConfigBanner">
+        @for (b of banner; track b.url) {
+            <div ngxSlickItem class="carousel cursor-pointer">
+                <img class=""
+                    [src]="b.url"
+                    alt="{{ b.descricao }}" />
+            </div>
+        }
+    </ngx-slick-carousel>
+
+    <div *onlyAdmin class="flex w-full justify-end">
+        <button
+            mat-raised-button
+            [color]="'primary'"
+            matTooltip="Manutenção do banner"
+            (click)="manutencaoBanner()">
+            <span class="material-icons">
+                edit
+            </span>
+        </button>
+    </div>
+</div>

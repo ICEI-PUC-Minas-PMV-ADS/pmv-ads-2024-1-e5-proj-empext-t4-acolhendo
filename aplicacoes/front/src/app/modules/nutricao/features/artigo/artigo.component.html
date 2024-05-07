@@ -30,7 +30,7 @@
     </h1>
 
     <section class="">
-        <html-no-css [texto]="artigo.texto"></html-no-css>
+        <div [innerHTML]="artigo.texto"></div>
 
         <div class="w-full flex justify-end">
             <span class="text-xs">Adicionado {{ artigo.dataInclusao | date: 'dd/MM/YYYY HH:mm' }}</span>

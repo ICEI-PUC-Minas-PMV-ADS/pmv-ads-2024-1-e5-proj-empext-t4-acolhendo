@@ -4,6 +4,11 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './features/shell/home.component';
+import { HomeService } from './data-access/home.service';
+import { HomeBannerComponent } from './features/banner/banner.component';
+import { HomeNutricaoComponent } from './features/nutricao/nutricao.component';
+import { HomeEventoComponent } from './features/eventos/eventos.component';
+import { HomeArtigoComponent } from './features/artigo/artigo.component';
 
 const ModuleRoute: Route[] = [
     { path: '', component: HomeComponent }
@@ -16,7 +21,14 @@ const ModuleRoute: Route[] = [
         SlickCarouselModule
     ],
     declarations: [
-        HomeComponent
+        HomeComponent,
+        HomeBannerComponent,
+        HomeEventoComponent,
+        HomeNutricaoComponent,
+        HomeArtigoComponent
+    ],
+    providers: [
+        HomeService
     ]
 })
 export class HomeModule { }

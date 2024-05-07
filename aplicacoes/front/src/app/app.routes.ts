@@ -21,17 +21,21 @@ export const appRoutes: Route[] = [
                 path: 'nutricao',
                 loadChildren: () => import('./modules/nutricao/nutricao.module').then(m => m.NutricaoModule)
             },
-           {
+            {
                 path: 'evento',
                 loadChildren: () => import('./modules/eventos/evento.module').then(m => m.EventoModule)
             },
             {
-              path: 'artigo',
-              loadChildren: () => import('./modules/artigoT/artigoT.module').then(m => m.ArtigoTModule)
+                path: 'artigo',
+                loadChildren: () => import('./modules/artigoT/artigoT.module').then(m => m.ArtigoTModule)
             },
             {
-              path: 'fale-conosco',
-              loadChildren: () => import('./modules/fale-conosco/faleConosco.module').then(m => m.FaleConoscoModule)
+                path: 'fale-conosco',
+                loadChildren: () => import('./modules/fale-conosco/faleConosco.module').then(m => m.FaleConoscoModule)
+            },
+            {
+                path: 'banner',
+                loadChildren: () => import('./modules/banner/banner.module').then(m => m.BannerModule)
             }
         ]
     },

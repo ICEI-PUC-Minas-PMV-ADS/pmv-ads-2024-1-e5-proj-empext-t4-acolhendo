@@ -1,89 +1,9 @@
 <div class="w-full flex flex-col gap-10 md:gap-14 pb-7 md:pb-16">
-    <div class="w-full px-2 md:px-4 py-1">
-        <ngx-slick-carousel
-            #slickModal="slick-carousel"
-            [config]="slickCarouselConfigBanner">
-            @for (b of banner; track b.url) {
-                <div ngxSlickItem class="carousel">
-                    <img class=""
-                        [src]="b.url"
-                        alt="{{ b.descricao }}" />
-                </div>
-            }
-        </ngx-slick-carousel>
-    </div>
+    <app-home-banner/>
 
-    <div class="flex flex-col w-full items-center justify-center gap-3 px-2 md:px-12">
-        <h2 class="font-semibold text-xl md:text-3xl text-secondary">Nosso eventos</h2>
+    <app-home-eventos/>
 
-        <div class="w-full px-2 py-1">
-            <ngx-slick-carousel
-                #slickModal="slick-carousel"
-                [config]="slickCarouselConfigEvent">
-                @for (b of eventos; track b.url) {
-                    <div ngxSlickItem class="px-1 md:px-5">
-                        <img class="shadow-lg md:w-60"
-                            [src]="b.url"
-                            alt="{{ b.descricao }}" />
-                    </div>
-                }
-            </ngx-slick-carousel>
-        </div>
-    </div>
+    <app-home-nutricao/>
 
-    <div class="relative flex flex-col w-full items-center justify-center gap-3 px-2 md:px-12">
-        <div class="absolute w-full opacity-10 top-[-2rem]">
-            <div class="w-full bg-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="w-full h-14">
-                    <path class="fill-white" d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7
-                    c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4
-                    c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"></path>
-                </svg>
-            </div>
-
-            <div class="h-24 md:h-72 bg-secondary"></div>
-
-            <div class="w-full">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="w-full h-14">
-                    <path class="fill-secondary" d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7
-                    c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4
-                    c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <h2 class="font-semibold text-xl md:text-3xl text-secondary">Nutrir o corpo e a mente</h2>
-
-        <div class="w-full px-2 py-1">
-            <ngx-slick-carousel
-                #slickModal="slick-carousel"
-                [config]="slickCarouselConfigNutri">
-                @for (b of nutricao; track b.url) {
-                    <div ngxSlickItem class="px-1 md:px-5">
-                        <img class="shadow-lg md:w-60"
-                            [src]="b.url"
-                            alt="{{ b.descricao }}" />
-                    </div>
-                }
-            </ngx-slick-carousel>
-        </div>
-    </div>
-
-    <div class="flex flex-col w-full items-center justify-center gap-3 px-2 md:px-12">
-        <h2 class="font-semibold text-xl md:text-3xl text-secondary">Artigos para Você</h2>
-
-        <div class="w-full px-2 py-1">
-            <ngx-slick-carousel
-                #slickModal="slick-carousel"
-                [config]="slickCarouselConfigArt">
-                @for (b of artigos; track b.url) {
-                    <div ngxSlickItem class="px-1 md:px-5">
-                        <img class="shadow-lg md:w-60"
-                            [src]="b.url"
-                            alt="{{ b.descricao }}" />
-                    </div>
-                }
-            </ngx-slick-carousel>
-        </div>
-    </div>
+    <app-home-artigo/>
 </div>

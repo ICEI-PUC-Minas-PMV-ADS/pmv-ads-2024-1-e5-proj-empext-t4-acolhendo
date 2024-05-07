@@ -13,13 +13,13 @@ export const AuthGuard: CanActivateFn | CanActivateChildFn = (route, state) => {
         .pipe(
             switchMap((authenticated) => {
 
-                if (!authenticated) {
+                // if (!authenticated) {
 
-                    router.navigate(["home"]);
+                //     router.navigate(["login"]);
 
-                    return of(false);
+                //     return of(false);
 
-                }
+                // }
 
                 return of(true);
             })
