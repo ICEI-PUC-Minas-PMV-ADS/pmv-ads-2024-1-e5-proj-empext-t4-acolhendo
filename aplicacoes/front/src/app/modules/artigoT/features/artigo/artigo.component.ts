@@ -73,13 +73,13 @@ export class ArtigoTArtigoComponent {
 
     voltar() {
 
-        this._router.navigate(['/artigos']);
+        this._router.navigate(['/artigo']);
 
     }
 
     editar() {
 
-        this._router.navigate(['/artigoT/form', { id: this.artigoId }]);
+        this._router.navigate(['/artigo/form', { id: this.artigoId }]);
 
     }
 

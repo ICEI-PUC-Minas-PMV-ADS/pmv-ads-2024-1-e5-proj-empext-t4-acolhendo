@@ -59,14 +59,6 @@
 
             <div class="flex flex-col md:flex-row gap-4">
                 <mat-form-field class="w-full">
-                    <mat-label>Link Imagem Capa</mat-label>
-                    <input maxlength="300" matInput formControlName="imagemCapa" />
-                    <mat-error *ngIf="formDados.get('imagemCapa')?.hasError('required') && formDados.get('imagemCapa')?.touched">Preenchimento obrigatório</mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
                     <mat-label>Título</mat-label>
                     <input maxlength="100" matInput formControlName="titulo" />
                     <mat-error *ngIf="formDados.get('titulo')?.hasError('required') && formDados.get('titulo')?.touched">Preenchimento obrigatório</mat-error>
@@ -75,10 +67,19 @@
 
             <div class="flex flex-col md:flex-row gap-4">
                 <mat-form-field class="w-full">
-                    <mat-label>Texto</mat-label>
-                    <textarea matInput formControlName="texto" rows="10"></textarea>
-                    <mat-error *ngIf="formDados.get('texto')?.hasError('required') && formDados.get('texto')?.touched">Preenchimento obrigatório</mat-error>
+                    <mat-label>Link Imagem Capa</mat-label>
+                    <input maxlength="300" matInput formControlName="imagemCapa" />
+                    <mat-error *ngIf="formDados.get('imagemCapa')?.hasError('required') && formDados.get('imagemCapa')?.touched">Preenchimento obrigatório</mat-error>
                 </mat-form-field>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="w-full h-96">
+                    <quill-editor
+                        class="w-full h-80"
+                        formControlName="texto">
+                    </quill-editor>
+                </div>
             </div>
         </div>
     </form>

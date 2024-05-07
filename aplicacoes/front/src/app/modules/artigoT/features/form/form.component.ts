@@ -41,7 +41,7 @@ export class ArtigoTFormComponent {
             tipo: [eArtigo.ARTIGO, []],
             imagemCapa: [null, [Validators.required]],
             titulo: [null, [Validators.required]],
-            texto: [null, [Validators.required]],
+            texto: [null, []],
             telaPrincipal: [true, []],
         });
 
@@ -98,7 +98,7 @@ export class ArtigoTFormComponent {
 
     voltar() {
 
-        this._router.navigate(['/artigos']);
+        this._router.navigate(['/artigo']);
 
     }
 

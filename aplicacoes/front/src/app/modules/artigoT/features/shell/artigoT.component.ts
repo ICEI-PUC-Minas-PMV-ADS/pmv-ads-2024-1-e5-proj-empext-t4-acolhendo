@@ -123,7 +123,7 @@ export class ArtigoTComponent {
 
     abrirArtigo(id: number) {
 
-        this._router.navigate(['/artigoT/artigo', { id }]);
+        this._router.navigate(['/artigo/artigo', { id }]);
 
     }
 
