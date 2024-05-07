@@ -1,85 +1,86 @@
 <div class="flex flex-col w-full p-10">
-    <h1 class="flex text-2xl mb-8">
-        <span class="whitespace-nowrap">Cadastro de Artigo Nutricional</span>
+  <h1 class="flex text-2xl mb-8">
+      <span class="whitespace-nowrap">Cadastro de Artigo Nutricional</span>
 
-        <div class="w-full flex gap-2 justify-end mb-2">
-            <!-- VOLTAR -->
-            <button
-                matTooltip="Voltar p/ lista"
-                mat-raised-button
-                [color]="'secondary'"
-                (click)="voltar()">
-                <span class="material-icons-outlined">
-                    arrow_back
-                </span>
-            </button>
+      <div class="w-full flex gap-2 justify-end mb-2">
+          <!-- VOLTAR -->
+          <button
+              matTooltip="Voltar p/ lista"
+              mat-raised-button
+              [color]="'secondary'"
+              (click)="voltar()">
+              <span class="material-icons-outlined">
+                  arrow_back
+              </span>
+          </button>
 
-            <!-- SALVAR -->
-            <button
-                class="relative"
-                matTooltip="Salvar alterações"
-                mat-raised-button
-                [color]="'primary'"
-                [disabled]="loading"
-                (click)="salvar()">
-                <span class="material-icons-outlined">
-                    save
-                </span>
-                @if (loading) {
-                    <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
-                }
-            </button>
-        </div>
-    </h1>
+          <!-- SALVAR -->
+          <button
+              class="relative"
+              matTooltip="Salvar alterações"
+              mat-raised-button
+              [color]="'primary'"
+              [disabled]="loading"
+              (click)="salvar()">
+              <span class="material-icons-outlined">
+                  save
+              </span>
+              @if (loading) {
+                  <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
+              }
+          </button>
+      </div>
+  </h1>
 
-    <form focusInvalidInput class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="formDados">
-        <div class="flex flex-col p-4">
-            <div class="flex flex-col md:flex-row gap-4">
-                @if (artigoId) {
-                    <mat-form-field class="w-28">
-                        <mat-label>ID</mat-label>
-                        <input matInput formControlName="id" readonly>
-                    </mat-form-field>
-                }
-            </div>
+  <form focusInvalidInput class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="formDados">
+      <div class="flex flex-col p-4">
+          <div class="flex flex-col md:flex-row gap-4">
+              @if (artigoId) {
+                  <mat-form-field class="w-28">
+                      <mat-label>ID</mat-label>
+                      <input matInput formControlName="id" readonly>
+                  </mat-form-field>
+              }
+          </div>
 
-            <div class="flex flex-col md:flex-row gap-4 mb-4">
-                <mat-checkbox
-                    [color]="'primary'"
-                    formControlName="ativo">
-                    Ativo
-                </mat-checkbox>
+          <div class="flex flex-col md:flex-row gap-4 mb-4">
+              <mat-checkbox
+                  [color]="'primary'"
+                  formControlName="ativo">
+                  Ativo
+              </mat-checkbox>
 
-                <mat-checkbox
-                    [color]="'primary'"
-                    formControlName="telaPrincipal">
-                    Exibir na Página Principal
-                </mat-checkbox>
-            </div>
+              <mat-checkbox
+                  [color]="'primary'"
+                  formControlName="telaPrincipal">
+                  Exibir na Página Principal
+              </mat-checkbox>
+          </div>
 
-            <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Link Imagem Capa</mat-label>
-                    <input maxlength="300" matInput formControlName="imagemCapa" />
-                    <mat-error *ngIf="formDados.get('imagemCapa')?.hasError('required') && formDados.get('imagemCapa')?.touched">Preenchimento obrigatório</mat-error>
-                </mat-form-field>
-            </div>
+          <div class="flex flex-col md:flex-row gap-4">
+              <mat-form-field class="w-full">
+                  <mat-label>Título</mat-label>
+                  <input maxlength="100" matInput formControlName="titulo" />
+                  <mat-error *ngIf="formDados.get('titulo')?.hasError('required') && formDados.get('titulo')?.touched">Preenchimento obrigatório</mat-error>
+              </mat-form-field>
+          </div>
 
-            <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Título</mat-label>
-                    <input maxlength="100" matInput formControlName="titulo" />
-                    <mat-error *ngIf="formDados.get('titulo')?.hasError('required') && formDados.get('titulo')?.touched">Preenchimento obrigatório</mat-error>
-                </mat-form-field>
-            </div>
+          <div class="flex flex-col md:flex-row gap-4">
+              <mat-form-field class="w-full">
+                  <mat-label>Link Imagem Capa</mat-label>
+                  <input maxlength="300" matInput formControlName="imagemCapa" />
+                  <mat-error *ngIf="formDados.get('imagemCapa')?.hasError('required') && formDados.get('imagemCapa')?.touched">Preenchimento obrigatório</mat-error>
+              </mat-form-field>
+          </div>
 
-            <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Texto</mat-label>
-                    <textarea matInput formControlName="texto" rows="10"></textarea>
-                    <mat-error *ngIf="formDados.get('texto')?.hasError('required') && formDados.get('texto')?.touched">Preenchimento obrigatório</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-    </form>
+          <div class="flex flex-col md:flex-row gap-4">
+              <div class="w-full h-96">
+                  <quill-editor
+                      class="w-full h-80"
+                      formControlName="texto">
+                  </quill-editor>
+              </div>
+          </div>
+      </div>
+  </form>
 </div>
