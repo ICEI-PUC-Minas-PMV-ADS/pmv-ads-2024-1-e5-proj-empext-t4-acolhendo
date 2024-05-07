@@ -22,7 +22,7 @@ export class FaleConoscoComponent {
   constructor() { }
 
   sendEmail() {
-    
+
     const subject = 'Submissão de formulário';
     const body = `Nome: ${this.formData.name}%0D%0A` +
                  `Email: ${this.formData.email}%0D%0A` +
