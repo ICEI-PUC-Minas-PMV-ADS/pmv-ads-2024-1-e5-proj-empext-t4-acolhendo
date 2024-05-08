@@ -1,0 +1,91 @@
+<div class="flex flex-col w-full p-10">
+    <h1 class="flex text-2xl mb-8">
+        Banner
+
+        <div *onlyAdmin class="flex w-full justify-end">
+            <button
+                mat-raised-button
+                [color]="'primary'"
+                matTooltip="Adicionar banner"
+                (click)="novaImagem()">
+                <span class="material-icons">
+                    add
+                </span>
+            </button>
+        </div>
+    </h1>
+
+    <div class="flex justify-center">
+        <mat-form-field
+            class="w-full px-10 md:w-1/2">
+            <button
+                matPrefix
+                mat-icon-button
+                [color]="'primary'"
+                (click)="pesquisaBtn()"
+                matTooltip="Pesquisar">
+                <span class="material-icons-outlined icon-size-4">
+                    search
+                </span>
+            </button>
+
+            <input
+                matInput
+                [formControl]="searchInputControl"
+                [autocomplete]="'off'"
+                [placeholder]="'Pesquise por...'"
+                (keydown.enter)="pesquisaBtn()"/>
+
+            @if (searchInputControl.value) {
+                <button
+                    matSuffix
+                    mat-icon-button
+                    [color]="'primary'"
+                    (click)="limparBtn()"
+                    matTooltip="Limpar pesquisa">
+                    <span class="material-icons-outlined icon-size-4">
+                        close
+                    </span>
+                </button>
+            }
+        </mat-form-field>
+    </div>
+
+    <div id="lista" class="py-12">
+        @if (items?.length) {
+            <div class="flex flex-col gap-8">
+                @for (item of items; track item.id) {
+                    <article
+                        class="
+                            flex flex-col gap-2 justify-center items-center
+                            bg-white pb-4 rounded-xl shadow-lg
+                            cursor-pointer hover:opacity-85
+                            transition duration-300 ease-out
+                        "
+                        matTooltip="Clique para editar a imagem"
+                        (click)="editarImagem(item.id)">
+                        <img class="w-full h-full" [src]="item.imagemDesktop">
+
+                        <h2
+                            class="max-w-full block px-4 text-center"
+                            matTooltip="{{ item.titulo }}">
+                            {{ item.titulo }}
+                        </h2>
+                    </article>
+                }
+    
+                <mat-paginator
+                    class="mb-4"
+                    [length]="itemsCount"
+                    [pageSize]="pageLimit"
+                    [pageSizeOptions]="pageLimits"
+                    [showFirstLastButtons]="true">
+                </mat-paginator>
+            </div>
+        } @else if (!!items) {
+            <div class="p-8 sm:p-16 border-t text-2xl font-semibold tracking-tight text-center">
+                Nenhuma imagem encontrada!
+            </div>
+        }
+    </div>
+</div>
