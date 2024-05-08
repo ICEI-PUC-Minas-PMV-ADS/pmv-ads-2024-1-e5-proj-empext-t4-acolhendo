@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -73,7 +72,7 @@ export class EventoArtigoComponent {
 
     voltar() {
 
-        this._router.navigate(['/eventos']);
+        this._router.navigate(['/evento']);
 
     }
 

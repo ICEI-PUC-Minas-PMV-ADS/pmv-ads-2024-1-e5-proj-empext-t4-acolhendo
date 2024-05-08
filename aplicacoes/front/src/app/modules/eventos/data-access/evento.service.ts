@@ -20,7 +20,7 @@ export class EventoService {
         // TODO: TESTE
         let rows = [];
 
-        for (let i = 0; i < 20; i++) {
+        for (let i = 1; i < 21; i++) {
 
             rows.push({
                 id: i,

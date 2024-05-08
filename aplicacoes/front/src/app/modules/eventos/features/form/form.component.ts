@@ -98,7 +98,7 @@ export class EventoFormComponent {
 
     voltar() {
 
-        this._router.navigate(['/eventos']);
+        this._router.navigate(['/evento']);
 
     }
 

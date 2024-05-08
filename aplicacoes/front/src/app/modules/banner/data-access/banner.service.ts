@@ -22,7 +22,9 @@ export class BannerService {
             rows.push({
                 id: i,
                 ativo: true,
-                titulo: ''
+                titulo: 'Imagem que descreve',
+                imagemDesktop: `assets/banner/b1.png`,
+                imagemMobile: `assets/banner/b1.png`
             });
 
         }
@@ -45,7 +47,9 @@ export class BannerService {
         return of({
             id: 1,
             ativo: true,
-            titulo: '',
+            titulo: 'Imagem que descreve',
+            imagemDesktop: `assets/banner/b1.png`,
+            imagemMobile: `assets/banner/b1.png`
         })
 
     }
