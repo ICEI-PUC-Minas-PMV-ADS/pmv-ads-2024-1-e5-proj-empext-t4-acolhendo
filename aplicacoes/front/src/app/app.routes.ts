@@ -36,6 +36,10 @@ export const appRoutes: Route[] = [
             {
                 path: 'banner',
                 loadChildren: () => import('./modules/banner/banner.module').then(m => m.BannerModule)
+            },
+            {
+                path: 'quem-somos',
+                loadChildren: () => import('./modules/quem-somos/quem-somos.module').then(m => m.QuemSomosModule)
             }
         ]
     },

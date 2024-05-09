@@ -1,0 +1,21 @@
+<div class="flex flex-col w-full p-10">
+    <h1 class="flex text-2xl mb-8">
+        <span class="text-nowrap">Quem somos</span>
+
+        <div *onlyAdmin class="flex w-full justify-end">
+            <button
+                mat-raised-button
+                [color]="'primary'"
+                matTooltip="Editar quem somos"
+                (click)="editar()">
+                <span class="material-icons">
+                    edit
+                </span>
+            </button>
+        </div>
+    </h1>
+
+    <div>
+        <div [innerHTML]="dados.texto"></div>
+    </div>
+</div>
