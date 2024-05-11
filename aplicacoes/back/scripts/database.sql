@@ -85,10 +85,15 @@ INSERT INTO teste.empresa (email, telefone, instagram, facebook, youtube, chave_
 VALUES ('empresa@teste.com', '123456789', 'instagram.com/empresa', 'facebook.com/empresa', 'youtube.com/empresa', 'chave123', 'Banco Teste', '1234', '56789', 12345678901234, 'Empresa Teste');
 
 INSERT INTO teste.galeria (titulo, imagem_capa) VALUES ('Galeria Teste', 'imagem_galeria.jpg');
+INSERT INTO teste.galeria (titulo, imagem_capa) VALUES ('Galeria Teste 2', 'imagem_galeria2.jpg');
+INSERT INTO teste.galeria (titulo, imagem_capa) VALUES ('Galeria Teste 3', 'imagem_galeria3.jpg');
+
 
 INSERT INTO teste.galeria_imagem (galeria_id, ativo, imagem) VALUES (1, true, 'imagem1.jpg');
 
 INSERT INTO teste.banner (titulo) VALUES ('Banner Teste');
+INSERT INTO teste.banner (titulo) VALUES ('Banner Teste 2');
+INSERT INTO teste.banner (titulo) VALUES ('Banner Teste 3');
 
 INSERT INTO teste.banner_imagem (banner_id, ativo, imagem_desktop, imagem_mobile)
 VALUES (1, true, 'imagem_desktop.jpg', 'imagem_mobile.jpg');

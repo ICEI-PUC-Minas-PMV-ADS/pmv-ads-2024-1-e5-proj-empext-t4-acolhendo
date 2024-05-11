@@ -86,6 +86,21 @@ export interface IUpdateUsuario {
     email: string
 }
 
+export interface IUpdateBanner {
+    id: number
+    titulo?: string
+    ativo?: boolean
+    quantidade_exibicao?: number
+}
+
+export interface IUpdateGaleria {
+    id: number
+    titulo?: string
+    ativo?: boolean
+    imagem_capa?: string
+    tela_principal?: boolean
+}
+
 export interface ILogin{
     email: string
     senha: string
@@ -98,4 +113,9 @@ export interface IResetCode{
     requested_date: Date
     expiring_date: Date
     used: boolean
+}
+
+export interface IImage {
+    id: number
+    caminho: string
 }
