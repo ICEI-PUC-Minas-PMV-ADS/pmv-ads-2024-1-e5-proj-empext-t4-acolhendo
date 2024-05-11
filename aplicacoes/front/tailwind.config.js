@@ -3,31 +3,45 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 const primary = {
-    50: '#FDF2F6',
-    100: '#FCE7EF',
-    200: '#FBCFE1',
-    300: '#F8A9C7',
-    400: '#F373A0',
-    500: '#E93F76',
-    600: '#D92959',
-    700: '#BC1A41',
-    800: '#9C1837',
-    900: '#821931',
-    950: '#4F0818',
+    50: '#fdf2f6',
+    100: '#fce7f0',
+    200: '#fbcfe1',
+    300: '#f8a9c8',
+    400: '#f373a2',
+    500: '#eb5185',
+    600: '#d9295c',
+    700: '#bc1a44',
+    800: '#9c1838',
+    900: '#821933',
+    950: '#4f0819',
 };
 
 const secondary = {
-    50: '#EAFEFF',
-    100: '#CAFBFF',
-    200: '#9CF5FF',
-    300: '#57EBFF',
-    400: '#0CD6FF',
-    500: '#00BAEA',
-    600: '#0092C4',
-    700: '#0075A0',
-    800: '#0B5D7F',
-    900: '#0E4D6B',
-    950: '#02324A',
+    50: '#effbfc',
+    100: '#d6f2f7',
+    200: '#b1e6f0',
+    300: '#7cd2e4',
+    400: '#3fb6d1',
+    500: '#2399b7',
+    600: '#1f7794',
+    700: '#21647d',
+    800: '#235367',
+    900: '#214658',
+    950: '#112d3b',
+}
+
+const terciary = {
+    50: '#fdf7ef',
+    100: '#fbedd9',
+    200: '#f6d7b2',
+    300: '#f1bc80',
+    400: '#ea974d',
+    500: '#e57c2d',
+    600: '#d66220',
+    700: '#b24b1c',
+    800: '#8e3c1e',
+    900: '#73341b',
+    950: '#3e180c',
 }
 
 module.exports = {
@@ -46,6 +60,10 @@ module.exports = {
             secondary: {
                 ...secondary,
                 DEFAULT: secondary[700]
+            },
+            terciary: {
+                ...terciary,
+                DEFAULT: terciary[500]
             },
             fundo: '#1b1c1f'
         }),
