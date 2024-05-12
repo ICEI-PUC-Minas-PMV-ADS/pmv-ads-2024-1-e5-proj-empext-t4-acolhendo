@@ -31,7 +31,8 @@ describe('Article - Update by id', ()=>{
                 imagem_capa: 'url-para-imagem-de-capa',
                 tipo: 1,
                 texto: 'Texto de Teste TESTE TESTE TESTE TESTE',
-                data_inclusao: '2024-04-22T21:30'
+                data_inclusao: '2024-04-22T21:30',
+                tela_principal: false
             });
         const output2 = await testServer
             .put(`/api/v1/article/${output1.body.id}`)
@@ -41,7 +42,8 @@ describe('Article - Update by id', ()=>{
                 imagem_capa: 'url-para-imagem-de-capa',
                 tipo: 1,
                 texto: 'Texto de Teste TESTE TESTE TESTE TESTE',
-                data_inclusao: '2024-04-22T21:30'
+                data_inclusao: '2024-04-22T21:30',
+                tela_principal: false
             })
         expect(output2.statusCode).toEqual(StatusCodes.ACCEPTED);
     })

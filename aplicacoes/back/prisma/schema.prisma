@@ -8,30 +8,21 @@ datasource db {
 }
 
 model artigo {
-  id            Int       @id @default(autoincrement())
-  titulo        String?   @db.VarChar
-  imagem_capa   String?   @db.VarChar
-  tipo          Int?      @db.SmallInt
-  texto         String?   @db.VarChar
-  data_inclusao DateTime? @default(now()) @db.Timestamptz(6)
-}
-
-model banner {
-  id                  Int             @id @default(autoincrement())
-  titulo              String?         @db.VarChar
-  ativo               Boolean?        @default(false)
-  quantidade_exibicao Int?            @default(1)
-  banner_imagem       banner_imagem[]
+  id             Int       @id @default(autoincrement())
+  titulo         String?   @db.VarChar
+  imagem_capa    String?   @db.VarChar
+  tipo           Int?      @db.SmallInt
+  texto          String?   @db.VarChar
+  data_inclusao  DateTime? @default(now()) @db.Timestamptz(6)
+  tela_principal Boolean?  @default(true)
 }
 
 model banner_imagem {
   id             Int      @id @default(autoincrement())
-  banner_id      Int?
   ativo          Boolean?
   ordem          Int?     @default(1)
   imagem_desktop String?  @db.VarChar
   imagem_mobile  String?  @db.VarChar
-  banner         banner?  @relation(fields: [banner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model empresa {

@@ -15,7 +15,8 @@ export const updateById = async (
                 imagem_capa: article.imagem_capa,
                 tipo: article.tipo,
                 texto: article.texto,
-                data_inclusao: new Date(article.data_inclusao)
+                data_inclusao: new Date(article.data_inclusao),
+                tela_principal: article.tela_principal
             },
         })
         if (!result) {

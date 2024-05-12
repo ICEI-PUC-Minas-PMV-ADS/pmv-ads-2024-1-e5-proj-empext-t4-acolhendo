@@ -21,7 +21,8 @@ describe('Artigo - Create', () => {
                 imagem_capa: 'url-para-imagem-de-capa',
                 tipo: 1,
                 texto: 'Texto de Teste',
-                data_inclusao: '2024-04-22T21:30'
+                data_inclusao: '2024-04-22T21:30',
+                tela_principal: true
             })
 
         expect(output.statusCode).toEqual(StatusCodes.UNAUTHORIZED)
@@ -37,7 +38,8 @@ describe('Artigo - Create', () => {
                 imagem_capa: 'url-para-imagem-de-capa',
                 tipo: 1,
                 texto: 'Texto de Teste TESTE TESTE TESTE TESTE',
-                data_inclusao: '2024-04-22T21:30'
+                data_inclusao: '2024-04-22T21:30',
+                tela_principal: true
             });
         expect(output.statusCode).toEqual(StatusCodes.CREATED);
         expect(typeof output.body).toEqual('object');
@@ -51,10 +53,10 @@ describe('Artigo - Create', () => {
                 titulo: 'Artigo de Teste 1',
                 imagem_capa: 'url-para-imagem-de-capa',
                 tipo: 1,
-                data_inclusao: '2024-04-22T21:30'
+                data_inclusao: '2024-04-22T21:30',
+                tela_principal: true
             });
         expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST);
         expect(typeof output.body).toEqual('object');
     });
-
 });
