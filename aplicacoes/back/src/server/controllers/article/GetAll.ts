@@ -23,8 +23,7 @@ export const getAllArticleValidation = validation((getSchema) => ({
 
 export const getAllArticle = async (request: Request<{}, {}, {}, IQueryProps>, response: Response) => {
 
-    const articleFilter = 
-    request.query.filter ? JSON.parse(request.query.filter) : { tipo: request.query.tipo , page: 0, limit: 10 };
+    const articleFilter = request.query.filter ? JSON.parse(request.query.filter) : { tipo: request.query.tipo , page: 0, limit: 10 };
     const where: any = {};
     if (articleFilter.filter) {
         if (articleFilter.filter.status !== undefined) {
