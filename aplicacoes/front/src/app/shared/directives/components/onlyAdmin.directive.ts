@@ -55,8 +55,7 @@ export class OnlyAdminDirective {
 
     checkPermission() {
 
-        // TODO: TESTE
-        return true//this.usuarioAdmin;
+        return this.usuarioAdmin;
 
     }
 

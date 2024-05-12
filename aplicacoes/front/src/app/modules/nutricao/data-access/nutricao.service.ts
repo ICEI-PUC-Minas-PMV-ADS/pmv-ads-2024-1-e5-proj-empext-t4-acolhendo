@@ -25,19 +25,19 @@ export class NutricaoService {
 
     cadastraNutricao(dados: any): Observable<any> {
 
-        return this._api.post('/nutricao', dados);
+        return this._api.post('/article', dados);
 
     }
 
     salvarNutricao(dados: any, id: number): Observable<any> {
 
-        return this._api.put('/nutricao/' + id, dados);
+        return this._api.put('/article/' + id, dados);
 
     }
 
     deleteNutricao(id: number): Observable<any> {
 
-        return this._api.delete('/nutricao/' + id);
+        return this._api.delete('/article/' + id);
 
     }
 

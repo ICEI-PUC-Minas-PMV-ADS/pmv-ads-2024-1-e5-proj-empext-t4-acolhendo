@@ -25,7 +25,7 @@
         <ngx-slick-carousel
             #slickModal="slick-carousel"
             [config]="slickCarouselConfigNutri">
-            @for (b of nutricao; track b.url) {
+            @for (b of nutricao; track b.imagem_capa) {
                 <div
                     ngxSlickItem
                     class="
@@ -35,8 +35,8 @@
                     "
                     (click)="abrirArtigo(b.id)">
                     <img class="shadow-lg md:w-60"
-                        [src]="b.url"
-                        alt="{{ b.descricao }}" />
+                        [src]="b.imagem_capa"
+                        alt="{{ b.titulo }}" />
                 </div>
             }
         </ngx-slick-carousel>

@@ -7,15 +7,29 @@ export const getAll = async (
     where?: any
 ): Promise<IArtigo[] | Error> => {
     try {
-        page = Number(page)
-        limit = Number(limit)
-        const skip = Math.floor(page * limit)
-        const result = await database.artigo.findMany({
-            skip: skip,
-            take: limit,
-            where
-        })
-        return result
+
+        if (page && limit) {
+
+            page = Number(page)
+            limit = Number(limit)
+            const skip = Math.floor(page * limit)
+            const result = await database.artigo.findMany({
+                skip: skip,
+                take: limit,
+                where
+            })
+            return result
+
+        } else {
+
+            const result = await database.artigo.findMany({
+                where
+            });
+
+            return result;
+
+        }
+
     } catch (error) {
         return new Error('Erro ao buscar registro')
     } finally {

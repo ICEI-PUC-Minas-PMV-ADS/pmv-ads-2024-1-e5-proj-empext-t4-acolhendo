@@ -138,6 +138,36 @@ export class NutricaoFormComponent {
 
     }
 
+    async apagar() {
+
+        const result = await confirm('Prossegui com a remoção?');
+        if (!result) return;
+
+        this.loading = true;
+        this._cd.detectChanges();
+
+        this._nutricaoService.deleteNutricao(this.artigoId)
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                finalize(() => { this.loading = false; this._cd.detectChanges() })
+            )
+            .subscribe({
+                next: (res) => {
+
+                    // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
+
+                    this.voltar();
+
+                },
+                error: (err) => {
+
+                    // this._dialog.error(err, 'Erro ao atualizar dados');
+
+                }
+            });
+
+    }
+
     recarregar(id: number) {
 
         if (!this.artigoId) {

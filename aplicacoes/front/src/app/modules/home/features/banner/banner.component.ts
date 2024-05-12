@@ -31,7 +31,7 @@ export class HomeBannerComponent {
 
     ngOnInit() {
 
-        this.getBanner();
+        // this.getBanner();
 
     }
 

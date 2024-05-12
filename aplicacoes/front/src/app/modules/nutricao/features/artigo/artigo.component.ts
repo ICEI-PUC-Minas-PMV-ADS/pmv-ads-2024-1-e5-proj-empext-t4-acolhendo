@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { NutricaoService } from '../../data-access/nutricao.service';
+import { IArtigo } from '../../../../core/intefaces/interfaces';
 
 @Component({
     selector: 'app-nutricao-artigo',
@@ -13,7 +14,7 @@ export class NutricaoArtigoComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    artigo: any;
+    artigo: IArtigo;
     artigoId: number | null = null;
 
     constructor(

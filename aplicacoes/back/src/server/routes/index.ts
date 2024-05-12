@@ -29,6 +29,7 @@ router.delete('/gallery/:id', authValidator, GalleryController.deleteGalleryById
 // Article
 router.get('/article/:id', ArticleController.getArticleByIdValidation, ArticleController.getArticleById)             // A API deverá fornecer um endpoint GET para retornar os dados de um artigo
 router.get('/article', ArticleController.getAllArticleValidation, ArticleController.getAllArticle)                   // A API deverá fornecer um endpoint GET para retornar todos artigos
+router.get('/article-home', ArticleController.getTelaPrincipalArticleValidation, ArticleController.getTelaPrincipalArticle)                   // A API deverá fornecer um endpoint GET para retornar todos artigos
 router.put('/article/:id', authValidator, ArticleController.updateArticleByIdValidation, ArticleController.updateArticleById)       // A API deverá fornecer um endpoint PUT para atualizar o artigo
 router.post('/article', authValidator, ArticleController.createArticleValidation, ArticleController.createArticle)                  // A API deverá fornecer um endpoint POST para criar um novo artigo
 router.delete('/article/:id', authValidator, ArticleController.deleteArticleByIdValidation, ArticleController.deleteArticleById)    // A API deverá fornecer um endpoint DELETE para excluir um artigo

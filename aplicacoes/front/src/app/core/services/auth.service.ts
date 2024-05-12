@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 import { LocalStorageService } from './local-storage.service';
-import { UserService } from './user.service';
 import { ApiService } from './api.service';
 import { AuthUtils } from '../uteis/auth.utils';
 
@@ -12,12 +11,10 @@ export class AuthService {
 
     authenticated: boolean = false;
 
-    // TODO: APENAS PARA TESTE
     public static usuarioAdminObservable: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(
         private _localStorage: LocalStorageService,
-        private _userService: UserService,
         private _router: Router,
     ) {
 
@@ -31,11 +28,11 @@ export class AuthService {
         return this._localStorage.get('token') ?? '';
     }
 
-    // TODO: APENAS PARA TESTE
     set usuarioAdmin(admin: boolean) {
         this.authenticated = admin;
         AuthService.usuarioAdminObservable.next(admin);
     }
+
     get usuarioAdmin(): boolean {
         return AuthService.usuarioAdminObservable.getValue();
     }
@@ -43,8 +40,6 @@ export class AuthService {
     signOut() {
 
         this._localStorage.remove('token');
-
-        this._userService.setUsuario(null);
 
         this.authenticated = false;
 
@@ -97,14 +92,17 @@ export class AuthService {
     public static initApp(
         injector: Injector,
         _authService: AuthService,
-        _apiService: ApiService,
-        _userService: UserService
+        _apiService: ApiService
     ): () => Promise<any> {
 
         return (): Promise<any> => {
             return new Promise((resolve, reject) => {
 
-                // if (_authService.token) {
+                if (_authService.token) {
+
+                    _authService.usuarioAdmin = true;
+
+                }
 
                 //     let router = injector.get(Router);
 

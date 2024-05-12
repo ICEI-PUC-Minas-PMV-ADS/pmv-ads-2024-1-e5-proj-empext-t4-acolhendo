@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { SlickCarouselService } from '../../../../core/services/slick-carousel.service';
 import { HomeService } from '../../data-access/home.service';
+import { IArtigo } from '../../../../core/intefaces/interfaces';
 
 @Component({
     selector: 'app-home-nutricao',
@@ -16,7 +17,7 @@ export class HomeNutricaoComponent {
 
     slickCarouselConfigNutri: any;
 
-    nutricao: { url: string; descricao: string; id: number; }[] = [];
+    nutricao: IArtigo[] = [];
 
     loading: boolean = false;
 
