@@ -1,18 +1,18 @@
 <div class="w-full flex items-center justify-center lg:px-8">
   <div class="max-w-md w-full space-y-8">
     <div class="flex flex-col items-center">
-      <img src="assets/logo.png" alt="Imagem logo" class="mx-auto h-20">
+      <img src="assets/logo.png" alt="Imagem logo" class="mx-auto h-20" (click)="setuser()">
       <h2 class="p-8 sm:p-8 text-2xl font-semibold tracking-tight text-center text-yellow-400/100">Acessar como Administrador</h2>
     </div>
     <form class="mt-8 space-y-6" action="#" method="POST" [formGroup]="formAuth" (ngSubmit)="logar()">
       <div class="rounded-md shadow-sm -space-y-px">
         <div class="mb-4">
           <label for="email-address" class="sr-only">Endereço de e-mail</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-pink-300 placeholder-pink-500 text-pink-900 rounded-t-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm" placeholder="E-mail">
+          <input formControlName="email" id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-pink-300 placeholder-pink-500 text-pink-900 rounded-t-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm" placeholder="E-mail">
         </div>
         <div>
           <label for="password" class="sr-only">Senha</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-blue-300 placeholder-blue-500 text-blue-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Senha">
+          <input formControlName="password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-blue-300 placeholder-blue-500 text-blue-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Senha">
         </div>
       </div>
       <div class="flex items-center justify-between mt-4">
