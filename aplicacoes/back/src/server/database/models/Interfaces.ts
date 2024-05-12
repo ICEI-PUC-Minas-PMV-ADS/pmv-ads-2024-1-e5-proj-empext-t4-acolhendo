@@ -4,6 +4,20 @@ export interface IUsuario {
     senha: string
 }
 
+export interface ILogin{
+    email: string
+    senha: string
+}
+
+export interface IResetCode{
+    id: number
+    email: string
+    reset_code: string
+    requested_date: Date
+    expiring_date: Date
+    used: boolean
+}
+
 export interface IEmpresa {
     email: string
     telefone: string
@@ -16,21 +30,6 @@ export interface IEmpresa {
     conta: string
     cnpj: string
     nome: string
-}
-
-export interface IUpdateEmpresa {
-    id?: number
-    email?: string
-    telefone?: string
-    instagram?: string
-    facebook?: string
-    youtube?: string
-    chave_pix?: string
-    banco?: string
-    agencia?: string
-    conta?: string
-    cnpj?: string
-    nome?: string
 }
 
 export interface IGaleria {
@@ -96,21 +95,23 @@ export interface IUpdateGaleria {
     tela_principal?: boolean
 }
 
-export interface ILogin{
-    email: string
-    senha: string
+export interface IUpdateGaleriaImagem {
+    id: number
+    galeria_id?: number
+    ativo?: boolean
 }
 
-export interface IResetCode{
-    id: number
-    email: string
-    reset_code: string
-    requested_date: Date
-    expiring_date: Date
-    used: boolean
-}
-
-export interface IImage {
-    id: number
-    caminho: string
+export interface IUpdateEmpresa {
+    id?: number
+    email?: string
+    telefone?: string
+    instagram?: string
+    facebook?: string
+    youtube?: string
+    chave_pix?: string
+    banco?: string
+    agencia?: string
+    conta?: string
+    cnpj?: string
+    nome?: string
 }

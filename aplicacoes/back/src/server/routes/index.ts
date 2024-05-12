@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { UserController, ArticleController, CompanyController, BannerController, GalleryController} from '../controllers';
-import { authValidator } from '../shared/middleware';
+import { authValidator, UploadBanner, UploadGaleria } from '../shared/middleware';
+import multer from 'multer';
 
 const router = Router()
 
@@ -11,13 +12,13 @@ router.put('/company', authValidator, CompanyController.updateCompanyByIdValidat
 // Banner
 router.get('/banner/:id', authValidator, BannerController.getBannerByIdValidation, BannerController.getBannerById)                  // A API deverá fornecer um endpoint GET para retornar um banner
 router.get('/banner', authValidator, BannerController.getAllBannerValidation, BannerController.getAllBanner)                        // A API deverá fornecer um endpoint GET para retornar todos banners
-router.post('/banner', authValidator, BannerController.createBannerValidation, BannerController.createBanner)                       // A API deverá fornecer um endpoint POST para criar um novo banner
+router.post('/banner', multer(UploadBanner.getConfig).fields([
+    {name: 'image-banner-desktop', maxCount: 1},
+    {name: 'image-banner-mobile', maxCount: 1}
+]), BannerController.createBannerValidation, BannerController.createBanner
+)// A API deverá fornecer um endpoint POST para criar um novo banner,
 router.put('/banner/:id', authValidator, BannerController.updateBannerByIdValidation, BannerController.updateBannerById)            // A API deverá fornecer um endpoint PUT para atualizar o banner
 router.delete('/banner/:id', authValidator, BannerController.deleteProductByIdValidation, BannerController.deleteProductById)       // A API deverá fornecer um endpoint DELETE para excluir um banner
-
-router.get('/images', authValidator) // A API deverá fornecer um endpoint GET para retornar todas as imagens
-router.post('/images', authValidator) // A API deverá fornecer um endpoint POST para fazer upload de uma imagem
-router.delete('/images/:id', authValidator) // A API deverá fornecer um endpoint DELETE para excluir uma imagem
 
 // Gallery
 router.get('/gallery/:id', authValidator, GalleryController.getGalleryByIdValidation, GalleryController.getGalleryById)             // A API deverá fornecer um endpoint GET para retornar uma galeria
@@ -26,9 +27,15 @@ router.post('/gallery', authValidator, GalleryController.createGalleryValidation
 router.put('/gallery/:id', authValidator, GalleryController.updateGalleryByIdValidation, GalleryController.updateGalleryById)       // A API deverá fornecer um endpoint PUT para atualizar uma galeria
 router.delete('/gallery/:id', authValidator, GalleryController.deleteGalleryByIdValidation, GalleryController.deleteGalleryById)    // A API deverá fornecer um endpoint DELETE para excluir uma galeria
 
+// Gallery Images
+router.get('/gallery/images/:gallery_id', authValidator, GalleryController.getByGalleryIdValidation, GalleryController.getByGalleryId) // A API deverá fornecer um endpoint GET para retornar todas as imagens de uma galeria
+router.post('/gallery/images', multer(UploadGaleria.getConfig).array('image-gallery'), GalleryController.postImageValidation, GalleryController.postImage)             // A API deverá fornecer um endpoint POST para fazer upload de uma imagem da galeria
+router.put('/gallery/images/:id', authValidator, GalleryController.updateByImageIdValidation, GalleryController.updateByImageId)       // A API deverá fornecer um endpoint PUT para atualizar uma galeria
+router.delete('/gallery/images/:id', authValidator, GalleryController.deleteByImageIdValidation, GalleryController.deleteByImageId) // A API deverá fornecer um endpoint DELETE para excluir uma imagem de uma galeria
+
 // Article
 router.get('/article/:id', authValidator, ArticleController.getArticleByIdValidation, ArticleController.getArticleById)             // A API deverá fornecer um endpoint GET para retornar os dados de um artigo
-router.get('/article', authValidator, ArticleController.getAllArticleValidation, ArticleController.getAllArticle)                   // A API deverá fornecer um endpoint GET para retornar todos artigos
+router.get('/article', ArticleController.getAllArticleValidation, ArticleController.getAllArticle)                   // A API deverá fornecer um endpoint GET para retornar todos artigos
 router.put('/article/:id', authValidator, ArticleController.updateArticleByIdValidation, ArticleController.updateArticleById)       // A API deverá fornecer um endpoint PUT para atualizar o artigo
 router.post('/article', authValidator, ArticleController.createArticleValidation, ArticleController.createArticle)                  // A API deverá fornecer um endpoint POST para criar um novo artigo
 router.delete('/article/:id', authValidator, ArticleController.deleteArticleByIdValidation, ArticleController.deleteArticleById)    // A API deverá fornecer um endpoint DELETE para excluir um artigo
