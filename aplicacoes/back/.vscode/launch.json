@@ -16,6 +16,7 @@
         "env": {
             "JWT_SECRET": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
             "APPLICATION_URL": "http://localhost:4200",
+            "IMAGES_PATH": "assets/images/",
             "PORT": 3000,
             "EMAIL_USER": "",
             "EMAIL_PASSWORD": "",

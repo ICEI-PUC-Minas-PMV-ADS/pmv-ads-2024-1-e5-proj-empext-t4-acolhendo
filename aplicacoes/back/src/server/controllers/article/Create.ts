@@ -25,7 +25,7 @@ export const createArticle = async (request: Request<{}, {}, IBodyProps>, respon
         imagem_capa: request.body.imagem_capa,
         tipo: request.body.tipo,
         texto: request.body.texto,
-        data_inclusao: new Date(request.body.data_inclusao),
+        data_inclusao: new Date(),
         tela_principal: request.body.tela_principal
     };
 

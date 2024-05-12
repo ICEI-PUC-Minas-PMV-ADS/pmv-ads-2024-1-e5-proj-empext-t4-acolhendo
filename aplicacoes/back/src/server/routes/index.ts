@@ -5,7 +5,7 @@ import { authValidator } from '../shared/middleware';
 const router = Router()
 
 // Company
-router.get('/company', authValidator, CompanyController.getCompanyDataValidation, CompanyController.getCompanyData)                 // A API deverá fornecer um endpoint GET para retornar os dados da empresa
+router.get('/company', CompanyController.getCompanyDataValidation, CompanyController.getCompanyData)                 // A API deverá fornecer um endpoint GET para retornar os dados da empresa
 router.put('/company', authValidator, CompanyController.updateCompanyByIdValidation, CompanyController.updateCompanyById)           // A API deverá fornecer um endpoint PUT para atualizar os dados da empresa
 
 // Banner
@@ -20,15 +20,15 @@ router.post('/images', authValidator) // A API deverá fornecer um endpoint POST
 router.delete('/images/:id', authValidator) // A API deverá fornecer um endpoint DELETE para excluir uma imagem
 
 // Gallery
-router.get('/gallery/:id', authValidator, GalleryController.getGalleryByIdValidation, GalleryController.getGalleryById)             // A API deverá fornecer um endpoint GET para retornar uma galeria
-router.get('/gallery', authValidator, GalleryController.getAllGalleryValidation, GalleryController.getAllGallery)                   // A API deverá fornecer um endpoint GET para retornar todas as galerias
+router.get('/gallery/:id', GalleryController.getGalleryByIdValidation, GalleryController.getGalleryById)             // A API deverá fornecer um endpoint GET para retornar uma galeria
+router.get('/gallery', GalleryController.getAllGalleryValidation, GalleryController.getAllGallery)                   // A API deverá fornecer um endpoint GET para retornar todas as galerias
 router.post('/gallery', authValidator, GalleryController.createGalleryValidation, GalleryController.createGallery)                  // A API deverá fornecer um endpoint POST para criar uma nova galeria
 router.put('/gallery/:id', authValidator, GalleryController.updateGalleryByIdValidation, GalleryController.updateGalleryById)       // A API deverá fornecer um endpoint PUT para atualizar uma galeria
 router.delete('/gallery/:id', authValidator, GalleryController.deleteGalleryByIdValidation, GalleryController.deleteGalleryById)    // A API deverá fornecer um endpoint DELETE para excluir uma galeria
 
 // Article
-router.get('/article/:id', authValidator, ArticleController.getArticleByIdValidation, ArticleController.getArticleById)             // A API deverá fornecer um endpoint GET para retornar os dados de um artigo
-router.get('/article', authValidator, ArticleController.getAllArticleValidation, ArticleController.getAllArticle)                   // A API deverá fornecer um endpoint GET para retornar todos artigos
+router.get('/article/:id', ArticleController.getArticleByIdValidation, ArticleController.getArticleById)             // A API deverá fornecer um endpoint GET para retornar os dados de um artigo
+router.get('/article', ArticleController.getAllArticleValidation, ArticleController.getAllArticle)                   // A API deverá fornecer um endpoint GET para retornar todos artigos
 router.put('/article/:id', authValidator, ArticleController.updateArticleByIdValidation, ArticleController.updateArticleById)       // A API deverá fornecer um endpoint PUT para atualizar o artigo
 router.post('/article', authValidator, ArticleController.createArticleValidation, ArticleController.createArticle)                  // A API deverá fornecer um endpoint POST para criar um novo artigo
 router.delete('/article/:id', authValidator, ArticleController.deleteArticleByIdValidation, ArticleController.deleteArticleById)    // A API deverá fornecer um endpoint DELETE para excluir um artigo
