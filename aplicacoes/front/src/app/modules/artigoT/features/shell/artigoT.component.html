@@ -52,7 +52,7 @@
     </div>
 
     <div id="lista" class="py-12">
-        @if (items?.length) {
+        @if (items && items.length) {
             <div class="flex flex-col gap-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
                     @for (item of items; track item.id) {
