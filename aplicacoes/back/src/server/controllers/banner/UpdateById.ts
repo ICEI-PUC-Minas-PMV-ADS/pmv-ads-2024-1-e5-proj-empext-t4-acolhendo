@@ -14,9 +14,10 @@ interface IBodyProps extends Omit<IUpdateBanner, 'id'> {}
 export const updateBannerByIdValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(
         YUP.object().shape({
-            titulo: YUP.string().optional().min(5),
-            ativo: YUP.bool().optional(),
-            quantidade_exibicao: YUP.number().optional()
+            ativo: YUP.bool().required(),
+            ordem: YUP.number().required(),
+            imagem_desktop: YUP.string().required(),
+            imagem_mobile: YUP.string().required()
         })
     ),
     params: getSchema<IParamProps>(

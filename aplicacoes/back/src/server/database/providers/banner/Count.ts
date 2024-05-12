@@ -2,7 +2,7 @@ import { database } from '../..';
 
 export const count = async (where: any): Promise<number | Error> => {
     try {
-        const totalCount = await database.banner.count({
+        const totalCount = await database.banner_imagem.count({
             where,
         });
         if (!totalCount) {

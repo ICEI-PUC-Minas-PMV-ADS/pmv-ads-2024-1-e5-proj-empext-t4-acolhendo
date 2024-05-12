@@ -3,14 +3,15 @@ import { database } from '../..';
 
 export const updateById = async (id: number, banner: Omit<IUpdateBanner, 'id'>): Promise<void | Error> => {
     try {
-        const result = await database.banner.update({
+        const result = await database.banner_imagem.update({
             where: {
                 id: Number(id),
             },
             data: {
-                titulo: banner.titulo,
                 ativo: banner.ativo,
-                quantidade_exibicao: banner.quantidade_exibicao,
+                ordem: banner.ordem,
+                imagem_desktop: banner.imagem_desktop,
+                imagem_mobile: banner.imagem_mobile
             },
         });
 
