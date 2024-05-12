@@ -40,9 +40,9 @@ export class NutricaoFormComponent {
             id: [null, []],
             titulo: [null, [Validators.required]],
             tipo: [eArtigo.NUTRICAO, []],
-            imagemCapa: [null, [Validators.required]],
+            imagem_capa: [null, [Validators.required]],
             texto: [null, []],
-            telaPrincipal: [true, []],
+            tela_principal: [true, []],
         });
 
         this.getDados();
@@ -126,7 +126,7 @@ export class NutricaoFormComponent {
 
                     // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-                    this.recarregar(res.id);
+                    this.recarregar(this.artigoId ?? res.id);
 
                 },
                 error: (err) => {

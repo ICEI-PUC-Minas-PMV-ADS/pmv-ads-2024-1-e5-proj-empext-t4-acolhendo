@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe, DecimalPipe, PercentPipe, registerLocaleData } from '@angular/common';
-import { ApplicationConfig, LOCALE_ID } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, Injector, LOCALE_ID } from '@angular/core';
 import localePtBr from '@angular/common/locales/pt';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
@@ -16,6 +16,7 @@ import { appRoutes } from './app.routes';
 import { getPortuguesePaginatorIntl } from './core/uteis/portuguese-paginator';
 import { AuthService } from './core/services/auth.service';
 import { httpInterceptor } from './core/services/httpstatus.service';
+import { ApiService } from './core/services/api.service';
 
 // ANGULAR LOCALE
 registerLocaleData(localePtBr, 'pt');
@@ -54,6 +55,12 @@ const MatFormFieldAppearance: MatFormFieldDefaultOptions = {
 export const appConfig: ApplicationConfig = {
     providers: [
         AuthService,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: AuthService.initApp,
+            multi: true,
+            deps: [Injector, AuthService, ApiService],
+        },
         provideRouter(appRoutes, withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'top' })),
         provideAnimations(),
         provideHttpClient(withInterceptors([httpInterceptor])),

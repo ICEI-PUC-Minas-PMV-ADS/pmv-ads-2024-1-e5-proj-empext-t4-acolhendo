@@ -22,28 +22,30 @@
         </div>
     </div>
 
-    <h1 class="flex flex-col md:flex-row w-full justify-center md:justify-around mb-8">
-        @if (artigo.imagem_capa) {
-            <img class="w-4/6 md:w-52" [src]="artigo.imagem_capa">
-        }
-        @if (artigo.titulo) {
-            <div class="flex items-center justify-center px-4 text-xl">
-                {{ artigo.titulo }}
-            </div>
-        }
-    </h1>
-
-    <section class="">
-        @if (artigo.texto) {
-            <div [innerHTML]="artigo.texto"></div>
-        }
-
-        <div class="w-full flex justify-end">
-            @if (artigo.data_inclusao) {
-                <span class="text-xs">
-                    Adicionado {{ artigo.data_inclusao | date: 'dd/MM/YYYY HH:mm' }}
-                </span>
+    @if (artigo) {
+        <h1 class="flex flex-col md:flex-row w-full justify-center md:justify-around mb-8">
+            @if (artigo.imagem_capa) {
+                <img class="w-4/6 md:w-52" [src]="artigo.imagem_capa">
             }
-        </div>
-    </section>
+            @if (artigo.titulo) {
+                <div class="flex items-center justify-center px-4 text-xl">
+                    {{ artigo.titulo }}
+                </div>
+            }
+        </h1>
+    
+        <section class="">
+            @if (artigo.texto) {
+                <div [innerHTML]="artigo.texto"></div>
+            }
+    
+            <div class="w-full flex justify-end">
+                @if (artigo.data_inclusao) {
+                    <span class="text-xs">
+                        Adicionado {{ artigo.data_inclusao | date: 'dd/MM/YYYY HH:mm' }}
+                    </span>
+                }
+            </div>
+        </section>
+    }
 </div>

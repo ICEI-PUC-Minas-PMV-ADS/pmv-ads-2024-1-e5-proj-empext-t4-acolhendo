@@ -3,9 +3,9 @@ import { Directive, TemplateRef, ViewContainerRef } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Directive({
-    selector: '[onlyAdmin]',
+    selector: '[usuarioDeslogado]',
 })
-export class OnlyAdminDirective {
+export class UsuarioDeslogadoDirective {
 
     constructor(
         public _authService: AuthService,
@@ -19,7 +19,7 @@ export class OnlyAdminDirective {
 
     validaDiretiva() {
 
-        if (this._authService.authenticated) {
+        if (!this._authService.authenticated) {
 
             this.viewContainer.createEmbeddedView(this.templateRef);
 

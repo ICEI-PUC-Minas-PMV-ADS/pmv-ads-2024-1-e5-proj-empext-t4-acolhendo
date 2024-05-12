@@ -64,7 +64,7 @@
             <div class="flex flex-col md:flex-row gap-4 mb-4">
                 <mat-checkbox
                     [color]="'primary'"
-                    formControlName="telaPrincipal">
+                    formControlName="tela_principal">
                     Exibir na Página Principal
                 </mat-checkbox>
             </div>
@@ -80,8 +80,8 @@
             <div class="flex flex-col md:flex-row gap-4">
                 <mat-form-field class="w-full">
                     <mat-label>Link Imagem Capa</mat-label>
-                    <input maxlength="300" matInput formControlName="imagemCapa" />
-                    <mat-error *ngIf="formDados.get('imagemCapa')?.hasError('required') && formDados.get('imagemCapa')?.touched">Preenchimento obrigatório</mat-error>
+                    <input maxlength="300" matInput formControlName="imagem_capa" />
+                    <mat-error *ngIf="formDados.get('imagem_capa')?.hasError('required') && formDados.get('imagem_capa')?.touched">Preenchimento obrigatório</mat-error>
                 </mat-form-field>
             </div>
 
