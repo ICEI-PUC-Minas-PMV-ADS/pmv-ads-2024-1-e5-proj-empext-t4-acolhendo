@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { UserController, ArticleController, CompanyController, BannerController} from '../controllers';
+import { UserController, ArticleController, CompanyController, BannerController, GalleryController} from '../controllers';
 import { authValidator } from '../shared/middleware';
 
 const router = Router()
@@ -8,8 +8,9 @@ const router = Router()
 router.get('/company', authValidator, CompanyController.getCompanyDataValidation, CompanyController.getCompanyData)                 // A API deverá fornecer um endpoint GET para retornar os dados da empresa
 router.put('/company', authValidator, CompanyController.updateCompanyByIdValidation, CompanyController.updateCompanyById)           // A API deverá fornecer um endpoint PUT para atualizar os dados da empresa
 
-router.get('/banner', authValidator, BannerController.getAllBannerValidation, BannerController.getAllBanner)                        // A API deverá fornecer um endpoint GET para retornar todos banners
+// Banner
 router.get('/banner/:id', authValidator, BannerController.getBannerByIdValidation, BannerController.getBannerById)                  // A API deverá fornecer um endpoint GET para retornar um banner
+router.get('/banner', authValidator, BannerController.getAllBannerValidation, BannerController.getAllBanner)                        // A API deverá fornecer um endpoint GET para retornar todos banners
 router.post('/banner', authValidator, BannerController.createBannerValidation, BannerController.createBanner)                       // A API deverá fornecer um endpoint POST para criar um novo banner
 router.put('/banner/:id', authValidator, BannerController.updateBannerByIdValidation, BannerController.updateBannerById)            // A API deverá fornecer um endpoint PUT para atualizar o banner
 router.delete('/banner/:id', authValidator, BannerController.deleteProductByIdValidation, BannerController.deleteProductById)       // A API deverá fornecer um endpoint DELETE para excluir um banner
@@ -18,11 +19,12 @@ router.get('/images', authValidator) // A API deverá fornecer um endpoint GET p
 router.post('/images', authValidator) // A API deverá fornecer um endpoint POST para fazer upload de uma imagem
 router.delete('/images/:id', authValidator) // A API deverá fornecer um endpoint DELETE para excluir uma imagem
 
-router.get('/gallery/:id', authValidator) // A API deverá fornecer um endpoint GET para retornar uma galeria
-router.get('/gallery', authValidator) // A API deverá fornecer um endpoint GET para retornar todas as galerias
-router.put('/gallery/:id', authValidator) // A API deverá fornecer um endpoint PUT para atualizar uma galeria
-router.post('/gallery', authValidator) // A API deverá fornecer um endpoint POST para criar uma nova galeria
-router.delete('/gallery/:id', authValidator) // A API deverá fornecer um endpoint DELETE para excluir uma galeria
+// Gallery
+router.get('/gallery/:id', authValidator, GalleryController.getGalleryByIdValidation, GalleryController.getGalleryById)             // A API deverá fornecer um endpoint GET para retornar uma galeria
+router.get('/gallery', authValidator, GalleryController.getAllGalleryValidation, GalleryController.getAllGallery)                   // A API deverá fornecer um endpoint GET para retornar todas as galerias
+router.post('/gallery', authValidator, GalleryController.createGalleryValidation, GalleryController.createGallery)                  // A API deverá fornecer um endpoint POST para criar uma nova galeria
+router.put('/gallery/:id', authValidator, GalleryController.updateGalleryByIdValidation, GalleryController.updateGalleryById)       // A API deverá fornecer um endpoint PUT para atualizar uma galeria
+router.delete('/gallery/:id', authValidator, GalleryController.deleteGalleryByIdValidation, GalleryController.deleteGalleryById)    // A API deverá fornecer um endpoint DELETE para excluir uma galeria
 
 // Article
 router.get('/article/:id', authValidator, ArticleController.getArticleByIdValidation, ArticleController.getArticleById)             // A API deverá fornecer um endpoint GET para retornar os dados de um artigo
