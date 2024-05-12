@@ -71,7 +71,6 @@ export const appConfig: ApplicationConfig = {
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: MatFormFieldAppearance },
         provideQuillConfig({
             modules: {
-                syntax: true,
                 toolbar: [
                     [
                         { 'size': ['small', false, 'large', 'huge'] },

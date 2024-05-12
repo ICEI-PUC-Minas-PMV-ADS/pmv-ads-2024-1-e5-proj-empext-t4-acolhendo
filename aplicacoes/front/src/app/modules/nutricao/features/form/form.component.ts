@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, finalize, iif, takeUntil } from 'rxjs';
+
 import { eArtigo } from '../../../../core/enums/artigo.enum';
-import { Subject, finalize, takeUntil } from 'rxjs';
 import { NutricaoService } from '../../data-access/nutricao.service';
 import { UtilsService } from '../../../../core/services/utils.service';
 
@@ -18,7 +19,7 @@ export class NutricaoFormComponent {
     formDados: UntypedFormGroup = new UntypedFormGroup({});
 
     artigo: any;
-    artigoId: number | null = null;
+    artigoId: number = 0;
 
     loading: boolean = false;
 
@@ -37,10 +38,9 @@ export class NutricaoFormComponent {
 
         this.formDados = this._formBuilder.group({
             id: [null, []],
-            ativo: [false, []],
+            titulo: [null, [Validators.required]],
             tipo: [eArtigo.NUTRICAO, []],
             imagemCapa: [null, [Validators.required]],
-            titulo: [null, [Validators.required]],
             texto: [null, []],
             telaPrincipal: [true, []],
         });
@@ -106,7 +106,6 @@ export class NutricaoFormComponent {
 
         if (this.formDados.invalid) {
             UtilsService.validateAllFormFields(this.formDados);
-            // this._dialog.showToast('Por favor verifique o formulário!');
             return;
         }
 
@@ -115,7 +114,9 @@ export class NutricaoFormComponent {
         this.loading = true;
         this._cd.detectChanges();
 
-        this._nutricaoService.salvarNutricao(values)
+        iif(() => !!this.artigoId,
+            this._nutricaoService.salvarNutricao(values, this.artigoId),
+            this._nutricaoService.cadastraNutricao(values))
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
