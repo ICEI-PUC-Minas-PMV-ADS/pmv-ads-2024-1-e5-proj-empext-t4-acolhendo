@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import * as yup from 'yup';
+import * as YUP from 'yup';
 import { validation } from './../../shared/middleware/Validator';
 import { IArtigo } from '../../database/models';
 import { ArticleProvider } from '../../database/providers/article';
@@ -9,12 +9,13 @@ interface IBodyProps extends Omit<IArtigo, 'id'> { }
 
 
 export const createArticleValidation = validation((getSchema) => ({
-    body: getSchema<IBodyProps>(yup.object().shape({
-        titulo: yup.string().required().min(5),
-        imagem_capa: yup.string().required(),
-        tipo: yup.number().required().moreThan(0).max(4),
-        texto: yup.string().required().min(20),
-        data_inclusao: yup.date().required()
+    body: getSchema<IBodyProps>(YUP.object().shape({
+        titulo: YUP.string().required().min(5),
+        imagem_capa: YUP.string().required(),
+        tipo: YUP.number().required().moreThan(0).max(4),
+        texto: YUP.string().required().min(20),
+        data_inclusao: YUP.date().required(),
+        tela_principal: YUP.bool().required()
     }))
 }));
 
@@ -24,7 +25,8 @@ export const createArticle = async (request: Request<{}, {}, IBodyProps>, respon
         imagem_capa: request.body.imagem_capa,
         tipo: request.body.tipo,
         texto: request.body.texto,
-        data_inclusao: new Date(request.body.data_inclusao)
+        data_inclusao: new Date(request.body.data_inclusao),
+        tela_principal: request.body.tela_principal
     };
 
     const result = await ArticleProvider.create(article);

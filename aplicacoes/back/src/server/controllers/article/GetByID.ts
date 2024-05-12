@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import * as yup from 'yup';
+import * as YUP from 'yup';
 import { validation } from './../../shared/middleware/Validator';
 import { ArticleProvider } from '../../database/providers/article';
 
@@ -10,8 +10,8 @@ interface IParamProps {
 }
 
 export const getArticleByIdValidation = validation((getSchema) => ({
-    params: getSchema<IParamProps>(yup.object().shape({
-        id: yup.number().integer().required().moreThan(0),
+    params: getSchema<IParamProps>(YUP.object().shape({
+        id: YUP.number().integer().required().moreThan(0),
     }))
 }));
 

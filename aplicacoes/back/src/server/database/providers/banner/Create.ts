@@ -1,9 +1,9 @@
-import { IBanner } from '../../models';
+import { IBannerImagem } from '../../models';
 import { database } from '../..';
 
-export const create = async (banner: Omit<IBanner, 'id'>): Promise<Object | Error> => {
+export const create = async (banner: Omit<IBannerImagem, 'id'>): Promise<Object | Error> => {
     try {
-        return await database.banner.create({
+        return await database.banner_imagem.create({
             data: banner,
         });
     } catch (error) {

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import * as yup from 'yup';
+import * as YUP from 'yup';
 import { validation } from './../../shared/middleware/Validator';
 import { ArticleProvider } from '../../database/providers/article';
 
@@ -13,11 +13,11 @@ interface IQueryProps {
 
 
 export const getAllArticleValidation = validation((getSchema) => ({
-    query: getSchema<IQueryProps>(yup.object().shape({
-        page: yup.number().optional().moreThan(0),
-        limit: yup.number().optional(),
-        id: yup.number().integer().optional().default(0),
-        filter: yup.string().optional(),
+    query: getSchema<IQueryProps>(YUP.object().shape({
+        page: YUP.number().optional().moreThan(0),
+        limit: YUP.number().optional(),
+        id: YUP.number().integer().optional().default(0),
+        filter: YUP.string().optional(),
     }))
 }));
 

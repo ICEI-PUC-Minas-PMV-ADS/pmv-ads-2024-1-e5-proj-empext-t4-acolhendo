@@ -48,16 +48,8 @@ export interface IGaleriaImagem {
     imagem: string
 }
 
-export interface IBanner {
-    id: number
-    titulo: string
-    ativo: boolean
-    quantidade_exibicao: number
-}
-
 export interface IBannerImagem {
     id: number
-    banner_id: number
     ativo: boolean
     ordem: number
     imagem_desktop: string
@@ -71,6 +63,7 @@ export interface IArtigo {
     tipo: number
     texto: string
     data_inclusao: Date
+    tela_principal: boolean
 }
 
 export interface IUpdateArtigo {
@@ -80,6 +73,7 @@ export interface IUpdateArtigo {
     tipo?: number
     texto?: string
     data_inclusao?: Date
+    tela_principal: boolean
 }
 
 export interface IUpdateUsuario {
@@ -88,9 +82,10 @@ export interface IUpdateUsuario {
 
 export interface IUpdateBanner {
     id: number
-    titulo?: string
     ativo?: boolean
-    quantidade_exibicao?: number
+    ordem?: number
+    imagem_desktop?: string
+    imagem_mobile?: string
 }
 
 export interface IUpdateGaleria {

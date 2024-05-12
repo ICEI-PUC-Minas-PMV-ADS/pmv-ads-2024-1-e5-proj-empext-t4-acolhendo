@@ -1,9 +1,9 @@
-import { IBanner } from '../../models';
+import { IBannerImagem } from '../../models';
 import { database } from '../..';
 
-export const getById = async (id: number): Promise<IBanner | Error> => {
+export const getById = async (id: number): Promise<IBannerImagem | Error> => {
     try {
-        const result = await database.banner.findUnique({
+        const result = await database.banner_imagem.findUnique({
             where: {
                 id: Number(id),
             },

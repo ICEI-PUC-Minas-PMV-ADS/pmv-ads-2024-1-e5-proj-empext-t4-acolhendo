@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import * as yup from 'yup';
+import * as YUP from 'yup';
 import { validation } from './../../shared/middleware/Validator';
 import { ArticleProvider } from '../../database/providers/article';
 import { IUpdateArtigo } from '../../database/models';
@@ -12,15 +12,16 @@ interface IParamProps {
 interface IBodyProps extends Omit<IUpdateArtigo, 'id'> { }
 
 export const updateArticleByIdValidation = validation((getSchema) => ({
-    body: getSchema<IBodyProps>(yup.object().shape({
-        titulo: yup.string().optional().min(5),
-        imagem_capa: yup.string().optional(),
-        tipo: yup.number().moreThan(0).max(4).optional(),
-        texto: yup.string().min(20).optional(),
-        data_inclusao: yup.date().optional()
+    body: getSchema<IBodyProps>(YUP.object().shape({
+        titulo: YUP.string().optional().min(5),
+        imagem_capa: YUP.string().optional(),
+        tipo: YUP.number().moreThan(0).max(4).optional(),
+        texto: YUP.string().min(20).optional(),
+        data_inclusao: YUP.date().optional(),
+        tela_principal: YUP.bool().optional()
     })),
-    params: getSchema<IParamProps>(yup.object().shape({
-        id: yup.number().integer().required().moreThan(0),
+    params: getSchema<IParamProps>(YUP.object().shape({
+        id: YUP.number().integer().required().moreThan(0),
     })),
 }));
 
