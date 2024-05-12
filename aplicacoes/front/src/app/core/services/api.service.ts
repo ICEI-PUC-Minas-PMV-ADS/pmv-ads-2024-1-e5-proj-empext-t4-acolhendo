@@ -29,23 +29,31 @@ export class ApiService {
 
     }
 
+    get(rota: string, filtros: any = {}): Observable<any> {
+
+        let params: any = this.getHeaders();
+
+        params.params = new HttpParams().set('filter', JSON.stringify(filtros));
+
+        return this.http.get(`${environment.apiUrl}${rota}`, params);
+
+    }
+
     post(rota: string, dados: any): Observable<any> {
 
         return this.http.post(`${environment.apiUrl}${rota}`, dados, this.getHeaders());
 
     }
 
-    get(rota: string, filtros: any = {}): Observable<any> {
+    put(rota: string, dados: any): Observable<any> {
 
-        let params: any = this.getHeaders();
+        return this.http.put(`${environment.apiUrl}${rota}`, dados, this.getHeaders());
 
-        for (let f in filtros) {
+    }
 
-            params.params = new HttpParams().set(`${f}`, JSON.stringify(filtros[f]));
+    delete(rota: string): Observable<any> {
 
-        }
-
-        return this.http.get(`${environment.apiUrl}${rota}`, params);
+        return this.http.delete(`${environment.apiUrl}${rota}`, this.getHeaders());
 
     }
 
