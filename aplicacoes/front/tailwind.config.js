@@ -53,19 +53,21 @@ module.exports = {
     theme: {
         colors: ({ colors }) => ({
             ...colors,
-            primary: {
-                ...primary,
-                DEFAULT: primary[500]
-            },
-            secondary: {
-                ...secondary,
-                DEFAULT: secondary[700]
-            },
-            terciary: {
-                ...terciary,
-                DEFAULT: terciary[500]
-            },
-            fundo: '#1b1c1f'
+            ...{
+                primary: {
+                    ...primary,
+                    DEFAULT: primary[500]
+                },
+                secondary: {
+                    ...secondary,
+                    DEFAULT: secondary[700]
+                },
+                terciary: {
+                    ...terciary,
+                    DEFAULT: terciary[500]
+                },
+                fundo: '#1b1c1f'
+            }
         }),
         extend: {
             fontFamily: {
