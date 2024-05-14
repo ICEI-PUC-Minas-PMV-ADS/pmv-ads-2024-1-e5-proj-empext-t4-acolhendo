@@ -2,153 +2,184 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { eArtigo } from '../../../../core/enums/artigo.enum';
-import { Subject, finalize, takeUntil } from 'rxjs';
+import { Subject, finalize, iif, takeUntil } from 'rxjs';
 import { EventoService } from '../../data-access/evento.service';
 import { UtilsService } from '../../../../core/services/utils.service';
 
 @Component({
-    selector: 'app-evento-form',
-    templateUrl: './form.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-evento-form',
+  templateUrl: './form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventoFormComponent {
 
-    private _unsubscribeAll: Subject<any> = new Subject<any>();
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    formDados: UntypedFormGroup = new UntypedFormGroup({});
+  formDados: UntypedFormGroup = new UntypedFormGroup({});
 
-    artigo: any;
-    artigoId: number | null = null;
+  artigo: any;
+  artigoId: number = 0;
 
-    loading: boolean = false;
+  loading: boolean = false;
 
-    constructor(
-        private _eventoService: EventoService,
-        private _formBuilder: UntypedFormBuilder,
-        private _cd: ChangeDetectorRef,
-        private _router: Router,
-        private _route: ActivatedRoute,
-    ) { }
+  constructor(
+    private _eventoService: EventoService,
+    private _formBuilder: UntypedFormBuilder,
+    private _cd: ChangeDetectorRef,
+    private _router: Router,
+    private _route: ActivatedRoute,
+  ) { }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
 
-        if (Number(this._route?.snapshot?.paramMap?.get('id')))
-            this.artigoId = Number(this._route.snapshot.paramMap.get('id'));
+    if (Number(this._route?.snapshot?.paramMap?.get('id')))
+      this.artigoId = Number(this._route.snapshot.paramMap.get('id'));
 
-        this.formDados = this._formBuilder.group({
-            id: [null, []],
-            ativo: [false, []],
-            tipo: [eArtigo.EVENTO, []],
-            imagemCapa: [null, [Validators.required]],
-            titulo: [null, [Validators.required]],
-            texto: [null, []],
-            telaPrincipal: [true, []],
+    this.formDados = this._formBuilder.group({
+      id: [null, []],
+      tipo: [eArtigo.EVENTO, []],
+      imagem_capa: [null, [Validators.required]],
+      titulo: [null, [Validators.required]],
+      texto: [null, []],
+      tela_principal: [true, []],
+    });
+
+    this.getDados();
+
+  }
+
+  ngOnDestroy() {
+
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
+
+  }
+
+  getDados() {
+
+    if (this.artigoId) {
+
+      this.loading = true;
+      this._cd.detectChanges();
+
+      this._eventoService
+        .getEvento(this.artigoId)
+        .pipe(
+          takeUntil(this._unsubscribeAll),
+          finalize(() => { this.loading = false; this._cd.detectChanges() })
+        )
+        .subscribe({
+          next: res => {
+
+            this.editar(res);
+
+          },
+          error: err => {
+
+            this.voltar();
+
+          }
         });
 
-        this.getDados();
-
     }
 
-    ngOnDestroy() {
+  }
 
-        this._unsubscribeAll.next(null);
-        this._unsubscribeAll.complete();
+  editar(dados: any) {
 
+    this.artigo = dados;
+
+    this.formDados.patchValue(this.artigo);
+
+    this._cd.detectChanges();
+
+  }
+
+  voltar() {
+
+    this._router.navigate(['/evento']);
+
+  }
+
+  salvar() {
+
+    if (this.formDados.invalid) {
+      UtilsService.validateAllFormFields(this.formDados);
+      return;
     }
 
-    getDados() {
+    const values = this.formDados.value;
 
-        if (this.artigoId) {
+    this.loading = true;
+    this._cd.detectChanges();
 
-            this.loading = true;
-            this._cd.detectChanges();
 
-            this._eventoService
-                .getEvento(this.artigoId)
-                .pipe(
-                    takeUntil(this._unsubscribeAll),
-                    finalize(() => { this.loading = false; this._cd.detectChanges() })
-                )
-                .subscribe({
-                    next: res => {
+    iif(() => !!this.artigoId,
+      this._eventoService.salvarEvento(values, this.artigoId),
+      this._eventoService.cadastraEvento(values))
+      .pipe(
+        takeUntil(this._unsubscribeAll),
+        finalize(() => { this.loading = false; this._cd.detectChanges() })
+      )
+      .subscribe({
+        next: (res) => {
 
-                        this.editar(res);
+          // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-                    },
-                    error: err => {
+          this.recarregar(this.artigoId ?? res.id);
 
-                        this.voltar();
+        },
+        error: (err) => {
 
-                    }
-                });
+          // this._dialog.error(err, 'Erro ao atualizar dados');
 
         }
+      });
 
-    }
+  }
 
-    editar(dados: any) {
 
-        this.artigo = dados;
+  async apagar() {
+    const result = await confirm('Prosseguir com remoção?')
+    if (!result) return
 
-        this.formDados.patchValue(this.artigo);
+    this.loading = true
+    this._cd.detectChanges()
 
-        this._cd.detectChanges();
+    this._eventoService.deleteEvento(this.artigoId)
+      .pipe(
+        takeUntil(this._unsubscribeAll),
+        finalize(() => { this.loading = false; this._cd.detectChanges() })
+      )
+      .subscribe({
+        next: (res) => {
 
-    }
+          // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-    voltar() {
+          this.voltar();
 
-        this._router.navigate(['/evento']);
+        },
+        error: (err) => {
 
-    }
-
-    salvar() {
-
-        if (this.formDados.invalid) {
-            UtilsService.validateAllFormFields(this.formDados);
-            // this._dialog.showToast('Por favor verifique o formulário!');
-            return;
-        }
-
-        const values = this.formDados.value;
-
-        this.loading = true;
-        this._cd.detectChanges();
-
-        this._eventoService.salvarEvento(values)
-            .pipe(
-                takeUntil(this._unsubscribeAll),
-                finalize(() => { this.loading = false; this._cd.detectChanges() })
-            )
-            .subscribe({
-                next: (res) => {
-
-                    // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
-
-                    this.recarregar(res.id);
-
-                },
-                error: (err) => {
-
-                    // this._dialog.error(err, 'Erro ao atualizar dados');
-
-                }
-            });
-
-    }
-
-    recarregar(id: number) {
-
-        if (!this.artigoId) {
-
-            this._router.navigate(['/evento/form', { id }]);
-
-            this.artigoId = id;
+          // this._dialog.error(err, 'Erro ao atualizar dados');
 
         }
+      });
+  }
 
-        this.getDados();
+
+  recarregar(id: number) {
+
+    if (!this.artigoId) {
+
+      this._router.navigate(['/evento/form', { id }]);
+
+      this.artigoId = id;
 
     }
+
+    this.getDados();
+
+  }
 
 }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { EventoService } from '../../data-access/evento.service';
+import { IArtigo } from '../../../../core/intefaces/interfaces';
 
 @Component({
     selector: 'app-evento-artigo',
@@ -13,7 +14,7 @@ export class EventoArtigoComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    artigo: any;
+    artigo: IArtigo;
     artigoId: number | null = null;
 
     constructor(
@@ -57,7 +58,7 @@ export class EventoArtigoComponent {
                     },
                     error: err => {
 
-                        // this.voltar();
+                        this.voltar();
 
                     }
                 });

@@ -15,71 +15,29 @@ export class EventoService {
 
     getEventos(filtros: any): Observable<any> {
 
-        // return this._api.get('/nutricao/lista', filtros);
-
-        // TODO: TESTE
-        let rows = [];
-
-        for (let i = 1; i < 21; i++) {
-
-            rows.push({
-                id: i,
-                ativo: true,
-                tipo: eArtigo.EVENTO,
-                imagemCapa: 'assets/eventos/e1.png',
-                titulo: `${i} Evento`,
-                texto: `
-                <p>Evento</p>
-                <p>Evento</p>
-                <p>Evento</p>
-             `,
-                telaPrincipal: true,
-                dataInclusao: '2024-04-16T01:21:44.380Z'
-            })
-
-        }
-
-        return of({
-            rows: rows.splice(
-                filtros.offset,
-                filtros.limit
-            ),
-            count: 20
-        })
+        return this._api.get('/article', {...filtros, tipo: eArtigo.EVENTO});
 
     }
 
     getEvento(id: number): Observable<any> {
 
-        // return this._api.get('/nutricao/get', { id });
-
-        // TODO: TESTE
-        return of({
-            id: 1,
-            ativo: true,
-            tipo: eArtigo.EVENTO,
-            imagemCapa: 'assets/nutricao/n1.png',
-            titulo: `${1} Evento`,
-            texto: `
-                <p>Evento</p>
-                <p>Evento</p>
-                <p>Evento</p>
-            `,
-            telaPrincipal: true,
-            dataInclusao: '2024-04-16T01:21:44.380Z'
-        })
+        return this._api.get('/article/', + id)
 
     }
 
-    salvarEvento(dados: any): Observable<any> {
+    cadastraEvento(dados: any): Observable<any>{
+      return this._api.post('/article', dados)
+    }
 
-        return this._api.post('/evento/save', dados);
+    salvarEvento(dados: any, id:number): Observable<any> {
+
+        return this._api.put('/article/' + id, dados);
 
     }
 
-    deleteEvento(dados: any): Observable<any> {
+    deleteEvento(id: number): Observable<any> {
 
-        return this._api.post('/evento/delete', dados);
+        return this._api.delete('/article/' + id);
 
     }
 

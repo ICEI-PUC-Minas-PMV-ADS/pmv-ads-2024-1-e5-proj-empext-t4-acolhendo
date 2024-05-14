@@ -16,7 +16,7 @@ export class EventoComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    items: Array<any> | null = null;
+    items: Array<any>;
     itemsCount = 0;
 
     pageLimit = 12;
