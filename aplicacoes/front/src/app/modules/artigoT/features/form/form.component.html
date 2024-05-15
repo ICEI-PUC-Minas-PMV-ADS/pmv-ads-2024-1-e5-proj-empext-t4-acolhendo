@@ -4,24 +4,14 @@
 
         <div class="w-full flex gap-2 justify-end mb-2">
             <!-- VOLTAR -->
-            <button
-                matTooltip="Voltar p/ lista"
-                mat-raised-button
-                [color]="'secondary'"
-                (click)="voltar()">
+            <button matTooltip="Voltar p/ lista" mat-raised-button [color]="'secondary'" (click)="voltar()">
                 <span class="material-icons-outlined">
                     arrow_back
                 </span>
             </button>
 
             <!-- SALVAR -->
-            <button
-                class="relative"
-                matTooltip="Salvar alterações"
-                mat-raised-button
-                [color]="'primary'"
-                [disabled]="loading"
-                (click)="salvar()">
+            <button class="relative" matTooltip="Salvar alterações" mat-raised-button [color]="'primary'" [disabled]="loading" (click)="salvar()">
                 <span class="material-icons-outlined">
                     save
                 </span>

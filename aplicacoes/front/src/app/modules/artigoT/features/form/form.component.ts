@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { eArtigo } from '../../../../core/enums/artigo.enum';
-import { Subject, finalize, takeUntil } from 'rxjs';
+import { Subject, finalize, iif, takeUntil } from 'rxjs';
 import { ArtigoTService } from '../../data-access/artigoT.service';
 import { UtilsService } from '../../../../core/services/utils.service';
 
@@ -18,8 +18,7 @@ export class ArtigoTFormComponent {
     formDados: UntypedFormGroup = new UntypedFormGroup({});
 
     artigo: any;
-    artigoId: number | null = null;
-
+    artigoId: number = 0;
     loading: boolean = false;
 
     constructor(
@@ -31,7 +30,6 @@ export class ArtigoTFormComponent {
     ) { }
 
     ngOnInit(): void {
-
         if (Number(this._route?.snapshot?.paramMap?.get('id')))
             this.artigoId = Number(this._route.snapshot.paramMap.get('id'));
 
@@ -46,64 +44,44 @@ export class ArtigoTFormComponent {
         });
 
         this.getDados();
-
     }
 
     ngOnDestroy() {
-
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
-
     }
 
     getDados() {
-
         if (this.artigoId) {
-
             this.loading = true;
             this._cd.detectChanges();
 
-            this._artigoTService
-                .getArtigo(this.artigoId)
+            this._artigoTService.getArtigo(this.artigoId)
                 .pipe(
                     takeUntil(this._unsubscribeAll),
-                    finalize(() => { this.loading = false; this._cd.detectChanges() })
+                    finalize(() => {
+                        this.loading = false;
+                        this._cd.detectChanges();
+                    })
                 )
                 .subscribe({
-                    next: res => {
-
-                        this.editar(res);
-
-                    },
-                    error: err => {
-
-                        this.voltar();
-
-                    }
+                    next: res => this.editar(res),
+                    error: () => this.voltar()
                 });
-
         }
-
     }
 
     editar(dados: any) {
-
         this.artigo = dados;
-
         this.formDados.patchValue(this.artigo);
-
         this._cd.detectChanges();
-
     }
 
     voltar() {
-
         this._router.navigate(['/artigo']);
-
     }
 
     salvar() {
-
         if (this.formDados.invalid) {
             UtilsService.validateAllFormFields(this.formDados);
             // this._dialog.showToast('Por favor verifique o formulário!');
@@ -111,44 +89,32 @@ export class ArtigoTFormComponent {
         }
 
         const values = this.formDados.value;
-
         this.loading = true;
         this._cd.detectChanges();
 
-        this._artigoTService.salvarArtigo(values)
+        iif(() => !!this.artigoId,
+        this._artigoTService.salvarArtigo(values, this.artigoId),
+        this._artigoTService.cadastraArtigoT(values))
             .pipe(
                 takeUntil(this._unsubscribeAll),
-                finalize(() => { this.loading = false; this._cd.detectChanges() })
+                finalize(() => { this.loading = false; this._cd.detectChanges()})
             )
             .subscribe({
-                next: (res) => {
-
+                next: res => {
                     // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
-
                     this.recarregar(res.id);
-
                 },
-                error: (err) => {
-
+                error: err => {
                     // this._dialog.error(err, 'Erro ao atualizar dados');
-
                 }
             });
-
     }
 
     recarregar(id: number) {
-
         if (!this.artigoId) {
-
             this._router.navigate(['/artigo/form', { id }]);
-
             this.artigoId = id;
-
         }
-
         this.getDados();
-
     }
-
 }

@@ -3,11 +3,7 @@
         Artigos
 
         <div *onlyAdmin class="flex w-full justify-end">
-            <button
-                mat-raised-button
-                [color]="'primary'"
-                matTooltip="Adicionar artigo"
-                (click)="novoArtigo()">
+            <button mat-raised-button [color]="'primary'" matTooltip="Adicionar artigo" (click)="novoArtigo()">
                 <span class="material-icons">
                     add
                 </span>
@@ -16,33 +12,17 @@
     </h1>
 
     <div class="flex justify-center">
-        <mat-form-field
-            class="w-full px-10 md:w-1/2">
-            <button
-                matPrefix
-                mat-icon-button
-                [color]="'primary'"
-                (click)="pesquisaBtn()"
-                matTooltip="Pesquisar">
+        <mat-form-field class="w-full px-10 md:w-1/2">
+            <button matPrefix mat-icon-button [color]="'primary'" (click)="pesquisaBtn()" matTooltip="Pesquisar">
                 <span class="material-icons-outlined icon-size-4">
                     search
                 </span>
             </button>
 
-            <input
-                matInput
-                [formControl]="searchInputControl"
-                [autocomplete]="'off'"
-                [placeholder]="'Pesquise por...'"
-                (keydown.enter)="pesquisaBtn()"/>
+            <input matInput [formControl]="searchInputControl" [autocomplete]="'off'" [placeholder]="'Pesquise por...'" (keydown.enter)="pesquisaBtn()"/>
 
             @if (searchInputControl.value) {
-                <button
-                    matSuffix
-                    mat-icon-button
-                    [color]="'primary'"
-                    (click)="limparBtn()"
-                    matTooltip="Limpar pesquisa">
+                <button matSuffix mat-icon-button [color]="'primary'" (click)="limparBtn()" matTooltip="Limpar pesquisa">
                     <span class="material-icons-outlined icon-size-4">
                         close
                     </span>

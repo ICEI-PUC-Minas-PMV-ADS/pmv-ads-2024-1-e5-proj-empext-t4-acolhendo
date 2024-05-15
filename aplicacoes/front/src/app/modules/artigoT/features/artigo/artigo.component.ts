@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { ArtigoTService } from '../../data-access/artigoT.service';
+import { IArtigo } from '../../../../core/intefaces/interfaces';
 
 @Component({
     selector: 'app-artigoT-artigo',
@@ -14,7 +15,7 @@ export class ArtigoTArtigoComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    artigo: any;
+    artigo: IArtigo;
     artigoId: number | null = null;
 
     constructor(
@@ -58,7 +59,7 @@ export class ArtigoTArtigoComponent {
                     },
                     error: err => {
 
-                        // this.voltar();
+                         this.voltar();
 
                     }
                 });
