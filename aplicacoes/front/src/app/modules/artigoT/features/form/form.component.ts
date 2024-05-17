@@ -61,13 +61,21 @@ export class ArtigoTFormComponent {
                     takeUntil(this._unsubscribeAll),
                     finalize(() => {
                         this.loading = false;
-                        this._cd.detectChanges();
+                        this._cd.detectChanges()
                     })
                 )
                 .subscribe({
-                    next: res => this.editar(res),
-                    error: () => this.voltar()
-                });
+                  next: res => {
+
+                      this.editar(res);
+
+                  },
+                  error: err => {
+
+                      this.voltar();
+
+                  }
+              });
         }
     }
 
@@ -102,18 +110,50 @@ export class ArtigoTFormComponent {
             .subscribe({
                 next: res => {
                     // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
-                    this.recarregar(res.id);
+                    this.recarregar(this.artigoId || res.id);
                 },
-                error: err => {
+                error: (err) => {
                     // this._dialog.error(err, 'Erro ao atualizar dados');
                 }
             });
     }
 
+    async apagar() {
+
+      const result = await confirm('Prossegui com a remoção?');
+      if (!result) return;
+
+      this.loading = true;
+      this._cd.detectChanges();
+
+      this._artigoTService.deleteArtigo(this.artigoId)
+          .pipe(
+              takeUntil(this._unsubscribeAll),
+              finalize(() => { this.loading = false; this._cd.detectChanges() })
+          )
+          .subscribe({
+              next: (res) => {
+
+                  // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
+
+                  this.voltar();
+
+              },
+              error: (err) => {
+
+                  // this._dialog.error(err, 'Erro ao atualizar dados');
+
+              }
+          });
+
+  }
+
     recarregar(id: number) {
         if (!this.artigoId) {
-            this._router.navigate(['/artigo/form', { id }]);
-            this.artigoId = id;
+
+          this._router.navigate(['/artigo']);
+            //this._router.navigate(['/artigo/form', { id }]);
+            //this.artigoId = id;
         }
         this.getDados();
     }

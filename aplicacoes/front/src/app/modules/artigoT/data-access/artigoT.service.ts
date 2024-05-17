@@ -18,7 +18,7 @@ export class ArtigoTService {
         // return this._api.get('/nutricao/lista', filtros);
 
         // TODO: TESTE
-        return this._api.get('/nutricao', {...filtros, tipo: eArtigo.ARTIGO});
+        return this._api.get('/article', { ...filtros, tipo: eArtigo.ARTIGO });
 
     }
 
@@ -27,15 +27,15 @@ export class ArtigoTService {
         // return this._api.get('/nutricao/get', { id });
 
         // TODO: TESTE
-        return this._api.get('/nutricao/', + id)
+        return this._api.get('/article/', + id);
 
     }
 
     cadastraArtigoT(dados: any): Observable<any>{
-      return this._api.post('/article', dados)
+      return this._api.post('/article', dados);
     }
 
-    salvarArtigo(dados: any, id:number): Observable<any> {
+    salvarArtigo(dados: any, id: number): Observable<any> {
 
         return this._api.put('/article/' + id, dados);
 
