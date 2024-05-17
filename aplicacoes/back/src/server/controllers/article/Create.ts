@@ -10,11 +10,11 @@ interface IBodyProps extends Omit<IArtigo, 'id'> { }
 
 export const createArticleValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(YUP.object().shape({
-        titulo: YUP.string().required().min(5),
+        titulo: YUP.string().required().min(0),
         imagem_capa: YUP.string().required(),
         tipo: YUP.number().required().moreThan(0).max(4),
-        texto: YUP.string().required().min(20),
-        data_inclusao: YUP.date().required(),
+        texto: YUP.string().required().min(0),
+        data_inclusao: YUP.date().optional(),
         tela_principal: YUP.bool().required()
     }))
 }));

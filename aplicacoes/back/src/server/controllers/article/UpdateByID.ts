@@ -13,10 +13,10 @@ interface IBodyProps extends Omit<IUpdateArtigo, 'id'> { }
 
 export const updateArticleByIdValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(YUP.object().shape({
-        titulo: YUP.string().optional().min(5),
+        titulo: YUP.string().optional().min(0),
         imagem_capa: YUP.string().optional(),
         tipo: YUP.number().moreThan(0).max(4).optional(),
-        texto: YUP.string().min(20).optional(),
+        texto: YUP.string().min(0).optional(),
         data_inclusao: YUP.date().optional(),
         tela_principal: YUP.bool().optional()
     })),

@@ -126,7 +126,7 @@ export class NutricaoFormComponent {
 
                     // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-                    this.recarregar(this.artigoId ?? res.id);
+                    this.recarregar(this.artigoId || res.id);
 
                 },
                 error: (err) => {
@@ -172,9 +172,9 @@ export class NutricaoFormComponent {
 
         if (!this.artigoId) {
 
-            this._router.navigate(['/nutricao/form', { id }]);
-
-            this.artigoId = id;
+            this._router.navigate(['/nutricao']);
+            // this._router.navigate(['/nutricao/form', { id }]);
+            // this.artigoId = id;
 
         }
 

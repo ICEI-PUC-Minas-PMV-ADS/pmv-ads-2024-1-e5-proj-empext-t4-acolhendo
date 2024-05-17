@@ -10,7 +10,7 @@ interface IBodyProps extends Omit<IGaleria, 'id'> {}
 export const createGalleryValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(
         YUP.object().shape({
-            titulo: YUP.string().required().min(5),
+            titulo: YUP.string().required().min(0),
             ativo: YUP.bool().required(),
             imagem_capa: YUP.string().required(),
             tela_principal: YUP.bool().required()
