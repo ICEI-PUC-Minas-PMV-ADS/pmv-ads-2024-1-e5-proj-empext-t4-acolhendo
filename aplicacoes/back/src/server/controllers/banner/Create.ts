@@ -28,8 +28,8 @@ export const createBanner = async (request: Request<{}, {}, IBodyProps>, respons
     const imageDesktop = request.files['image-banner-desktop'][0].path
     const imageMobile = request.files['image-banner-mobile'][0].path
     const banner = {
-        ativo: request.body.ativo,
-        ordem: request.body.ordem,
+        ativo: Boolean(request.body.ativo),
+        ordem: Number(request.body.ordem),
         imagem_desktop: imageDesktop,
         imagem_mobile: imageMobile
     };
