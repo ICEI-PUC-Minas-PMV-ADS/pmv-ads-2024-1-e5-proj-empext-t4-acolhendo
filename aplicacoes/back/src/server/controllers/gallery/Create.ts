@@ -21,9 +21,9 @@ export const createGalleryValidation = validation((getSchema) => ({
 export const createGallery = async (request: Request<{}, {}, IBodyProps>, response: Response) => {
     const gallery = {
         titulo: request.body.titulo,
-        ativo: request.body.ativo,
+        ativo: Boolean(request.body.ativo),
         imagem_capa: request.body.imagem_capa,
-        tela_principal: request.body.tela_principal
+        tela_principal: Boolean(request.body.tela_principal)
     };
 
     const result = await GalleryProvider.create(gallery);
