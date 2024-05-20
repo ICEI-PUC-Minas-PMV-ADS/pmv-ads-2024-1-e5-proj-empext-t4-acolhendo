@@ -5,13 +5,16 @@ import { validation } from './../../shared/middleware/Validator';
 import { IBannerImagem } from '../../database/models';
 import { BannerProvider } from '../../database/providers/banner';
 
-interface IBodyProps extends Omit<IBannerImagem, 'id' | 'imagem_desktop' | 'imagem_mobile'> {}
+interface IBodyProps extends Omit<IBannerImagem, 'id' > {}
 
 export const createBannerValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(
         YUP.object().shape({
             ativo: YUP.bool().required(),
-            ordem: YUP.number().required()
+            ordem: YUP.number().required(),
+            imagem_desktop: YUP.string().required(),
+            imagem_mobile: YUP.string().required(),
+            descricao: YUP.string().required()
         })
     ),
 }));
@@ -24,14 +27,12 @@ export const createBanner = async (request: Request<{}, {}, IBodyProps>, respons
             },
         });
     }
-
-    const imageDesktop = request.files['image-banner-desktop'][0].path
-    const imageMobile = request.files['image-banner-mobile'][0].path
     const banner = {
         ativo: Boolean(request.body.ativo),
         ordem: Number(request.body.ordem),
-        imagem_desktop: imageDesktop,
-        imagem_mobile: imageMobile
+        imagem_desktop: request.body.imagem_desktop,
+        imagem_mobile: request.body.imagem_mobile,
+        descricao: request.body.descricao
     };
 
     const result = await BannerProvider.create(banner);

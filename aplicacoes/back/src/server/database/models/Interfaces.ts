@@ -45,6 +45,7 @@ export interface IGaleriaImagem {
     galeria_id: number
     ativo: boolean
     imagem: string
+    descricao: string
 }
 
 export interface IBannerImagem {
@@ -53,6 +54,7 @@ export interface IBannerImagem {
     ordem: number
     imagem_desktop: string
     imagem_mobile: string
+    descricao: string
 }
 
 export interface IArtigo {
@@ -85,6 +87,7 @@ export interface IUpdateBanner {
     ordem?: number
     imagem_desktop?: string
     imagem_mobile?: string
+    descricao?: string
 }
 
 export interface IUpdateGaleria {
@@ -99,6 +102,7 @@ export interface IUpdateGaleriaImagem {
     id: number
     galeria_id?: number
     ativo?: boolean
+    descricao?: string
 }
 
 export interface IUpdateEmpresa {

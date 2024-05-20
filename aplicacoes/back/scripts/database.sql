@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS teste.galeria_imagem (
     id SERIAL PRIMARY KEY,
     galeria_id INTEGER REFERENCES teste.galeria(id),
     ativo BOOLEAN,
-    imagem VARCHAR
+    imagem VARCHAR,
+    descricao VARCHAR
 );
 
 -- Criar tabela 'banner_imagem'
@@ -46,7 +47,8 @@ CREATE TABLE IF NOT EXISTS teste.banner_imagem (
     ativo BOOLEAN,
     ordem INTEGER DEFAULT 1,
     imagem_desktop VARCHAR,
-    imagem_mobile VARCHAR
+    imagem_mobile VARCHAR,
+    descricao VARCHAR
 );
 
 -- Criar tabela 'artigo'

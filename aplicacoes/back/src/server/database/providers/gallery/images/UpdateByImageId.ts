@@ -10,6 +10,7 @@ export const updateByImageId = async (id: number, gallery: Omit<IUpdateGaleriaIm
             data: {
                 ativo: gallery.ativo,
                 galeria_id: gallery.galeria_id,
+                descricao: gallery.descricao
             },
         });
 

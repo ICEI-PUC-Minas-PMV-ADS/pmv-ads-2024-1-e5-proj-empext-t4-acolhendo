@@ -3,6 +3,8 @@ import * as DeleteById from './DeleteById'
 import * as GetAll from './GetAll'
 import * as GetById from './GetById'
 import * as UpdateById from './UpdateById'
+import * as PostImage from './images/PostImage'
+
 
 export const BannerController = {
     ...Create,
@@ -10,4 +12,5 @@ export const BannerController = {
     ...GetAll,
     ...GetById,
     ...UpdateById,
+    ...PostImage
 }

@@ -15,7 +15,8 @@ export const updateByImageIdValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(
         YUP.object().shape({
             galeria_id: YUP.number().optional(),
-            ativo: YUP.bool().optional()
+            ativo: YUP.bool().optional(),
+            descricao: YUP.string().optional()
         })
     ),
     params: getSchema<IParamProps>(

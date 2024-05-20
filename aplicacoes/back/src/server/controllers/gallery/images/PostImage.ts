@@ -12,6 +12,7 @@ export const postImageValidation = validation((getSchema) => ({
         YUP.object().shape({
             galeria_id: YUP.number().required(),
             ativo: YUP.bool().required(),
+            descricao: YUP.string().required()
         })
     ),
 }));
@@ -28,7 +29,8 @@ export const postImage = async (request: Request<{}, {}, IBodyProps>, response: 
     const gallery = {
         galeria_id: Number(request.body.galeria_id),
         ativo: Boolean(request.body.ativo),
-        imagem: ''
+        imagem: '',
+        descricao: request.body.descricao
     };
 
     for (const image of Object.values(images)) {

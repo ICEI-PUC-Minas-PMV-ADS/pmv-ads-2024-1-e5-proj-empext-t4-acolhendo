@@ -17,7 +17,8 @@ export const updateBannerByIdValidation = validation((getSchema) => ({
             ativo: YUP.bool().required(),
             ordem: YUP.number().required(),
             imagem_desktop: YUP.string().required(),
-            imagem_mobile: YUP.string().required()
+            imagem_mobile: YUP.string().required(),
+            descricao: YUP.string().required()
         })
     ),
     params: getSchema<IParamProps>(

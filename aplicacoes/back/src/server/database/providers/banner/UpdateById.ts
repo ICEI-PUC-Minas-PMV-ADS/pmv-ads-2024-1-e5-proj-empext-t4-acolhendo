@@ -11,7 +11,8 @@ export const updateById = async (id: number, banner: Omit<IUpdateBanner, 'id'>):
                 ativo: banner.ativo,
                 ordem: banner.ordem,
                 imagem_desktop: banner.imagem_desktop,
-                imagem_mobile: banner.imagem_mobile
+                imagem_mobile: banner.imagem_mobile,
+                descricao: banner.descricao
             },
         });
 

@@ -23,6 +23,7 @@ model banner_imagem {
   ordem          Int?     @default(1)
   imagem_desktop String?  @db.VarChar
   imagem_mobile  String?  @db.VarChar
+  descricao      String?  @db.VarChar
 }
 
 model empresa {
@@ -54,6 +55,7 @@ model galeria_imagem {
   galeria_id Int?
   ativo      Boolean?
   imagem     String?  @db.VarChar
+  descricao  String?  @db.VarChar
   galeria    galeria? @relation(fields: [galeria_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
