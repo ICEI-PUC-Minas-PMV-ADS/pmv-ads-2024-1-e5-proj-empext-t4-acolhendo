@@ -126,7 +126,7 @@ export class EventoFormComponent {
 
           // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-          this.recarregar(this.artigoId ?? res.id);
+          this.recarregar(this.artigoId || res.id);
 
         },
         error: (err) => {
@@ -172,9 +172,7 @@ export class EventoFormComponent {
 
     if (!this.artigoId) {
 
-      this._router.navigate(['/evento/form', { id }]);
-
-      this.artigoId = id;
+      this._router.navigate(['/evento'])
 
     }
 
