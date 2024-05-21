@@ -34,7 +34,7 @@ export const postImage = async (request: Request<{}, {}, IBodyProps>, response: 
     };
 
     for (const image of Object.values(images)) {
-        gallery.imagem = image.filename
+        gallery.imagem = image.path
         const result = await GalleryProvider.postImage(gallery);
 
         if (result instanceof Error) {

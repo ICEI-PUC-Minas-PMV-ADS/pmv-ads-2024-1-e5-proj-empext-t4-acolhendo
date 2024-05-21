@@ -8,7 +8,7 @@ class UploadMiddleware {
     private destination: string;
 
     constructor(folder_path: string) {
-        this.destination = path.resolve(`./uploads/${folder_path}`);
+        this.destination = path.resolve(`../front/uploads/${folder_path}`);
         if (!fs.existsSync(this.destination)) {
             fs.mkdirSync(this.destination, { recursive: true });
         }

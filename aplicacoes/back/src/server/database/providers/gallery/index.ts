@@ -7,7 +7,7 @@ import * as UpdateById from './UpdateById'
 import * as PostImage from './images/PostImage'
 import * as UpdateByImageId from './images/UpdateByImageId'
 import * as GetByGalleryId from './images/GetByGalleryId'
-import * as DeleteByImageId from './images/DeleteByImageId'
+import * as DeleteByImagePath from './images/DeleteByImagePath'
 
 export const GalleryProvider = {
     ...Count,
@@ -19,5 +19,5 @@ export const GalleryProvider = {
     ...PostImage,
     ...UpdateByImageId,
     ...GetByGalleryId,
-    ...DeleteByImageId
+    ...DeleteByImagePath
 }
