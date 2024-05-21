@@ -8,6 +8,7 @@ import { ArtigoTService } from './data-access/artigoT.service';
 import { ArtigoTFormComponent } from './features/form/form.component';
 import { ArtigoTArtigoComponent } from './features/artigo/artigo.component';
 import { AuthGuard } from '../../core/guards/auth.guard';
+import { ImagemComponent } from '../../shared/components/imagem/imagem.component';
 
 const ModuleRoute: Route[] = [
     {
@@ -27,7 +28,8 @@ const ModuleRoute: Route[] = [
     imports: [
         RouterModule.forChild(ModuleRoute),
         SharedModule,
-        QuillModule.forRoot()
+        QuillModule.forRoot(),
+        ImagemComponent
     ],
     declarations: [
         ArtigoTComponent,

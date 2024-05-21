@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { ApiService } from '../../../core/services/api.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { eArtigo } from '../../../core/enums/artigo.enum';
 
 @Injectable()
@@ -46,5 +45,10 @@ export class ArtigoTService {
         return this._api.delete('/article/' + id);
 
     }
+    uploadImagem(dados: any): Observable<any> {
+
+      return this._api.postImagem('/article/images', dados);
+
+  }
 
 }

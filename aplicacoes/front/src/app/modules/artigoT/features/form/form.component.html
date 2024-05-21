@@ -73,23 +73,36 @@
                 </mat-form-field>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Link Imagem Capa</mat-label>
-                    <input maxlength="300" matInput formControlName="imagem_capa" />
-                    <mat-error *ngIf="formDados.get('imagemCapa')?.hasError('required') && formDados.get('imagemCapa')?.touched">Preenchimento obrigatório</mat-error>
-                </mat-form-field>
+            <div class="flex flex-col gap-4 w-full mt-4 pt-4 border-t border-t-secondary">
+              <div class="">
+                  Imagem Capa
+              </div>
+
+              <app-imagem
+                  class="w-full"
+                  [formDados]="formDados"
+                  [campo]="'imagem_capa'"
+                  [sizeBytes]="2000000"
+                  (fileChangeEvent)="changeImagemCapa($event)">
+              </app-imagem>
+          </div>
+
+          <div class="flex flex-col gap-4 w-full mt-4 pt-4 border-t border-t-secondary">
+            <div class="">
+                Texto Artigo
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4">
-                <div class="w-full h-96">
-                    <quill-editor
+            <input class="hidden" #fileEditor type="file" (change)="previewFile()"/>
+            <div class="w-full h-96">
+                <quill-editor
+                    (onEditorCreated)="getEditorInstance($event)"
+                    [modules]="quillModules"
                     placeholder="Insira o texto aqui..."
-                        class="w-full h-80"
-                        formControlName="texto">
-                    </quill-editor>
-                </div>
+                    class="w-full h-80"
+                    formControlName="texto">
+                </quill-editor>
             </div>
+        </div>
         </div>
     </form>
 </div>
