@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Subject, finalize, takeUntil } from 'rxjs';
+import { Subject, finalize, iif, takeUntil } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { BannerService } from '../../data-access/banner.service';
@@ -20,6 +20,9 @@ export class BannerFormComponent {
     imagem: any;
     imagemId: number | null = null;
 
+    fileImagemDesktop: { file: any; url: string; };
+    fileImagemMobile: { file: any; url: string; };
+
     loading: boolean = false;
 
     constructor(
@@ -27,7 +30,7 @@ export class BannerFormComponent {
         private _formBuilder: UntypedFormBuilder,
         private _cd: ChangeDetectorRef,
         private _router: Router,
-        private _route: ActivatedRoute,
+        private _route: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
@@ -38,9 +41,10 @@ export class BannerFormComponent {
         this.formDados = this._formBuilder.group({
             id: [null, []],
             ativo: [false, []],
-            titulo: [null, [Validators.required]],
-            imagemDesktop: [null, [Validators.required]],
-            imagemMobile: [null, [Validators.required]],
+            descricao: [null, [Validators.required]],
+            ordem: [null, [Validators.required]],
+            imagem_desktop: [null, []],
+            imagem_mobile: [null, []],
         });
 
         this.getDados();
@@ -62,7 +66,7 @@ export class BannerFormComponent {
             this._cd.detectChanges();
 
             this._bannerService
-                .getBanner(this.imagemId)
+                .getImagem(this.imagemId)
                 .pipe(
                     takeUntil(this._unsubscribeAll),
                     finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -90,6 +94,9 @@ export class BannerFormComponent {
 
         this.formDados.patchValue(this.imagem);
 
+        this.fileImagemDesktop = null;
+        this.fileImagemMobile = null;
+
         this._cd.detectChanges();
 
     }
@@ -100,7 +107,7 @@ export class BannerFormComponent {
 
     }
 
-    salvar() {
+    async salvar() {
 
         if (this.formDados.invalid) {
             UtilsService.validateAllFormFields(this.formDados);
@@ -108,12 +115,43 @@ export class BannerFormComponent {
             return;
         }
 
-        const values = this.formDados.value;
-
         this.loading = true;
         this._cd.detectChanges();
 
-        this._bannerService.salvarBanner(values)
+        try {
+
+            if (this.fileImagemDesktop) {
+
+                let imagem = await this.uploadImagem(this.fileImagemDesktop.file);
+
+                this.formDados.get('imagem_desktop').setValue(imagem);
+
+                this.fileImagemDesktop = null;
+                
+            }
+    
+            if (this.fileImagemMobile) {
+    
+                let imagem = await this.uploadImagem(this.fileImagemMobile.file);
+
+                this.formDados.get('imagem_mobile').setValue(imagem);
+
+                this.fileImagemMobile = null;
+                
+            }
+
+        } catch(err) {
+            this.loading = false;
+            this._cd.detectChanges();
+            alert(err.message)
+            return;
+        }
+
+        const values = this.formDados.value;
+
+        iif(() => !!this.imagemId,
+            this._bannerService.salvarImagem(values, this.imagemId),
+            this._bannerService.cadastraImagem(values))
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -123,7 +161,37 @@ export class BannerFormComponent {
 
                     // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-                    this.recarregar(res.id);
+                    this.recarregar(this.imagemId || res.id);
+
+                },
+                error: (err) => {
+
+                    // this._dialog.error(err, 'Erro ao atualizar dados');
+
+                }
+            });
+
+    }
+
+    async apagar() {
+
+        const result = await confirm('Prosseguir com a remoção?');
+        if (!result) return;
+
+        this.loading = true;
+        this._cd.detectChanges();
+
+        this._bannerService.deleteImagem(this.imagemId)
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                finalize(() => { this.loading = false; this._cd.detectChanges() })
+            )
+            .subscribe({
+                next: (res) => {
+
+                    // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
+
+                    this.voltar();
 
                 },
                 error: (err) => {
@@ -146,6 +214,47 @@ export class BannerFormComponent {
         }
 
         this.getDados();
+
+    }
+
+    changeImagemDesktop(dados) {
+
+        this.fileImagemDesktop = dados;
+
+    }
+
+    changeImagemMobile(dados) {
+
+        this.fileImagemMobile = dados;
+
+    }
+
+    uploadImagem(file): Promise<any> {
+
+        return new Promise((resolve, reject) => {
+
+            const formData: FormData = new FormData();
+
+            formData.append('image-banner', file);
+
+            this._bannerService.uploadImagem(formData)
+                .pipe(
+                    takeUntil(this._unsubscribeAll)
+                )
+                .subscribe({
+                    next: (res) => {
+
+                        resolve(res.image);
+
+                    },
+                    error: (err) => {
+
+                        reject;
+
+                    }
+                });
+
+        });
 
     }
 

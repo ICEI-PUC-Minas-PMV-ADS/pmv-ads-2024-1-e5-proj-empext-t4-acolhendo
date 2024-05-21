@@ -12,21 +12,15 @@ export const createBannerValidation = validation((getSchema) => ({
         YUP.object().shape({
             ativo: YUP.bool().required(),
             ordem: YUP.number().required(),
-            imagem_desktop: YUP.string().required(),
-            imagem_mobile: YUP.string().required(),
+            imagem_desktop: YUP.string().optional(),
+            imagem_mobile: YUP.string().optional(),
             descricao: YUP.string().required()
         })
     ),
 }));
 
 export const createBanner = async (request: Request<{}, {}, IBodyProps>, response: Response) => {
-    if(!request.files) {
-        return response.status(StatusCodes.BAD_REQUEST).json({
-            errors: {
-                default: 'Imagens não enviadas.',
-            },
-        });
-    }
+
     const banner = {
         ativo: Boolean(request.body.ativo),
         ordem: Number(request.body.ordem),
@@ -46,4 +40,5 @@ export const createBanner = async (request: Request<{}, {}, IBodyProps>, respons
     }
 
     return response.status(StatusCodes.CREATED).send(result);
+
 };

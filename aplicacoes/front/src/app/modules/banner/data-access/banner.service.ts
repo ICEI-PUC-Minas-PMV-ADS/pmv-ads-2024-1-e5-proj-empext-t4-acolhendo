@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { ApiService } from '../../../core/services/api.service';
-import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class BannerService {
@@ -10,59 +10,39 @@ export class BannerService {
         private _api: ApiService
     ) {}
 
-    getBanners(filtros: any): Observable<any> {
+    getBanner(filtros: any): Observable<any> {
 
-        // return this._api.get('/banner', filtros);
-
-        // TODO: TESTE
-        let rows = [];
-
-        for (let i = 0; i < 20; i++) {
-            
-            rows.push({
-                id: i,
-                ativo: true,
-                titulo: 'Imagem que descreve',
-                imagemDesktop: `assets/banner/b1.png`,
-                imagemMobile: `assets/banner/b1.png`
-            });
-
-        }
-
-        return of({
-            rows: rows.splice(
-                filtros.offset,
-                filtros.limit
-            ),
-            count: 20
-        })
+        return this._api.get('/banner', filtros);
 
     }
 
-    getBanner(id: number): Observable<any> {
+    getImagem(id: number): Observable<any> {
 
-        // return this._api.get('/banner/get', { id });
-
-        // TODO: TESTE
-        return of({
-            id: 1,
-            ativo: true,
-            titulo: 'Imagem que descreve',
-            imagemDesktop: `assets/banner/b1.png`,
-            imagemMobile: `assets/banner/b1.png`
-        })
+        return this._api.get('/banner/' + id);
 
     }
 
-    salvarBanner(dados: any): Observable<any> {
+    cadastraImagem(dados: any): Observable<any> {
 
-        return this._api.post('/banner/save', dados);
+        return this._api.post('/banner', dados);
 
     }
 
-    deleteBanner(dados: any): Observable<any> {
+    salvarImagem(dados: any, id: number): Observable<any> {
 
-        return this._api.post('/banner/delete', dados);
+        return this._api.put('/banner/' + id, dados);
+
+    }
+
+    deleteImagem(id: number): Observable<any> {
+
+        return this._api.delete('/banner/' + id);
+
+    }
+
+    uploadImagem(dados: any): Observable<any> {
+
+        return this._api.postImagem('/banner/images', dados);
 
     }
 

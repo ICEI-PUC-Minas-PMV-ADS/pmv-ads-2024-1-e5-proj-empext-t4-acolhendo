@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { BannerComponent } from './features/shell/shell.component';
 import { BannerFormComponent } from './features/form/form.component';
 import { AuthGuard } from '../../core/guards/auth.guard';
+import { ImagemComponent } from '../../shared/components/imagem/imagem.component';
 
 const ModuleRoute: Route[] = [
     {
@@ -23,7 +24,8 @@ const ModuleRoute: Route[] = [
 @NgModule({
     imports: [
         RouterModule.forChild(ModuleRoute),
-        SharedModule
+        SharedModule,
+        ImagemComponent
     ],
     declarations: [
         BannerComponent,

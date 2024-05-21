@@ -11,7 +11,7 @@ export const postImage = async (request: Request<{}, {}>, response: Response) =>
         });
     }
 
-    const image = request.files['image-banner'][0].path;
+    const image = request.files['image-article'][0].path;
 
     return response.status(StatusCodes.OK).json({ image });
 

@@ -15,11 +15,15 @@ export class ApiService {
 
     }
 
-    private getHeaders(): any {
+    private getHeaders(contentType = true): any {
 
         let headers: HttpHeaders = new HttpHeaders();
 
-        headers = headers.set('Content-Type', 'application/json');
+        if (contentType) {
+
+            headers = headers.set('Content-Type', 'application/json');
+
+        }
 
         if (this.authService.token) {
             headers = headers.set("Authorization", `Bearer ${this.authService.token}`);
@@ -54,6 +58,12 @@ export class ApiService {
     delete(rota: string): Observable<any> {
 
         return this.http.delete(`${environment.apiUrl}${rota}`, this.getHeaders());
+
+    }
+
+    postImagem(rota: string, dados: any): Observable<any> {
+
+        return this.http.post(`${environment.apiUrl}${rota}`, dados, this.getHeaders(false));
 
     }
 

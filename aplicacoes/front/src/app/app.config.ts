@@ -10,7 +10,8 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { provideQuillConfig } from 'ngx-quill';
+import Quill from 'quill';
+import QuillImageDropAndPaste from 'quill-image-drop-and-paste';
 
 import { appRoutes } from './app.routes';
 import { getPortuguesePaginatorIntl } from './core/uteis/portuguese-paginator';
@@ -52,6 +53,9 @@ const MatFormFieldAppearance: MatFormFieldDefaultOptions = {
     appearance: 'outline'
 };
 
+// QUILL EDITOR - REGISTER
+Quill.register('modules/imageDropAndPaste', QuillImageDropAndPaste);
+
 export const appConfig: ApplicationConfig = {
     providers: [
         AuthService,
@@ -75,36 +79,6 @@ export const appConfig: ApplicationConfig = {
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults },
         { provide: MAT_TABS_CONFIG, useValue: customTabDefaults },
         { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
-        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: MatFormFieldAppearance },
-        provideQuillConfig({
-            modules: {
-                toolbar: [
-                    [
-                        { 'size': ['small', false, 'large', 'huge'] },
-                        { 'header': [1, 2, 3, 4, 5, 6, false] }
-                    ],
-                    [],
-                    [
-                        'bold', 'italic', 'underline', 'strike',
-                        { 'color': [] }, { 'background': [] }
-                    ],
-                    [],
-                    [
-                        'link', 'image'
-                    ],
-                    [
-                        { 'script': 'sub'}, { 'script': 'super' }
-                    ],
-                    [],
-                    [
-                        { 'align': [] },
-                        { 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' },
-                        { 'indent': '-1'}, { 'indent': '+1' }
-                    ],
-                    [],
-                    [{ 'direction': 'rtl' }, 'clean'],
-                ]
-            }
-        })
+        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: MatFormFieldAppearance }
     ]
 };

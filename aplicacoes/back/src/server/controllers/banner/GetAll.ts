@@ -30,9 +30,9 @@ export const getAllBanner = async (request: Request<{}, {}, {}, IQueryProps>, re
     const where: any = {};
 
     if (filtros.filter) {
-        if (filtros.filter.status !== undefined) {
-            where.status = {
-                equals: filtros.filter.status,
+        if (filtros.filter.ativo !== undefined) {
+            where.ativo = {
+                equals: filtros.filter.ativo,
             };
         }
     }

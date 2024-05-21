@@ -14,6 +14,24 @@
                 </span>
             </button>
 
+            <!-- TRASH -->
+            @if (imagemId) {
+                <button
+                    class="relative"
+                    matTooltip="Apagar imagens"
+                    mat-raised-button
+                    [color]="'accent'"
+                    [disabled]="loading"
+                    (click)="apagar()">
+                    <span class="material-icons-outlined">
+                        delete
+                    </span>
+                    @if (loading) {
+                        <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
+                    }
+                </button>
+            }
+
             <!-- SALVAR -->
             <button
                 class="relative"
@@ -52,27 +70,48 @@
             </div>
 
             <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Título</mat-label>
-                    <input maxlength="100" matInput formControlName="titulo" />
-                    <mat-error *ngIf="formDados.get('titulo')?.hasError('required') && formDados.get('titulo')?.touched">Preenchimento obrigatório</mat-error>
+                <mat-form-field class="w-36">
+                    <mat-label>Ordem</mat-label>
+                    <input maxlength="2" type="number" matInput formControlName="ordem" />
+                    <mat-error *ngIf="formDados.get('ordem')?.hasError('required') && formDados.get('ordem')?.touched">Preenchimento obrigatório</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Link Imagem Desktop</mat-label>
-                    <input maxlength="300" matInput formControlName="imagemDesktop" />
-                    <mat-error *ngIf="formDados.get('imagemDesktop')?.hasError('required') && formDados.get('imagemDesktop')?.touched">Preenchimento obrigatório</mat-error>
+                <mat-form-field class="w-full" matTooltip="Para acessibilidade, não ficando visível">
+                    <mat-label>Descrição</mat-label>
+                    <input maxlength="100" matInput formControlName="descricao" />
+                    <mat-error *ngIf="formDados.get('descricao')?.hasError('required') && formDados.get('descricao')?.touched">Preenchimento obrigatório</mat-error>
                 </mat-form-field>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Link Imagem Mobile</mat-label>
-                    <input maxlength="300" matInput formControlName="imagemMobile" />
-                    <mat-error *ngIf="formDados.get('imagemMobile')?.hasError('required') && formDados.get('imagemMobile')?.touched">Preenchimento obrigatório</mat-error>
-                </mat-form-field>
+            <div class="flex flex-col gap-4 w-full mt-4 pt-4 border-t border-t-secondary">
+                <div class="">
+                    Imagem p/ Computadores (Desktop)
+                </div>
+
+                <app-imagem
+                    class="w-full"
+                    [formDados]="formDados"
+                    [campo]="'imagem_desktop'"
+                    [sizeBytes]="2000000"
+                    (fileChangeEvent)="changeImagemDesktop($event)">
+                </app-imagem>
+            </div>
+
+            <div class="flex flex-col gap-4 w-full mt-4 pt-4 border-t border-t-secondary">
+                <div class="">
+                    Imagem p/ Dispositivos Móveis
+                </div>
+
+                <app-imagem
+                    class="w-full"
+                    [formDados]="formDados"
+                    [campo]="'imagem_mobile'"
+                    [sizeBytes]="2000000"
+                    [width]="500"
+                    (fileChangeEvent)="changeImagemMobile($event)">
+                </app-imagem>
             </div>
         </div>
     </form>

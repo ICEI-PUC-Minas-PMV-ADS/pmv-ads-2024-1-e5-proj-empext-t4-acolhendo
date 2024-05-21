@@ -41,4 +41,10 @@ export class NutricaoService {
 
     }
 
+    uploadImagem(dados: any): Observable<any> {
+
+        return this._api.postImagem('/article/images', dados);
+
+    }
+
 }

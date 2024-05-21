@@ -53,11 +53,11 @@ export class BannerComponent {
 
         const filtros = {
             filtro: this.searchInputControl.value,
-            offset: (this._paginator?.pageIndex ?? 0) * this.pageLimit,
+            page: (this._paginator?.pageIndex ?? 0) * this.pageLimit,
             limit: this.pageLimit
         };
 
-        this._bannerService.getBanners(filtros)
+        this._bannerService.getBanner(filtros)
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => {

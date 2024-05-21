@@ -53,7 +53,7 @@ export class EventoComponent {
 
         const filtros = {
             filtro: this.searchInputControl.value,
-            offset: (this._paginator?.pageIndex ?? 0) * this.pageLimit,
+            page: (this._paginator?.pageIndex ?? 0) * this.pageLimit,
             limit: this.pageLimit
         };
 

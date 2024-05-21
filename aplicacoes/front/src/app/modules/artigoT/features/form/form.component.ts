@@ -120,7 +120,7 @@ export class ArtigoTFormComponent {
 
     async apagar() {
 
-      const result = await confirm('Prossegui com a remoção?');
+      const result = await confirm('Prosseguir com a remoção?');
       if (!result) return;
 
       this.loading = true;

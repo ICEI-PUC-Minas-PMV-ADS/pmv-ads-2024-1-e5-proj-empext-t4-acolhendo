@@ -34,7 +34,10 @@ class UploadMiddleware {
             cb: FileFilterCallback
         ) => {
             const type = mime.extension(file.mimetype);
-            const allowedTypes = ['png', 'jpg', 'jpeg', 'webp'];
+            const allowedTypes = [
+                'png', 'jpg', 'jpeg', 'webp',
+                'imagem/png', 'imagem/jpg', 'imagem/jpeg', 'imagem/webp'
+            ];
             if (allowedTypes.includes(`${type}`)) {
                 cb(null, true);
             } else {
@@ -53,3 +56,4 @@ class UploadMiddleware {
 
 export const UploadGaleria = new UploadMiddleware('gallery');
 export const UploadBanner = new UploadMiddleware('banner');
+export const UploadArticle = new UploadMiddleware('article');
