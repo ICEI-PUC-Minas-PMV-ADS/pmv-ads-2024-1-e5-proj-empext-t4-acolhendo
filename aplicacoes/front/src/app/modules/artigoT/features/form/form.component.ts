@@ -59,10 +59,10 @@ export class ArtigoTFormComponent {
             id: [null, []],
             ativo: [false, []],
             tipo: [eArtigo.ARTIGO, []],
-            imagemCapa: [null, [Validators.required]],
+            imagem_capa: [null, []],
             titulo: [null, [Validators.required]],
-            texto: [null, []],
-            telaPrincipal: [true, []],
+            texto: [null, [Validators.required]],
+            tela_principal: [true, []],
         });
 
         this.getDados();

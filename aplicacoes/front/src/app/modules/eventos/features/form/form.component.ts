@@ -61,9 +61,9 @@ export class EventoFormComponent {
     this.formDados = this._formBuilder.group({
       id: [null, []],
       tipo: [eArtigo.EVENTO, []],
-      imagem_capa: [null, [Validators.required]],
+      imagem_capa: [null, []],
       titulo: [null, [Validators.required]],
-      texto: [null, []],
+      texto: [null, [Validators.required]],
       tela_principal: [true, []],
     });
 
@@ -124,18 +124,36 @@ export class EventoFormComponent {
 
   }
 
-  salvar() {
+  async salvar() {
 
     if (this.formDados.invalid) {
       UtilsService.validateAllFormFields(this.formDados);
       return;
     }
 
-    const values = this.formDados.value;
-
     this.loading = true;
     this._cd.detectChanges();
 
+    try {
+
+        if (this.fileImagemCapa) {
+
+            let imagem = await this.uploadImagem(this.fileImagemCapa.file);
+
+            this.formDados.get('imagem_capa').setValue(imagem);
+
+            this.fileImagemCapa = null;
+            
+        }
+
+    } catch(err) {
+        this.loading = false;
+        this._cd.detectChanges();
+        alert(err.message)
+        return;
+    }
+
+    const values = this.formDados.value;
 
     iif(() => !!this.artigoId,
       this._eventoService.salvarEvento(values, this.artigoId),
