@@ -5,7 +5,7 @@
         <ngx-slick-carousel
             #slickModal="slick-carousel"
             [config]="slickCarouselConfigArt">
-            @for (b of artigos; track b.url) {
+            @for (b of artigos; track b.imagem_capa) {
                 <div
                     ngxSlickItem
                     class="
@@ -15,8 +15,8 @@
                     "
                     (click)="abrirArtigo(b.id)">
                     <img class="shadow-lg md:w-60"
-                        [src]="b.url"
-                        alt="{{ b.descricao }}" />
+                        [src]="getImagem(b.imagem_capa)"
+                        alt="{{ b.titulo }}" />
                 </div>
             }
         </ngx-slick-carousel>

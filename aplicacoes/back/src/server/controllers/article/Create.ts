@@ -12,8 +12,8 @@ export const createArticleValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(YUP.object().shape({
         titulo: YUP.string().required().min(0),
         imagem_capa: YUP.string().required(),
-        tipo: YUP.number().required().moreThan(0).max(4),
-        texto: YUP.string().required().min(0),
+        tipo: YUP.number().required().moreThan(0).max(10),
+        texto: YUP.string().optional().min(0),
         data_inclusao: YUP.date().optional(),
         tela_principal: YUP.bool().required()
     }))

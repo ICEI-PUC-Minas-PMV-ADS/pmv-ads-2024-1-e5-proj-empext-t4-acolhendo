@@ -16,7 +16,7 @@ export class HomeBannerComponent {
 
     slickCarouselConfigBanner: any;
 
-    banner: { url: string; descricao: string }[] = [];
+    banner: { id: number; descricao: string; imagem_desktop: string; imagem_mobile: string; }[] = [];
 
     loading: boolean = false;
 
@@ -31,7 +31,7 @@ export class HomeBannerComponent {
 
     ngOnInit() {
 
-        // this.getBanner();
+        this.getBanner();
 
     }
 
@@ -79,6 +79,16 @@ export class HomeBannerComponent {
     manutencaoBanner() {
 
         this._router.navigate(['/banner']);
+
+    }
+
+    getImagem(imagem) {
+
+        if (imagem) {
+            return imagem.split('front/src/')[1];
+        }
+
+        return ''
 
     }
 

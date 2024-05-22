@@ -2,10 +2,10 @@
     <ngx-slick-carousel
         #slickModal="slick-carousel"
         [config]="slickCarouselConfigBanner">
-        @for (b of banner; track b.url) {
+        @for (b of banner; track b.id) {
             <div ngxSlickItem class="carousel cursor-pointer">
                 <img class=""
-                    [src]="b.url"
+                    [src]="getImagem(b.imagem_desktop)"
                     alt="{{ b.descricao }}" />
             </div>
         }

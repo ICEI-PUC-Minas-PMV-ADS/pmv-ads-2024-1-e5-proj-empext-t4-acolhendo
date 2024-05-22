@@ -45,7 +45,7 @@
                             "
                             matTooltip="Visualizar artigo"
                             (click)="abrirArtigo(item.id)">
-                            <img class="w-full h-full" [src]="item.imagemCapa">
+                            <img class="w-full h-full" [src]="getImagem(item.imagemCapa)">
 
                             <h2
                                 class="max-w-full block px-4 text-center"

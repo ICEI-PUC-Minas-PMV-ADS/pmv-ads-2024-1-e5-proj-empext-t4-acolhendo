@@ -47,13 +47,14 @@ export class QuemSomosComponent {
             .subscribe({
                 next: res => {
 
-                    this.dados = res;
+                    this.dados = res.rows[0];
 
                     this._cd.detectChanges();
 
                 },
                 error: err => {
 
+                    // this._router.navigate(['/']);
                     // this.showError = true;
 
                     // this._cd.detectChanges();

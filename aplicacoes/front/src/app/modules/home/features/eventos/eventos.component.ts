@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { Subject, finalize, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { SlickCarouselService } from '../../../../core/services/slick-carousel.service';
 import { HomeService } from '../../data-access/home.service';
-import { Router } from '@angular/router';
+import { IArtigo } from '../../../../core/intefaces/interfaces';
 
 @Component({
     selector: 'app-home-eventos',
@@ -16,7 +17,7 @@ export class HomeEventoComponent {
 
     slickCarouselConfigEvento: any;
 
-    eventos: { url: string; descricao: string; id: number; }[] = [];
+    eventos: IArtigo[] = [];
 
     loading: boolean = false;
 
@@ -79,6 +80,16 @@ export class HomeEventoComponent {
     abrirArtigo(id: number) {
 
         this._router.navigate(['/evento/artigo', { id }]);
+
+    }
+
+    getImagem(imagem) {
+
+        if (imagem) {
+            return imagem.split('front/src/')[1];
+        }
+
+        return ''
 
     }
 

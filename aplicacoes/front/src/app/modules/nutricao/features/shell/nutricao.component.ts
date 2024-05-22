@@ -127,4 +127,14 @@ export class NutricaoComponent {
 
     }
 
+    getImagem(imagem) {
+
+        if (imagem) {
+            return imagem.split('front/src/')[1];
+        }
+
+        return ''
+
+    }
+
 }

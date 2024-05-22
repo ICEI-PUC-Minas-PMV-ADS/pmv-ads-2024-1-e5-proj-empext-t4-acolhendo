@@ -11,6 +11,7 @@ router.put('/company', authValidator, CompanyController.updateCompanyByIdValidat
 
 // Banner
 router.get('/banner', BannerController.getAllBannerValidation, BannerController.getAllBanner)                        // A API deverá fornecer um endpoint GET para retornar todos banners
+router.get('/banner-home', BannerController.getTelaPrincipalArticleValidation, BannerController.getTelaPrincipalBanner)
 router.get('/banner/:id', authValidator, BannerController.getBannerByIdValidation, BannerController.getBannerById)                  // A API deverá fornecer um endpoint GET para retornar um banner
 router.post('/banner', authValidator,  BannerController.createBannerValidation, BannerController.createBanner
 )// A API deverá fornecer um endpoint POST para criar um novo banner,

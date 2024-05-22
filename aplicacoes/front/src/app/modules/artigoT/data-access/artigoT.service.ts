@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../../core/services/api.service';
 import { Observable } from 'rxjs';
+
+import { ApiService } from '../../../core/services/api.service';
 import { eArtigo } from '../../../core/enums/artigo.enum';
 
 @Injectable()
@@ -14,24 +15,20 @@ export class ArtigoTService {
 
     getArtigos(filtros: any): Observable<any> {
 
-        // return this._api.get('/nutricao/lista', filtros);
-
-        // TODO: TESTE
         return this._api.get('/article', { ...filtros, tipo: eArtigo.ARTIGO });
 
     }
 
     getArtigo(id: number): Observable<any> {
 
-        // return this._api.get('/nutricao/get', { id });
-
-        // TODO: TESTE
-        return this._api.get('/article/', + id);
+        return this._api.get('/article/' + id);
 
     }
 
-    cadastraArtigoT(dados: any): Observable<any>{
-      return this._api.post('/article', dados);
+    cadastraArtigoT(dados: any): Observable<any> {
+
+        return this._api.post('/article', dados);
+
     }
 
     salvarArtigo(dados: any, id: number): Observable<any> {
@@ -45,10 +42,11 @@ export class ArtigoTService {
         return this._api.delete('/article/' + id);
 
     }
+
     uploadImagem(dados: any): Observable<any> {
 
-      return this._api.postImagem('/article/images', dados);
+        return this._api.postImagem('/article/images', dados);
 
-  }
+    }
 
 }

@@ -15,7 +15,9 @@
         </div>
     </h1>
 
-    <div>
-        <div [innerHTML]="dados.texto"></div>
-    </div>
+    @if (dados && dados.texto) {
+        <div>
+            <div [innerHTML]="dados.texto"></div>
+        </div>
+    }
 </div>

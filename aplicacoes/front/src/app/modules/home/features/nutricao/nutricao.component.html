@@ -35,7 +35,7 @@
                     "
                     (click)="abrirArtigo(b.id)">
                     <img class="shadow-lg md:w-60"
-                        [src]="b.imagem_capa"
+                        [src]="getImagem(b.imagem_capa)"
                         alt="{{ b.titulo }}" />
                 </div>
             }

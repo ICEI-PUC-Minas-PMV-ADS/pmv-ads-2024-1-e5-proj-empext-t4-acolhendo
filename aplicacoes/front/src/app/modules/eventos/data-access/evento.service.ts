@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { ApiService } from '../../../core/services/api.service';
-import { Observable } from 'rxjs';
 import { eArtigo } from '../../../core/enums/artigo.enum';
 
 @Injectable()
@@ -15,21 +15,23 @@ export class EventoService {
 
     getEventos(filtros: any): Observable<any> {
 
-        return this._api.get('/article', {...filtros, tipo: eArtigo.EVENTO});
+        return this._api.get('/article', { ...filtros, tipo: eArtigo.EVENTO });
 
     }
 
     getEvento(id: number): Observable<any> {
 
-        return this._api.get('/article/', + id)
+        return this._api.get('/article/' + id)
 
     }
 
-    cadastraEvento(dados: any): Observable<any>{
-      return this._api.post('/article', dados)
+    cadastraEvento(dados: any): Observable<any> {
+
+        return this._api.post('/article', dados)
+
     }
 
-    salvarEvento(dados: any, id:number): Observable<any> {
+    salvarEvento(dados: any, id: number): Observable<any> {
 
         return this._api.put('/article/' + id, dados);
 
@@ -43,7 +45,8 @@ export class EventoService {
 
     uploadImagem(dados: any): Observable<any> {
 
-      return this._api.postImagem('/article/images', dados);
+        return this._api.postImagem('/article/images', dados);
 
-  }
+    }
+
 }

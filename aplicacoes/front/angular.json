@@ -30,7 +30,8 @@
                         },
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "src/uploads"
                         ],
                         "styles": [
                             "node_modules/slick-carousel/slick/slick.scss",
@@ -123,7 +124,8 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "src/uploads"
                         ],
                         "styles": [
                             "src/styles.scss"
