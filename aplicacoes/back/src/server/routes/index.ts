@@ -32,7 +32,6 @@ router.get('/article-home', ArticleController.getTelaPrincipalArticleValidation,
 router.put('/article/:id', authValidator, ArticleController.updateArticleByIdValidation, ArticleController.updateArticleById)       // A API deverá fornecer um endpoint PUT para atualizar o artigo
 router.post('/article', authValidator, ArticleController.createArticleValidation, ArticleController.createArticle)                  // A API deverá fornecer um endpoint POST para criar um novo artigo
 router.delete('/article/:id', authValidator, ArticleController.deleteArticleByIdValidation, ArticleController.deleteArticleById)    // A API deverá fornecer um endpoint DELETE para excluir um artigo
-router.post('/article/images', authValidator, multer(UploadArticle.getConfig).fields([{name: 'image-article', maxCount: 1}]), ArticleController.postImage)
 
 // User
 router.get('/user-data', authValidator, UserController.getUserValidation, UserController.getUser)                                   // A API deverá retornar os dados do usuário
@@ -42,15 +41,18 @@ router.post('/reset-password', UserController.resetPasswordValidation, UserContr
 
 // Images
 
+// Article
+router.post('/article/images', authValidator, multer(UploadArticle.getConfig).fields([{name: 'image-article', maxCount: 1}]), ArticleController.postImage)
+
 // Gallery Images
 router.get('/gallery/images/:gallery_id', GalleryController.getByGalleryIdValidation, GalleryController.getByGalleryId) // A API deverá fornecer um endpoint GET para retornar todas as imagens de uma galeria
-router.post('/gallery/images', multer(UploadGaleria.getConfig).array('image-gallery'), GalleryController.postImageValidation, GalleryController.postImage)             // A API deverá fornecer um endpoint POST para fazer upload de uma imagem da galeria
+router.post('/gallery/images', authValidator, multer(UploadGaleria.getConfig).array('image-gallery'), GalleryController.postImageValidation, GalleryController.postImage)             // A API deverá fornecer um endpoint POST para fazer upload de uma imagem da galeria
 router.put('/gallery/images/:path', authValidator, GalleryController.updateByImagePathValidation, GalleryController.updateByImagePath)       // A API deverá fornecer um endpoint PUT para atualizar uma galeria
-router.delete('/gallery/images/:path', GalleryController.deleteByImagePathValidation, GalleryController.deleteByImagePath) // A API deverá fornecer um endpoint DELETE para excluir uma imagem de uma galeria
+router.delete('/gallery/images/:path', authValidator, GalleryController.deleteByImagePathValidation, GalleryController.deleteByImagePath) // A API deverá fornecer um endpoint DELETE para excluir uma imagem de uma galeria
 
 //Banner Images
 router.post('/banner/images', authValidator, multer(UploadBanner.getConfig).fields([{name: 'image-banner', maxCount: 1}]), BannerController.postImage)
-router.delete('/banner/images/:path', BannerController.deleteByImagePathValidation, BannerController.deleteByImagePath) // A API deverá fornecer um endpoint DELETE para excluir uma imagem de uma galeria
+router.delete('/banner/images/:path', authValidator, BannerController.deleteByImagePathValidation, BannerController.deleteByImagePath) // A API deverá fornecer um endpoint DELETE para excluir uma imagem de uma galeria
 
 
 export { router }
