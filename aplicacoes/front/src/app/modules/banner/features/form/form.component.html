@@ -1,26 +1,23 @@
 <div class="flex flex-col w-full p-10">
-    <h1 class="flex text-2xl mb-8">
-        <span class="whitespace-nowrap">Banner - Edição Imagem</span>
+    <div class="flex">
+        <!-- VOLTAR -->
+        <button
+            mat-icon-button
+            matTooltip="Voltar p/ lista"
+            (click)="voltar()">
+            <span class="material-icons">
+                arrow_back
+            </span>
+        </button>
 
-        <div class="w-full flex gap-2 justify-end mb-2">
-            <!-- VOLTAR -->
-            <button
-                matTooltip="Voltar p/ lista"
-                mat-raised-button
-                [color]="'secondary'"
-                (click)="voltar()">
-                <span class="material-icons-outlined">
-                    arrow_back
-                </span>
-            </button>
-
+        <div class="flex w-full justify-end gap-2">
             <!-- TRASH -->
             @if (imagemId) {
                 <button
                     class="relative"
                     matTooltip="Apagar imagens"
                     mat-raised-button
-                    [color]="'accent'"
+                    [color]="'warn'"
                     [disabled]="loading"
                     (click)="apagar()">
                     <span class="material-icons-outlined">
@@ -31,7 +28,7 @@
                     }
                 </button>
             }
-
+    
             <!-- SALVAR -->
             <button
                 class="relative"
@@ -48,6 +45,10 @@
                 }
             </button>
         </div>
+    </div>
+
+    <h1 class="flex text-2xl mb-8">
+        <span class="whitespace-nowrap">Banner - Edição Imagem</span>
     </h1>
 
     <form focusInvalidInput class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="formDados">

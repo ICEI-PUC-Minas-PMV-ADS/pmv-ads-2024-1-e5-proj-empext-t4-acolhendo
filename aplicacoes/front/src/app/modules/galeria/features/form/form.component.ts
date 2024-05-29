@@ -1,71 +1,49 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, finalize, iif, takeUntil } from 'rxjs';
-import { QuillModules } from 'ngx-quill';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { eArtigo } from '../../../../core/enums/artigo.enum';
-import { NutricaoService } from '../../data-access/nutricao.service';
+import { GaleriaService } from '../../data-access/galeria.service';
 import { UtilsService } from '../../../../core/services/utils.service';
-import { QuillToolbar } from '../../../../core/intefaces/quill';
 
 @Component({
-    selector: 'app-nutricao-form',
+    selector: 'app-galeria-form',
     templateUrl: './form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NutricaoFormComponent {
+export class GaleriaFormComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     formDados: UntypedFormGroup = new UntypedFormGroup({});
 
-    artigo: any;
-    artigoId: number = 0;
+    galeria: any;
+    galeriaId: number = 0;
 
     loading: boolean = false;
 
     fileImagemCapa: { file: any; url: string; };
 
-    editorQuill;
-    quillModules: QuillModules;
-    @ViewChild('fileEditor') fileEditor: ElementRef;
-
-    acceptedMimeTypes = [
-        'image/jpeg',
-        'image/jpg',
-        'image/png',
-        'image/webp'
-    ];
-
     constructor(
-        private _nutricaoService: NutricaoService,
+        private _galeriaService: GaleriaService,
         private _formBuilder: UntypedFormBuilder,
         private _cd: ChangeDetectorRef,
         private _router: Router,
         private _route: ActivatedRoute,
     ) {
 
-        this.quillModules = {
-            toolbar: QuillToolbar,
-            imageDropAndPaste: {
-                handler: this.imageDropHandler.bind(this)
-            }
-        }
-
     }
 
     ngOnInit(): void {
 
         if (Number(this._route?.snapshot?.paramMap?.get('id')))
-            this.artigoId = Number(this._route.snapshot.paramMap.get('id'));
+            this.galeriaId = Number(this._route.snapshot.paramMap.get('id'));
 
         this.formDados = this._formBuilder.group({
             id: [null, []],
+            ativo: [false, []],
             titulo: [null, [Validators.required]],
-            tipo: [eArtigo.NUTRICAO, []],
             imagem_capa: [null, []],
-            texto: [null, [Validators.required]],
             tela_principal: [true, []],
         });
 
@@ -82,13 +60,13 @@ export class NutricaoFormComponent {
 
     getDados() {
 
-        if (this.artigoId) {
+        if (this.galeriaId) {
 
             this.loading = true;
             this._cd.detectChanges();
 
-            this._nutricaoService
-                .getNutricao(this.artigoId)
+            this._galeriaService
+                .getGaleriaById(this.galeriaId)
                 .pipe(
                     takeUntil(this._unsubscribeAll),
                     finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -112,9 +90,9 @@ export class NutricaoFormComponent {
 
     editar(dados: any) {
 
-        this.artigo = dados;
+        this.galeria = dados;
 
-        this.formDados.patchValue(this.artigo);
+        this.formDados.patchValue(this.galeria);
 
         this._cd.detectChanges();
 
@@ -122,7 +100,7 @@ export class NutricaoFormComponent {
 
     voltar() {
 
-        this._router.navigate(['/nutricao']);
+        this._router.navigate(['/galeria']);
 
     }
 
@@ -145,10 +123,10 @@ export class NutricaoFormComponent {
                 this.formDados.get('imagem_capa').setValue(imagem);
 
                 this.fileImagemCapa = null;
-                
+
             }
 
-        } catch(err) {
+        } catch (err) {
             this.loading = false;
             this._cd.detectChanges();
             alert(err.message)
@@ -157,9 +135,9 @@ export class NutricaoFormComponent {
 
         const values = this.formDados.value;
 
-        iif(() => !!this.artigoId,
-            this._nutricaoService.salvarNutricao(values, this.artigoId),
-            this._nutricaoService.cadastraNutricao(values))
+        iif(() => !!this.galeriaId,
+            this._galeriaService.salvarGaleria(values, this.galeriaId),
+            this._galeriaService.cadastraGaleria(values))
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -169,7 +147,7 @@ export class NutricaoFormComponent {
 
                     // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-                    this.recarregar(this.artigoId || res.id);
+                    this.recarregar();
 
                 },
                 error: (err) => {
@@ -189,7 +167,7 @@ export class NutricaoFormComponent {
         this.loading = true;
         this._cd.detectChanges();
 
-        this._nutricaoService.deleteNutricao(this.artigoId)
+        this._galeriaService.deleteGaleria(this.galeriaId)
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -211,11 +189,11 @@ export class NutricaoFormComponent {
 
     }
 
-    recarregar(id: number) {
+    recarregar() {
 
-        if (!this.artigoId) {
+        if (!this.galeriaId) {
 
-            this._router.navigate(['/nutricao']);
+            this._router.navigate(['/galeria']);
 
         }
 
@@ -229,9 +207,9 @@ export class NutricaoFormComponent {
 
             const formData: FormData = new FormData();
 
-            formData.append('image-article', file);
+            formData.append('image-gallery', file);
 
-            this._nutricaoService.uploadImagem(formData)
+            this._galeriaService.uploadImagem(formData)
                 .pipe(
                     takeUntil(this._unsubscribeAll)
                 )
@@ -258,83 +236,6 @@ export class NutricaoFormComponent {
     changeImagemCapa(dados) {
 
         this.fileImagemCapa = dados;
-
-    }
-
-    getEditorInstance(editorInstance: any) {
-
-        this.editorQuill = editorInstance;
-
-        const toolbar = this.editorQuill.getModule('toolbar');
-        toolbar.addHandler('image', this.imageHandler.bind(this));
-
-    }
-
-    imageHandler(image) {
-
-        const ths = this;
-
-        ths.fileEditor.nativeElement.click();
-
-    }
-
-    async imageDropHandler(image, type, imageData) {
-
-        const ths = this;
-
-        ths.editorQuill.history.undo();
-        
-        const file = imageData.toFile(`imagem.${type.split('/')[1]}`);
-
-        let imagem = await ths.uploadImagem(file);
-
-        if (imagem) {
-
-            const range = ths.editorQuill.getSelection();
-
-            ths.editorQuill.insertEmbed(range.index, 'image', imagem, 'user');
-
-            this.editorQuill.setSelection(range.index + 1);
-    
-        }
-
-    }
-
-    previewFile() {
-
-        let file = this.fileEditor?.nativeElement?.files[0];
-
-        if (!file) return;
-
-        if (this.validarExtensao(file)) {
-
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-
-                let imagem = new Image();
-                imagem.src = reader.result as string;
-
-                imagem.onload = async () => {
-                    let imagem = await this.uploadImagem(file);
-                    if (imagem) {
-                        console.log(imagem)
-                        const addImageRange = this.editorQuill.getSelection();
-                        this.editorQuill.insertEmbed(addImageRange.index, 'image', imagem);
-                        this.editorQuill.setSelection(addImageRange.index + 1);
-                    }
-                }
-            }
-
-        } else {
-            alert(`A imagem deve ter no máximo 2MB e estar no formato PNG, JPG, JPEG ou WEBP!`);
-        }
-
-    }
-
-    validarExtensao(file: File): boolean {
-        
-        return this.acceptedMimeTypes.includes(file.type) && file.size < 2000000;
 
     }
 

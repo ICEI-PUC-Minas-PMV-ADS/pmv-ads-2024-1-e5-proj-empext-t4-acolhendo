@@ -1,12 +1,18 @@
 import { IGaleriaImagem } from '../../../models';
 import { database } from '../../..';
 
-export const getByGalleryId = async (id: number, ativo: boolean = true): Promise<IGaleriaImagem[] | Error> => {
+export const getByGalleryId = async (page: number, limit: number, id: number): Promise<IGaleriaImagem[] | Error> => {
     try {
+
+        page = Number(page)
+        limit = Number(limit)
+        const skip = Math.floor(page * limit)
+
         const result = await database.galeria_imagem.findMany({
+            skip: skip,
+            take: limit,
             where: {
-                galeria_id: Number(id),
-                ativo: ativo
+                galeria_id: Number(id)
             },
         });
 

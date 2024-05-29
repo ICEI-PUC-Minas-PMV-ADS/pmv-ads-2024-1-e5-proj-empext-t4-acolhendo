@@ -40,6 +40,10 @@ export const appRoutes: Route[] = [
             {
                 path: 'quem-somos',
                 loadChildren: () => import('./modules/quem-somos/quem-somos.module').then(m => m.QuemSomosModule)
+            },
+            {
+                path: 'galeria',
+                loadChildren: () => import('./modules/galeria/galeria.module').then(m => m.GaleriaModule)
             }
         ]
     },

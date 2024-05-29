@@ -1,0 +1,73 @@
+<div class="flex flex-col w-full p-10">
+    <div class="flex">
+        <button
+            mat-icon-button
+            matTooltip="Voltar"
+            (click)="voltar()">
+            <span class="material-icons">
+                arrow_back
+            </span>
+        </button>
+
+        <div *onlyAdmin class="flex w-full justify-end gap-2">
+            <button
+                mat-raised-button
+                [color]="'accent'"
+                matTooltip="Editar galeria"
+                (click)="editar()">
+                <span class="material-icons">
+                    edit
+                </span>
+            </button>
+
+            <button
+                mat-raised-button
+                [color]="'primary'"
+                matTooltip="Adicionar imagem"
+                (click)="novaImagem()">
+                <span class="material-icons">
+                    add_a_photo
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <h1 class="flex text-2xl mb-8">
+        Galerias
+    </h1>
+
+    <h2 class="flex text-xl mb-8">
+        {{ galeriaTitulo }}
+    </h2>
+
+    <div id="lista" class="py-12">
+        @if (items && items.length) {
+            <div class="flex flex-col gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+                    @for (item of items; track item.id) {
+                        <article
+                            class="
+                                flex justify-center items-center
+                                bg-white rounded-xl shadow-lg
+                            "
+                            (click)="editarImagem(item.id)">
+                            <img class="w-full h-full" [src]="getImagem(item.imagem)">
+                        </article>
+                    }
+                </div>
+    
+                <mat-paginator
+                    class="mb-4"
+                    [length]="itemsCount"
+                    [pageSize]="pageLimit"
+                    [pageSizeOptions]="pageLimits"
+                    [showFirstLastButtons]="true">
+                </mat-paginator>
+            </div>
+        } @else if (!!items) {
+            <div class="p-8 sm:p-16 border-t text-2xl font-semibold tracking-tight text-center">
+                Nenhuma imagem encontrada!
+            </div>
+        }
+    </div>
+</div>

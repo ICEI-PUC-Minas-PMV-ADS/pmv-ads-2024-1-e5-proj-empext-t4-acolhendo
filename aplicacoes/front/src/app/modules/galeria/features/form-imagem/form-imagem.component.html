@@ -12,10 +12,10 @@
 
         <div class="flex w-full justify-end gap-2">
             <!-- TRASH -->
-            @if (artigoId) {
+            @if (imagemId) {
                 <button
                     class="relative"
-                    matTooltip="Apagar artigo"
+                    matTooltip="Apagar imagem"
                     mat-raised-button
                     [color]="'warn'"
                     [disabled]="loading"
@@ -48,13 +48,13 @@
     </div>
 
     <h1 class="flex text-2xl mb-8">
-        <span class="whitespace-nowrap">Cadastro de Artigo Nutricional</span>
+        <span class="whitespace-nowrap">Cadastro de Imagem - {{ galeriaId }}</span>
     </h1>
 
     <form focusInvalidInput class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="formDados">
         <div class="flex flex-col p-4">
             <div class="flex flex-col md:flex-row gap-4">
-                @if (artigoId) {
+                @if (imagemId) {
                     <mat-form-field class="w-28">
                         <mat-label>ID</mat-label>
                         <input matInput formControlName="id" readonly>
@@ -62,51 +62,18 @@
                 }
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4 mb-4">
-                <mat-checkbox
-                    [color]="'primary'"
-                    formControlName="tela_principal">
-                    Exibir na Página Principal
-                </mat-checkbox>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4">
-                <mat-form-field class="w-full">
-                    <mat-label>Título</mat-label>
-                    <input maxlength="100" matInput formControlName="titulo" />
-                    <mat-error *ngIf="formDados.get('titulo')?.hasError('required') && formDados.get('titulo')?.touched">Preenchimento obrigatório</mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="flex flex-col gap-4 w-full mt-4 pt-4 border-t border-t-secondary">
+            <div class="flex flex-col gap-4 w-full">
                 <div class="">
-                    Imagem Capa
+                    Imagem
                 </div>
 
                 <app-imagem
                     class="w-full"
                     [formDados]="formDados"
-                    [campo]="'imagem_capa'"
+                    [campo]="'imagem'"
                     [sizeBytes]="2000000"
                     (fileChangeEvent)="changeImagemCapa($event)">
                 </app-imagem>
-            </div>
-
-            <div class="flex flex-col gap-4 w-full mt-4 pt-4 border-t border-t-secondary">
-                <div class="">
-                    Texto Artigo
-                </div>
-
-                <input class="hidden" #fileEditor type="file" (change)="previewFile()"/>
-                <div class="w-full h-96">
-                    <quill-editor
-                        (onEditorCreated)="getEditorInstance($event)"
-                        [modules]="quillModules"
-                        placeholder="Insira o texto aqui..."
-                        class="w-full h-80"
-                        formControlName="texto">
-                    </quill-editor>
-                </div>
             </div>
         </div>
     </form>

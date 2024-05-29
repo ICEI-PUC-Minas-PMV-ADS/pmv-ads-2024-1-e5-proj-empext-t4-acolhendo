@@ -3,48 +3,50 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Subject, finalize, iif, takeUntil } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { BannerService } from '../../data-access/banner.service';
+import { GaleriaService } from '../../data-access/galeria.service';
 import { UtilsService } from '../../../../core/services/utils.service';
 
 @Component({
-    selector: 'app-banner-form',
-    templateUrl: './form.component.html',
+    selector: 'app-galeria-imagem-form',
+    templateUrl: './form-imagem.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BannerFormComponent {
+export class GaleriaImagemFormComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     formDados: UntypedFormGroup = new UntypedFormGroup({});
 
-    imagem: any;
-    imagemId: number | null = null;
-
-    fileImagemDesktop: { file: any; url: string; };
-    fileImagemMobile: { file: any; url: string; };
+    imagem;
+    imagemId: number = 0;
+    galeriaId: number = 0;
 
     loading: boolean = false;
 
+    fileImagemCapa: { file: any; url: string; };
+
     constructor(
-        private _bannerService: BannerService,
+        private _galeriaService: GaleriaService,
         private _formBuilder: UntypedFormBuilder,
         private _cd: ChangeDetectorRef,
         private _router: Router,
-        private _route: ActivatedRoute
-    ) { }
+        private _route: ActivatedRoute,
+    ) {
+
+    }
 
     ngOnInit(): void {
 
         if (Number(this._route?.snapshot?.paramMap?.get('id')))
             this.imagemId = Number(this._route.snapshot.paramMap.get('id'));
 
+        if (Number(this._route?.snapshot?.paramMap?.get('galeria')))
+            this.galeriaId = Number(this._route.snapshot.paramMap.get('galeria'));
+
         this.formDados = this._formBuilder.group({
             id: [null, []],
-            ativo: [false, []],
-            descricao: [null, [Validators.required]],
-            ordem: [null, [Validators.required]],
-            imagem_desktop: [null, []],
-            imagem_mobile: [null, []],
+            galeria_id: [null, []],
+            imagem: [null, []],
         });
 
         this.getDados();
@@ -65,8 +67,8 @@ export class BannerFormComponent {
             this.loading = true;
             this._cd.detectChanges();
 
-            this._bannerService
-                .getImagem(this.imagemId)
+            this._galeriaService
+                .getImagemById(this.imagemId)
                 .pipe(
                     takeUntil(this._unsubscribeAll),
                     finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -94,16 +96,13 @@ export class BannerFormComponent {
 
         this.formDados.patchValue(this.imagem);
 
-        this.fileImagemDesktop = null;
-        this.fileImagemMobile = null;
-
         this._cd.detectChanges();
 
     }
 
     voltar() {
 
-        this._router.navigate(['/banner']);
+        this._router.navigate(['/galeria/exibicao', { id: this.galeriaId }]);
 
     }
 
@@ -111,7 +110,6 @@ export class BannerFormComponent {
 
         if (this.formDados.invalid) {
             UtilsService.validateAllFormFields(this.formDados);
-            // this._dialog.showToast('Por favor verifique o formulário!');
             return;
         }
 
@@ -120,27 +118,22 @@ export class BannerFormComponent {
 
         try {
 
-            if (this.fileImagemDesktop) {
+            if (this.fileImagemCapa) {
 
-                let imagem = await this.uploadImagem(this.fileImagemDesktop.file);
+                let imagem = await this.uploadImagem(this.fileImagemCapa.file);
 
-                this.formDados.get('imagem_desktop').setValue(imagem);
+                this.formDados.get('imagem').setValue(imagem);
 
-                this.fileImagemDesktop = null;
-                
-            }
-    
-            if (this.fileImagemMobile) {
-    
-                let imagem = await this.uploadImagem(this.fileImagemMobile.file);
+                this.fileImagemCapa = null;
 
-                this.formDados.get('imagem_mobile').setValue(imagem);
-
-                this.fileImagemMobile = null;
-                
             }
 
-        } catch(err) {
+            this.loading = false;
+            this._cd.detectChanges();
+
+            this.voltar();
+
+        } catch (err) {
             this.loading = false;
             this._cd.detectChanges();
             alert(err.message)
@@ -149,27 +142,27 @@ export class BannerFormComponent {
 
         const values = this.formDados.value;
 
-        iif(() => !!this.imagemId,
-            this._bannerService.salvarImagem(values, this.imagemId),
-            this._bannerService.cadastraImagem(values))
-            .pipe(
-                takeUntil(this._unsubscribeAll),
-                finalize(() => { this.loading = false; this._cd.detectChanges() })
-            )
-            .subscribe({
-                next: (res) => {
+        // iif(() => !!this.galeriaId,
+        //     this._galeriaService.salvarGaleria(values, this.galeriaId),
+        //     this._galeriaService.cadastraGaleria(values))
+        //     .pipe(
+        //         takeUntil(this._unsubscribeAll),
+        //         finalize(() => { this.loading = false; this._cd.detectChanges() })
+        //     )
+        //     .subscribe({
+        //         next: (res) => {
 
-                    // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
+        //             // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
 
-                    this.recarregar(this.imagemId || res.id);
+        //             this.recarregar();
 
-                },
-                error: (err) => {
+        //         },
+        //         error: (err) => {
 
-                    // this._dialog.error(err, 'Erro ao atualizar dados');
+        //             // this._dialog.error(err, 'Erro ao atualizar dados');
 
-                }
-            });
+        //         }
+        //     });
 
     }
 
@@ -181,7 +174,7 @@ export class BannerFormComponent {
         this.loading = true;
         this._cd.detectChanges();
 
-        this._bannerService.deleteImagem(this.imagemId)
+        this._galeriaService.deleteGaleria(this.galeriaId)
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -203,41 +196,16 @@ export class BannerFormComponent {
 
     }
 
-    recarregar(id: number) {
-
-        if (!this.imagemId) {
-
-            this._router.navigate(['/banner/form', { id }]);
-
-            this.imagemId = id;
-
-        }
-
-        this.getDados();
-
-    }
-
-    changeImagemDesktop(dados) {
-
-        this.fileImagemDesktop = dados;
-
-    }
-
-    changeImagemMobile(dados) {
-
-        this.fileImagemMobile = dados;
-
-    }
-
     uploadImagem(file): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
             const formData: FormData = new FormData();
 
-            formData.append('image-banner', file);
+            formData.append('image-gallery', file);
+            formData.append('galeria_id', String(this.galeriaId));
 
-            this._bannerService.uploadImagem(formData)
+            this._galeriaService.uploadImagens(formData)
                 .pipe(
                     takeUntil(this._unsubscribeAll)
                 )
@@ -258,6 +226,12 @@ export class BannerFormComponent {
                 });
 
         });
+
+    }
+
+    changeImagemCapa(dados) {
+
+        this.fileImagemCapa = dados;
 
     }
 

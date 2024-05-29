@@ -202,6 +202,9 @@ export class QuemSomosFormComponent {
                     },
                     error: (err) => {
 
+                        this.loading = false;
+                        this._cd.detectChanges();
+
                         reject;
 
                     }

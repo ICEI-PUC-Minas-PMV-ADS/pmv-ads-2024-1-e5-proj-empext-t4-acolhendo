@@ -208,6 +208,9 @@ export class ArtigoTFormComponent {
                   },
                   error: (err) => {
 
+                    this.loading = false;
+                    this._cd.detectChanges();
+
                       reject;
 
                   }
