@@ -6,26 +6,18 @@ import { GalleryProvider } from '../../../database/providers/gallery';
 import ImageDeleter from '../../../shared/services/ImageDeleter';
 
 interface IParamProps {
-    path?: string;
+    id?: number;
 }
 
-export const deleteByImagePathValidation = validation((getSchema) => ({
+export const deleteByImageIdValidation = validation((getSchema) => ({
     params: getSchema<IParamProps>(yup.object().shape({
-        path: yup.string().required(),
+        id: yup.number().required(),
     }))
 }));
 
-export const deleteByImagePath = async (request: Request<IParamProps>, response: Response) => {
-    if (!request.params.path) {
-        return response.status(StatusCodes.BAD_REQUEST).json({
-            errors: {
-                default: 'O parâmetro caminho da imagem precisa ser informado'
-            }
-        });
-    }
-
-    const imagePath = request.params.path;
-    const result = await GalleryProvider.deleteByImagePath(imagePath);
+export const deleteByImageId = async (request: Request<IParamProps>, response: Response) => {
+    const image = await GalleryProvider.getByImageId(+request.params.id);
+    const result = await GalleryProvider.deleteByImageId(+request.params.id);
 
     if (result instanceof Error) {
         return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -35,8 +27,16 @@ export const deleteByImagePath = async (request: Request<IParamProps>, response:
         });
     }
 
+    if (image instanceof Error) {
+        return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: image.message
+            }
+        });
+    }
+
     try {
-        await ImageDeleter.deleteImage(imagePath);
+        await ImageDeleter.deleteImage(image.imagem);
         return response.status(StatusCodes.NO_CONTENT).send();
     } catch (error) {
         return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

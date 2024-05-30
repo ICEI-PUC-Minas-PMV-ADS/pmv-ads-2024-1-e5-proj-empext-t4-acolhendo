@@ -1,10 +1,10 @@
 import { database } from '../../..'
 
-export const deleteByImagePath = async (path: string): Promise<void | Error> => {
+export const deleteByImageId = async (id: number): Promise<void | Error> => {
     try {
         await database.galeria_imagem.deleteMany({
             where: {
-                imagem: path,
+                id: Number(id),
             },
         });
     } catch (error) {
