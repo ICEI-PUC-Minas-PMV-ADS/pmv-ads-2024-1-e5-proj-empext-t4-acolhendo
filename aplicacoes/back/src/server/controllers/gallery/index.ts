@@ -3,6 +3,7 @@ import * as DeleteById from './DeleteById'
 import * as GetAll from './GetAll'
 import * as GetById from './GetById'
 import * as UpdateById from './UpdateById'
+import * as PostImages from './images/PostImages'
 import * as PostImage from './images/PostImage'
 import * as UpdateByImagePath from './images/UpdateByImagePath'
 import * as GetByImageId from './images/GetByImageId'
@@ -20,5 +21,6 @@ export const GalleryController = {
     ...UpdateByImagePath,
     ...GetByGalleryId,
     ...DeleteByImageId,
+    ...PostImages,
     ...GetByImageId
 }

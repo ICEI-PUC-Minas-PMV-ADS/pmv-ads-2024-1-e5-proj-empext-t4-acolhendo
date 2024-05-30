@@ -50,7 +50,7 @@ router.post('/gallery/image', authValidator, multer(UploadGaleria.getConfig).fie
 // Gallery Images
 router.get('/gallery/images/:gallery_id', GalleryController.getByGalleryIdValidation, GalleryController.getByGalleryId) // A API deverá fornecer um endpoint GET para retornar todas as imagens de uma galeria
 router.get('/gallery/image/:id', GalleryController.getByImageIdValidation, GalleryController.getByImageId)
-// router.post('/gallery/images', authValidator, multer(UploadGaleria.getConfig).array('image-gallery'), GalleryController.postImageValidation, GalleryController.postImages)             // A API deverá fornecer um endpoint POST para fazer upload de uma imagem da galeria
+router.post('/gallery/images', authValidator, multer(UploadGaleria.getConfig).array('image-gallery'), GalleryController.postImageValidation, GalleryController.postImages)             // A API deverá fornecer um endpoint POST para fazer upload de uma imagem da galeria
 router.delete('/gallery/images/:path', authValidator, GalleryController.deleteByImageIdValidation, GalleryController.deleteByImageId) // A API deverá fornecer um endpoint DELETE para excluir uma imagem de uma galeria
 
 //Banner Images
