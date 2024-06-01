@@ -12,22 +12,20 @@
 
         <div class="flex w-full justify-end gap-2">
             <!-- TRASH -->
-            @if (imagemId) {
-                <button
-                    class="relative"
-                    matTooltip="Apagar imagem"
-                    mat-raised-button
-                    [color]="'warn'"
-                    [disabled]="loading"
-                    (click)="apagar()">
-                    <span class="material-icons-outlined">
-                        delete
-                    </span>
-                    @if (loading) {
-                        <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
-                    }
-                </button>
-            }
+            <button
+                class="relative"
+                matTooltip="Apagar imagem"
+                mat-raised-button
+                [color]="'warn'"
+                [disabled]="loading"
+                (click)="apagar()">
+                <span class="material-icons-outlined">
+                    delete
+                </span>
+                @if (loading) {
+                    <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
+                }
+            </button>
 
             <!-- SALVAR -->
             <button
@@ -48,18 +46,16 @@
     </div>
 
     <h1 class="flex text-2xl mb-8">
-        <span class="whitespace-nowrap">Cadastro de Imagem - {{ galeriaId }}</span>
+        <span class="whitespace-nowrap">Edição de Imagem - {{ galeriaId }}</span>
     </h1>
 
     <form focusInvalidInput class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="formDados">
         <div class="flex flex-col p-4">
             <div class="flex flex-col md:flex-row gap-4">
-                @if (imagemId) {
-                    <mat-form-field class="w-28">
-                        <mat-label>ID</mat-label>
-                        <input matInput formControlName="id" readonly>
-                    </mat-form-field>
-                }
+                <mat-form-field class="w-28">
+                    <mat-label>ID</mat-label>
+                    <input matInput formControlName="id" readonly>
+                </mat-form-field>
             </div>
 
             <div class="flex flex-col gap-4 w-full">

@@ -86,6 +86,10 @@ export class GaleriaImagemFormComponent {
                     }
                 });
 
+        } else {
+
+            this.voltar();
+
         }
 
     }
@@ -174,7 +178,7 @@ export class GaleriaImagemFormComponent {
         this.loading = true;
         this._cd.detectChanges();
 
-        this._galeriaService.deleteGaleria(this.galeriaId)
+        this._galeriaService.deleteImagemGaleria(this.imagemId)
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })

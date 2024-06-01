@@ -25,6 +25,16 @@ export class UtilsService {
 
     }
 
+    public static moveScrollTop() {
+
+        setTimeout(() => {
+            
+            window.scrollTo(0, 0);
+            
+        });
+
+    }
+
     public static validateAllFormFields(formGroup: UntypedFormGroup | UntypedFormArray) {
 
         Object.keys(formGroup.controls).forEach((field) => {

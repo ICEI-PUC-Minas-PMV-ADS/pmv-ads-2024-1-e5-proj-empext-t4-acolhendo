@@ -68,4 +68,10 @@ export class GaleriaService {
 
     }
 
+    deleteImagemGaleria(id: number): Observable<any> {
+
+        return this._api.delete('/gallery/images/' + id);
+
+    }
+
 }

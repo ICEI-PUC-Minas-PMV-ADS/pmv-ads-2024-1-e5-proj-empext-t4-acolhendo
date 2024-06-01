@@ -53,7 +53,7 @@ export class ArtigoTComponent {
 
         const filtros = {
             filtro: this.searchInputControl.value,
-            page: (this._paginator?.pageIndex ?? 0) * this.pageLimit,
+            page: this._paginator?.pageIndex ?? 0,
             limit: this.pageLimit
         };
 

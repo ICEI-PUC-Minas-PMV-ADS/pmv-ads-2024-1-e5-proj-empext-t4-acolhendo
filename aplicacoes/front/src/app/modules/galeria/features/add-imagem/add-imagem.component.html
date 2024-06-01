@@ -1,0 +1,86 @@
+<div class="flex flex-col w-full p-10">
+    <div class="flex">
+        <!-- VOLTAR -->
+        <button
+            mat-icon-button
+            matTooltip="Voltar p/ lista"
+            (click)="voltar()">
+            <span class="material-icons">
+                arrow_back
+            </span>
+        </button>
+
+        <div class="flex w-full justify-end gap-2">
+            <!-- SALVAR -->
+            <button
+                class="relative"
+                matTooltip="Salvar alterações"
+                mat-raised-button
+                [color]="'primary'"
+                [disabled]="loading"
+                (click)="salvar()">
+                <span class="material-icons-outlined">
+                    save
+                </span>
+                @if (loading) {
+                    <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
+                }
+            </button>
+        </div>
+    </div>
+
+    <h1 class="flex text-2xl mb-8">
+        <span class="whitespace-nowrap">Upload de Imagens - {{ galeriaId }}</span>
+    </h1>
+
+    <div class="flex flex-row justify-start">
+        <button
+            class="relative"
+            matTooltip="Salvar alterações"
+            mat-raised-button
+            [color]="'accent'"
+            [disabled]="loading"
+            (click)="adicionarImagens()">
+            Adicionar Imagens
+            @if (loading) {
+                <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
+            }
+        </button>
+        <input hidden #fileInput type="file" multiple (change)="previewFile()">
+    </div>
+
+    <div class="flex flex-col gap-0.5 mt-2">
+        <span class="text-xs text-gray-500">JPEG, JPG, PNG ou WEBP</span>
+        <span class="text-xs text-gray-500">{{ sizeFormatado(sizeBytes) }} por imagem</span>
+    </div>
+
+    @if (files.length) {
+        <div class="flex flex-col gap-2 mt-8">
+            @for (file of files; track file.index; let index = $index) {
+                <div
+                    class="flex flex-row justify-between items-center px-4 py-2 bg-slate-100 rounded">
+                    <span>{{ file.nome }} ({{ sizeFormatado(file.tamanho) }})</span>
+                    <button
+                        matTooltip="Remover"
+                        mat-icon-button
+                        class="text-red-500"
+                        (click)="removerArquivo(index)">
+                        <span class="material-icons">
+                            close
+                        </span>
+                    </button>
+                </div>
+            }
+        </div>
+    }
+
+    @if (filesInvalidos.length) {
+        <div class="flex flex-col gap-2">
+            @for (file of filesInvalidos; track file.index) {
+                <div class="flex flex-row justify-between items-center px-4 py-2 bg-red-300 rounded">
+                    <span>{{ file.nome }} ({{ file.motivo }})</span>
+                </div>
+            }
+        </div>
+    }
+</div>

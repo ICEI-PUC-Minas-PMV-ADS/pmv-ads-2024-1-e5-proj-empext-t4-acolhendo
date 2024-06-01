@@ -41,7 +41,7 @@ export class GaleriaFormComponent {
 
         this.formDados = this._formBuilder.group({
             id: [null, []],
-            ativo: [false, []],
+            ativo: [true, []],
             titulo: [null, [Validators.required]],
             imagem_capa: [null, []],
             tela_principal: [true, []],
@@ -100,7 +100,18 @@ export class GaleriaFormComponent {
 
     voltar() {
 
-        this._router.navigate(['/galeria']);
+        if (this.galeriaId) {
+
+            this._router.navigate(['/galeria/exibicao', {
+                id: this.galeriaId,
+                titulo: this.formDados.get('titulo').value
+            }]);
+
+        } else {
+
+            this._router.navigate(['/galeria']);
+
+        }
 
     }
 
@@ -176,6 +187,7 @@ export class GaleriaFormComponent {
                 next: (res) => {
 
                     // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
+                    this.galeriaId = null;
 
                     this.voltar();
 

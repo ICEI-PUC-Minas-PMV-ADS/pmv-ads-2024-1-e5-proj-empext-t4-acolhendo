@@ -45,7 +45,15 @@ export class ImagemComponent {
 
         if (!file) return;
 
-        if (this.validarExtensao(file)) {
+        if (!this.validarExtensao(file)) {
+
+            alert(`A imagem deve estar no formato PNG, JPG, JPEG ou WEBP!`);
+
+        } else if (!this.validarSize(file)) {
+
+            alert(`A imagem deve ter no máximo ${this.sizeFormatado}!`);
+
+        } else {
 
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -59,14 +67,20 @@ export class ImagemComponent {
                 }
             }
 
-        } else {
-            alert(`A imagem deve ter no máximo ${this.sizeFormatado} e estar no formato PNG, JPG, JPEG ou WEBP!`);
         }
 
     }
 
+    validarSize(file: File): boolean {
+
+        return file.size < this.sizeBytes;
+
+    }
+
     validarExtensao(file: File): boolean {
-        return this.acceptedMimeTypes.includes(file.type) && file.size < 5000000;
+
+        return this.acceptedMimeTypes.includes(file.type) && file.size < this.sizeBytes;
+
     }
 
     imagemCarregada(file: File, imagem: HTMLImageElement) {
@@ -99,15 +113,19 @@ export class ImagemComponent {
 
     get sizeFormatado() {
 
+        let retorno = '';
+
         if (this.sizeBytes >= 1000000000) {
-            return (this.sizeBytes / 1000000000, 2) + 'GB'
+            retorno = round(this.sizeBytes / 1000000000, 2) + 'GB'
         } else if (this.sizeBytes >= 1000000) {
-            return (this.sizeBytes / 1000000, 2) + 'MB'
+            retorno = round(this.sizeBytes / 1000000, 2) + 'MB'
         } else if (this.sizeBytes >= 1000) {
-            return round(this.sizeBytes / 1000, 2) + 'Kb'
+            retorno = round(this.sizeBytes / 1000, 2) + 'Kb'
         } else {
-            return this.sizeBytes + 'b';
+            retorno = this.sizeBytes + 'b';
         }
+
+        return retorno.replace('.', ',')
 
     }
 

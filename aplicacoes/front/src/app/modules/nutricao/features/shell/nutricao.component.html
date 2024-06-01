@@ -59,13 +59,13 @@
                         <article
                             class="
                                 flex flex-col gap-2 justify-center items-center
-                                bg-white pb-4 rounded-xl shadow-lg
+                                bg-white p-4 rounded-xl shadow-lg
                                 cursor-pointer hover:opacity-85
                                 transition duration-300 ease-out
                             "
                             matTooltip="Visualizar artigo"
                             (click)="abrirArtigo(item.id)">
-                            <img class="w-full h-full" [src]="getImagem(item.imagem_capa)">
+                            <img class="max-h-72" [src]="getImagem(item.imagem_capa)">
     
                             <h2
                                 class="max-w-full block px-4 text-center"

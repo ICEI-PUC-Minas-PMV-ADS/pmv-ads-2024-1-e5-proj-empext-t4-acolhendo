@@ -25,15 +25,15 @@ export const deleteByImagePath = async (request: Request<IParamProps>, response:
     }
 
     const imagePath = request.params.path;
-    const result = await GalleryProvider.deleteByImagePath(imagePath);
+    // const result = await GalleryProvider.deleteByImagePath(imagePath);
 
-    if (result instanceof Error) {
-        return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            errors: {
-                default: result.message
-            }
-        });
-    }
+    // if (result instanceof Error) {
+    //     return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    //         errors: {
+    //             default: result.message
+    //         }
+    //     });
+    // }
 
     try {
         await ImageDeleter.deleteImage(imagePath);

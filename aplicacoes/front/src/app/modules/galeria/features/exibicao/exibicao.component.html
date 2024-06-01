@@ -41,33 +41,30 @@
     </h2>
 
     <div id="lista" class="py-12">
-        @if (items && items.length) {
-            <div class="flex flex-col gap-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+        <div class="flex flex-col gap-8">
+            @if (items && items.length) {
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
                     @for (item of items; track item.id) {
                         <article
-                            class="
-                                flex justify-center items-center
-                                bg-white rounded-xl shadow-lg
-                            "
+                            class="flex justify-center items-center"
                             (click)="editarImagem(item.id)">
-                            <img class="w-full h-full" [src]="getImagem(item.imagem)">
+                            <img class="max-h-96" [src]="getImagem(item.imagem)">
                         </article>
                     }
                 </div>
+            } @else if (!!items) {
+                <div class="p-8 sm:p-16 border-t text-2xl font-semibold tracking-tight text-center">
+                    Nenhuma imagem encontrada!
+                </div>
+            }
     
-                <mat-paginator
-                    class="mb-4"
-                    [length]="itemsCount"
-                    [pageSize]="pageLimit"
-                    [pageSizeOptions]="pageLimits"
-                    [showFirstLastButtons]="true">
-                </mat-paginator>
-            </div>
-        } @else if (!!items) {
-            <div class="p-8 sm:p-16 border-t text-2xl font-semibold tracking-tight text-center">
-                Nenhuma imagem encontrada!
-            </div>
-        }
+            <mat-paginator
+                class="mb-4"
+                [length]="itemsCount"
+                [pageSize]="pageLimit"
+                [pageSizeOptions]="pageLimits"
+                [showFirstLastButtons]="true">
+            </mat-paginator>
+        </div>
     </div>
 </div>

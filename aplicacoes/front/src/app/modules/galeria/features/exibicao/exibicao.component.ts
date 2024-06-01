@@ -65,17 +65,13 @@ export class GaleriaExibicaoComponent {
 
         const filtros = {
             filtro: this.searchInputControl.value,
-            page: (this._paginator?.pageIndex ?? 0) * this.pageLimit,
+            page: this._paginator?.pageIndex ?? 0,
             limit: this.pageLimit
         };
 
         this._galeriaService.getImagensGaleria(this.galeriaId, filtros)
             .pipe(
-                takeUntil(this._unsubscribeAll),
-                finalize(() => {
-                    this.showError = false;
-                    this._cd.detectChanges();
-                })
+                takeUntil(this._unsubscribeAll)
             )
             .subscribe({
                 next: res => {
@@ -88,9 +84,7 @@ export class GaleriaExibicaoComponent {
                 },
                 error: err => {
 
-                    this.showError = true;
-
-                    this._cd.detectChanges();
+                    // this.voltar();
 
                 }
             });
@@ -99,19 +93,15 @@ export class GaleriaExibicaoComponent {
 
     ngAfterViewInit() {
 
-        if (this._paginator) {
-
-            merge(this._paginator.page)
-                .pipe(
-                    takeUntil(this._unsubscribeAll),
-                    tap(() => {
-                        UtilsService.moveScrollId('lista');
-                        this.pesquisaBtn();
-                    })
-                )
-                .subscribe();
-
-        }
+        merge(this._paginator?.page)
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                tap(() => {
+                    UtilsService.moveScrollTop();
+                    this.pesquisaBtn();
+                })
+            )
+            .subscribe();
 
     }
 
@@ -135,7 +125,7 @@ export class GaleriaExibicaoComponent {
 
     novaImagem() {
 
-        this._router.navigate(['/galeria/imagem/form', { galeria: this.galeriaId }]);
+        this._router.navigate(['/galeria/imagem/add', { galeria: this.galeriaId }]);
 
     }
 

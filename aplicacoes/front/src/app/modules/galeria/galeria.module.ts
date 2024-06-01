@@ -9,6 +9,7 @@ import { AuthGuard } from '../../core/guards/auth.guard';
 import { GaleriaExibicaoComponent } from './features/exibicao/exibicao.component';
 import { GaleriaFormComponent } from './features/form/form.component';
 import { GaleriaImagemFormComponent } from './features/form-imagem/form-imagem.component';
+import { GaleriaAddImagemComponent } from './features/add-imagem/add-imagem.component';
 
 const ModuleRoute: Route[] = [
     {
@@ -26,6 +27,11 @@ const ModuleRoute: Route[] = [
         path: 'imagem/form',
         canActivate: [AuthGuard],
         component: GaleriaImagemFormComponent
+    },
+    {
+        path: 'imagem/add',
+        canActivate: [AuthGuard],
+        component: GaleriaAddImagemComponent
     }
 ];
 
@@ -39,7 +45,8 @@ const ModuleRoute: Route[] = [
         GaleriaComponent,
         GaleriaExibicaoComponent,
         GaleriaFormComponent,
-        GaleriaImagemFormComponent
+        GaleriaImagemFormComponent,
+        GaleriaAddImagemComponent
     ],
     providers: [
         GaleriaService
