@@ -40,9 +40,9 @@ export class BannerFormComponent {
 
         this.formDados = this._formBuilder.group({
             id: [null, []],
-            ativo: [false, []],
+            ativo: [true, []],
             descricao: [null, [Validators.required]],
-            ordem: [null, [Validators.required]],
+            ordem: [1, [Validators.required]],
             imagem_desktop: [null, []],
             imagem_mobile: [null, []],
         });

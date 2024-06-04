@@ -9,6 +9,7 @@ import * as UpdateByImagePath from './images/UpdateByImagePath'
 import * as GetByImageId from './images/GetByImageId'
 import * as GetByGalleryId from './images/GetByGalleryId'
 import * as DeleteByImageId from './images/DeleteByImageId'
+import * as TelaPrincipal from './TelaPrincipal'
 
 
 export const GalleryController = {
@@ -22,5 +23,6 @@ export const GalleryController = {
     ...GetByGalleryId,
     ...DeleteByImageId,
     ...PostImages,
-    ...GetByImageId
+    ...GetByImageId,
+    ...TelaPrincipal
 }

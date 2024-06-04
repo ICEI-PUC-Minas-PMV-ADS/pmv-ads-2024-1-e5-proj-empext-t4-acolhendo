@@ -70,9 +70,11 @@ export class HomeArtigoComponent {
     configuraCarousel() {
 
         this.slickCarouselConfigArt = this._slickCarouselService.getConfig({
+            infinite: true,
             autoplay: true,
             dots: this.artigos.length > 4,
-            slidesToShow: 4
+            slidesToShow: 4,
+            autoplaySpeed: 6000
         });
 
     }

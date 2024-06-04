@@ -4,7 +4,8 @@
         [config]="slickCarouselConfigBanner">
         @for (b of banner; track b.id) {
             <div ngxSlickItem class="carousel cursor-pointer">
-                <img class=""
+                <img
+                    class="rounded"
                     [src]="getImagem(b.imagem_desktop)"
                     alt="{{ b.descricao }}" />
             </div>

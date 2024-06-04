@@ -17,7 +17,7 @@
 
     @if (dados && dados.texto) {
         <div>
-            <div [innerHTML]="dados.texto"></div>
+            <quill-view [content]="dados.texto" format="html" theme="snow" [sanitize]="true"></quill-view>
         </div>
     }
 </div>

@@ -14,9 +14,22 @@
                         transition duration-300 ease-out
                     "
                     (click)="abrirArtigo(b.id)">
-                    <img class="shadow-lg md:w-60"
-                        [src]="getImagem(b.imagem_capa)"
-                        alt="{{ b.titulo }}" />
+                    <div
+                        class="
+                            flex flex-col justify-center items-center mx-4
+                            gap-2
+                        ">
+                        <img
+                            class="shadow-lg md:w-60 rounded"
+                            [src]="getImagem(b.imagem_capa)"
+                            alt="{{ b.titulo }}" />
+
+                        <div class="flex text-center">
+                            <span class="flex-wrap">
+                                {{ b.titulo }}
+                            </span>
+                        </div>
+                    </div>
                 </div>
             }
         </ngx-slick-carousel>

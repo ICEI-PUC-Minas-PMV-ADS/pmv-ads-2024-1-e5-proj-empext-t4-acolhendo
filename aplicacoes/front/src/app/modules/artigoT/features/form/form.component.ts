@@ -57,7 +57,7 @@ export class ArtigoTFormComponent {
 
         this.formDados = this._formBuilder.group({
             id: [null, []],
-            ativo: [false, []],
+            ativo: [true, []],
             tipo: [eArtigo.ARTIGO, []],
             imagem_capa: [null, []],
             titulo: [null, [Validators.required]],

@@ -23,29 +23,39 @@
     </div>
 
     @if (artigo) {
-        <h1 class="flex flex-col md:flex-row w-full justify-center md:justify-around mb-8">
-            @if (artigo.imagem_capa) {
-                <img class="w-4/6 md:w-52" [src]="getImagem(artigo.imagem_capa)">
-            }
+        <div class="flex flex-col gap-8">
             @if (artigo.titulo) {
-                <div class="flex items-center justify-center px-4 text-xl">
+                <h1 class="flex flex-col md:flex-row w-full justify-center md:justify-around">
+                <div
+                    class="
+                        flex items-center justify-center px-4 text-xl
+                        text-center
+                    ">
                     {{ artigo.titulo }}
                 </div>
+                </h1>
             }
-        </h1>
-    
-        <section class="">
-            @if (artigo.texto) {
-                <div [innerHTML]="artigo.texto"></div>
+
+            @if (artigo.imagem_capa) {
+                <div
+                    class="flex justify-center">
+                    <img class="rounded" [src]="getImagem(artigo.imagem_capa)">
+                </div>
             }
-    
-            <div class="w-full flex justify-end">
-                @if (artigo.data_inclusao) {
-                    <span class="text-xs">
-                        Adicionado {{ artigo.data_inclusao | date: 'dd/MM/YYYY HH:mm' }}
-                    </span>
+
+            <article class="">
+                @if (artigo.texto) {
+                    <quill-view [content]="artigo.texto" format="html" theme="snow" [sanitize]="true"></quill-view>
                 }
-            </div>
-        </section>
+
+                <div class="w-full flex justify-end">
+                    @if (artigo.data_inclusao) {
+                        <span class="text-xs">
+                            Adicionado {{ artigo.data_inclusao | date: 'dd/MM/YYYY HH:mm' }}
+                        </span>
+                    }
+                </div>
+            </article>
+        </div>
     }
 </div>

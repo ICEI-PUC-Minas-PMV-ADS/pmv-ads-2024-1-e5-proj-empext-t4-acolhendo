@@ -21,6 +21,7 @@ router.delete('/banner/:id', authValidator, BannerController.deleteProductByIdVa
 // Gallery
 router.get('/gallery/:id', GalleryController.getGalleryByIdValidation, GalleryController.getGalleryById)             // A API deverá fornecer um endpoint GET para retornar uma galeria
 router.get('/gallery', GalleryController.getAllGalleryValidation, GalleryController.getAllGallery)                   // A API deverá fornecer um endpoint GET para retornar todas as galerias
+router.get('/gallery-home', GalleryController.getTelaPrincipalGalleryValidation, GalleryController.getTelaPrincipalGallery)
 router.post('/gallery', authValidator, GalleryController.createGalleryValidation, GalleryController.createGallery)                  // A API deverá fornecer um endpoint POST para criar uma nova galeria
 router.put('/gallery/:id', authValidator, GalleryController.updateGalleryByIdValidation, GalleryController.updateGalleryById)       // A API deverá fornecer um endpoint PUT para atualizar uma galeria
 router.delete('/gallery/:id', authValidator, GalleryController.deleteGalleryByIdValidation, GalleryController.deleteGalleryById)    // A API deverá fornecer um endpoint DELETE para excluir uma galeria

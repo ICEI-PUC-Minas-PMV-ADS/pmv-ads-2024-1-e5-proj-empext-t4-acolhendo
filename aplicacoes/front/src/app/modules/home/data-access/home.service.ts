@@ -35,6 +35,12 @@ export class HomeService {
 
     }
 
+    getGalerias(): Observable<any> {
+
+        return this._api.get('/gallery-home', {});
+
+    }
+
     getQuemSomos() {
 
         return this._api.get('/quem-somos');

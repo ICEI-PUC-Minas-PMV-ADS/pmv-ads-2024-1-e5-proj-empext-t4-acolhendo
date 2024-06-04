@@ -9,6 +9,7 @@ import { HomeBannerComponent } from './features/banner/banner.component';
 import { HomeNutricaoComponent } from './features/nutricao/nutricao.component';
 import { HomeEventoComponent } from './features/eventos/eventos.component';
 import { HomeArtigoComponent } from './features/artigo/artigo.component';
+import { HomeGaleriasComponent } from './features/galeria/galeria.component';
 
 const ModuleRoute: Route[] = [
     { path: '', component: HomeComponent }
@@ -25,7 +26,8 @@ const ModuleRoute: Route[] = [
         HomeBannerComponent,
         HomeEventoComponent,
         HomeNutricaoComponent,
-        HomeArtigoComponent
+        HomeArtigoComponent,
+        HomeGaleriasComponent
     ],
     providers: [
         HomeService

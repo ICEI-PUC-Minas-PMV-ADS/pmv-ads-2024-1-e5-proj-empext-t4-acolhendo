@@ -70,9 +70,11 @@ export class HomeEventoComponent {
     configuraCarousel() {
 
         this.slickCarouselConfigEvento = this._slickCarouselService.getConfig({
+            infinite: true,
             autoplay: true,
             dots: this.eventos.length > 4,
-            slidesToShow: 4
+            slidesToShow: 4,
+            autoplaySpeed: 6000
         });
 
     }

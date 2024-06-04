@@ -61,6 +61,7 @@ export class EventoFormComponent {
     this.formDados = this._formBuilder.group({
       id: [null, []],
       tipo: [eArtigo.EVENTO, []],
+      ativo: [true, []],
       imagem_capa: [null, []],
       titulo: [null, [Validators.required]],
       texto: [null, [Validators.required]],

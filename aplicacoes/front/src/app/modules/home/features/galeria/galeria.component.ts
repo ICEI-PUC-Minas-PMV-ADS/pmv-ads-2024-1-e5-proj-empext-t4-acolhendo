@@ -1,22 +1,23 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { Subject, finalize, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { SlickCarouselService } from '../../../../core/services/slick-carousel.service';
 import { HomeService } from '../../data-access/home.service';
-import { Router } from '@angular/router';
+import { IGaleria } from '../../../../core/intefaces/interfaces';
 
 @Component({
-    selector: 'app-home-banner',
-    templateUrl: './banner.component.html',
+    selector: 'app-home-galeria',
+    templateUrl: './galeria.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeBannerComponent {
+export class HomeGaleriasComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    slickCarouselConfigBanner: any;
+    slickCarouselConfigGalerias: any;
 
-    banner: { id: number; descricao: string; imagem_desktop: string; imagem_mobile: string; }[] = [];
+    galerias: IGaleria[] = [];
 
     loading: boolean = false;
 
@@ -31,7 +32,7 @@ export class HomeBannerComponent {
 
     ngOnInit() {
 
-        this.getBanner();
+        this.getGalerias();
 
     }
 
@@ -42,13 +43,13 @@ export class HomeBannerComponent {
 
     }
 
-    getBanner() {
+    getGalerias() {
 
         this.loading = true;
         this._cd.detectChanges();
 
         this._homeService
-            .getBanners()
+            .getGalerias()
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -56,7 +57,7 @@ export class HomeBannerComponent {
             .subscribe({
                 next: res => {
 
-                    this.banner = res;
+                    this.galerias = res;
                     this.configuraCarousel();
 
                 },
@@ -68,19 +69,19 @@ export class HomeBannerComponent {
 
     configuraCarousel() {
 
-        this.slickCarouselConfigBanner = this._slickCarouselService.getConfig({
+        this.slickCarouselConfigGalerias = this._slickCarouselService.getConfig({
             infinite: true,
             autoplay: true,
-            dots: this.banner.length > 1,
-            speed: 1000,
-            fade: true
+            dots: this.galerias.length > 4,
+            slidesToShow: 4,
+            autoplaySpeed: 6000
         });
 
     }
 
-    manutencaoBanner() {
+    abrirArtigo(id: number) {
 
-        this._router.navigate(['/banner']);
+        this._router.navigate(['/galeria/exibicao', { id }]);
 
     }
 

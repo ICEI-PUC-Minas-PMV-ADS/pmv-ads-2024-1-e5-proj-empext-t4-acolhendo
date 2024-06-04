@@ -70,9 +70,11 @@ export class HomeNutricaoComponent {
     configuraCarousel() {
 
         this.slickCarouselConfigNutri = this._slickCarouselService.getConfig({
+            infinite: true,
             autoplay: true,
             dots: this.nutricao.length > 4,
-            slidesToShow: 4
+            slidesToShow: 4,
+            autoplaySpeed: 6000
         });
 
     }

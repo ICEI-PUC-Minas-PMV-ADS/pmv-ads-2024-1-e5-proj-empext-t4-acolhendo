@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { UtilsService } from '../../../../core/services/utils.service';
 import { GaleriaService } from '../../data-access/galeria.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
     selector: 'app-galeria-exibicao',
@@ -33,6 +34,7 @@ export class GaleriaExibicaoComponent {
 
     constructor(
         private _galeriaService: GaleriaService,
+        private _authService: AuthService,
         private _cd: ChangeDetectorRef,
         private _router: Router,
         private _route: ActivatedRoute,
@@ -130,6 +132,8 @@ export class GaleriaExibicaoComponent {
     }
 
     editarImagem(id) {
+
+        if (!this._authService.authenticated) return;
 
         this._router.navigate(['/galeria/imagem/form', { id, galeria: this.galeriaId }]);
 

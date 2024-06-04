@@ -62,6 +62,7 @@ export class NutricaoFormComponent {
 
         this.formDados = this._formBuilder.group({
             id: [null, []],
+            ativo: [true, []],
             titulo: [null, [Validators.required]],
             tipo: [eArtigo.NUTRICAO, []],
             imagem_capa: [null, []],
