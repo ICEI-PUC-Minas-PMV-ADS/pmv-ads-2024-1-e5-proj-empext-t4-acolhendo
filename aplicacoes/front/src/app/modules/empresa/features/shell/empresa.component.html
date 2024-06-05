@@ -1,0 +1,91 @@
+<div class="flex flex-col w-full p-10">
+  <div class="flex w-full justify-end gap-2">
+
+    <div *onlyAdmin class="flex w-full justify-end">
+      <button mat-raised-button [color]="'primary'" matTooltip="Editar empresa" (click)="editar(empresa)">
+        <span class="material-icons">
+          edit
+        </span>
+      </button>
+    </div>
+    <!-- SALVAR -->
+    <button class="relative" matTooltip="Salvar alterações"
+      mat-raised-button
+      [color]="'primary'"
+      [disabled]="loading"
+      (click)="salvar()">
+      <span class="material-icons-outlined">save</span>
+      <ng-container *ngIf="loading">
+        <mat-progress-spinner class="absolute right-[-0.8rem] bottom-[0.8rem]" [diameter]="12" mode="indeterminate"></mat-progress-spinner>
+      </ng-container>
+    </button>
+  </div>
+
+  <h1 class="flex text-2xl mb-8">
+    <span class="whitespace-nowrap">Dados da Empresa</span>
+  </h1>
+
+  <form focusInvalidInput class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="formDados">
+    <div class="flex flex-col p-4">
+      <div class="flex flex-col md:flex-row gap-4">
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="formDados.get('email')?.hasError('email') && formDados.get('email')?.touched">Email inválido</mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Telefone</mat-label>
+          <input matInput formControlName="telefone" />
+          <mat-error *ngIf="formDados.get('telefone')?.hasError('min') && formDados.get('telefone')?.touched">Telefone inválido</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4">
+        <mat-form-field class="w-full">
+          <mat-label>Instagram</mat-label>
+          <input matInput formControlName="instagram" />
+          <mat-error *ngIf="formDados.get('instagram')?.hasError('url') && formDados.get('instagram')?.touched">URL inválida</mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Facebook</mat-label>
+          <input matInput formControlName="facebook" />
+          <mat-error *ngIf="formDados.get('facebook')?.hasError('url') && formDados.get('facebook')?.touched">URL inválida</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4">
+        <mat-form-field class="w-full">
+          <mat-label>Youtube</mat-label>
+          <input matInput formControlName="youtube" />
+          <mat-error *ngIf="formDados.get('youtube')?.hasError('url') && formDados.get('youtube')?.touched">URL inválida</mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Chave PIX</mat-label>
+          <input matInput formControlName="chave_pix" />
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4">
+        <mat-form-field class="w-full">
+          <mat-label>Banco</mat-label>
+          <input matInput formControlName="banco" />
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Agência</mat-label>
+          <input matInput formControlName="agencia" />
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Conta</mat-label>
+          <input matInput formControlName="conta" />
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4">
+        <mat-form-field class="w-full">
+          <mat-label>CNPJ</mat-label>
+          <input matInput formControlName="cnpj" />
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

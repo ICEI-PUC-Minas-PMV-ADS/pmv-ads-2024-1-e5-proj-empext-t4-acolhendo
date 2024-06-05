@@ -44,7 +44,12 @@ export const appRoutes: Route[] = [
             {
                 path: 'galeria',
                 loadChildren: () => import('./modules/galeria/galeria.module').then(m => m.GaleriaModule)
+            },
+            {
+              path: 'empresa',
+              loadChildren: () => import('./modules/empresa/empresa.module').then(m => m.EmpresaModule)
             }
+
         ]
     },
     // AUTH
