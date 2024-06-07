@@ -97,18 +97,27 @@ Esses testes são validados previamente com testes de rotas em ferramentas como 
 
 ## Evidências do FrontEnd (UI)
 
-Esses testes servem apenas para verificarmos se a interface está de acordo com o funcionamento esperado. A integração com o backend ainda está sendo feita até o momento deste envio, então os registros são das telas.
+Colocamos os gifs para que fique evidente a integração entre backend e frontend (lembrando que ainda são testes locais)
 
 ### Login
 
-![loginFront](./img/loginFront.png)
+![loginFront](./img/gifs/login.gif)
 
-### Eventos/ Nutrição / Artigos (são o mesmo princípio)
+### Eventos
 
-![TelaPadraoExibicao](./img/TelaPadraoExibicao.png)
+![crudEvento](./img/gifs/crudEventos.gif)
 
-#### Criação artigo
-![criacaoArtigo](./img/criacaoArtigo.png)
+### Nutrição 
+
+![crudNutricao](./img/gifs/crudNutricao.gif)
+
+### Artigos 
+![crudArtigos](./img/gifs/crudArtigos.gif)
+
+### Galeria
+
+![crudGaleria](./img/gifs/crudGaleria.gif)
+
 
 ### Quem somos
 
@@ -117,3 +126,6 @@ Esses testes servem apenas para verificarmos se a interface está de acordo com 
 ### Fale Conosco
 
 ![faleConosco](./img/faleConosco.png)
+
+### Dados da empresa
+![alt text](image.png)
