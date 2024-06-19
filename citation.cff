@@ -1,0 +1,22 @@
+message: Please cite this software using these metadata.
+title: Acolhendo
+authors:
+  - family-names: de Oliveira Costa
+    given-names: Guilherme 
+  - family-names: Puddo Cardoso
+    given-names: Gabriel José
+  - family-names: Lessa Henrique
+    given-names: João Victor
+  - family-names: Pereira Marques
+    given-names: Carlos Eduardo 
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Oliveira Caetano
+    given-names: João Carlos 
+keywords:
+  - ONG
+  - Saúde mental
+  - Pacientes
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-acolhendo
+version: 1.0.0
+date-released: 2024-06-23
