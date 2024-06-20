@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-center gap-2">
         <div class="imagem-container flex flex-col justify-center items-center">
             @if (!fileDataUrl && formDados.get(campo)?.value) {
-                <img class="max-h-72" [src]="getImagem(formDados.get(campo).value)" />
+                <img class="max-h-72" [src]="formDados.get(campo).value" />
             }
             @if (fileDataUrl) {
                 <img class="max-h-72" [src]="fileDataUrl" />
