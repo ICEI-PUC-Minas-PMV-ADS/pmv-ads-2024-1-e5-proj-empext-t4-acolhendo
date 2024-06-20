@@ -129,14 +129,4 @@ export class ImagemComponent {
 
     }
 
-    getImagem(imagem) {
-
-        if (imagem) {
-            return imagem.split('front/src/')[1];
-        }
-
-        return ''
-
-    }
-
 }

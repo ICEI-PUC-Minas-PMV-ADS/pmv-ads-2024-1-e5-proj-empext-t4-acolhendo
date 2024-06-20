@@ -84,14 +84,4 @@ export class ArtigoTArtigoComponent {
 
     }
 
-    getImagem(imagem) {
-        console.log(imagem.split('front/src/')[1])
-        if (imagem) {
-            return imagem.split('front/src/')[1];
-        }
-
-        return ''
-
-    }
-
 }
