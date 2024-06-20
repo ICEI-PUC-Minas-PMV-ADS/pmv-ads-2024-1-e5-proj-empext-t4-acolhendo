@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { ApiService } from '../../../core/services/api.service';
 
 @Injectable()
 export class EmpresaService {
 
     constructor(
-      private _api: ApiService
-    ) {}
+        private _api: ApiService
+    ) { }
 
-    getCompany(filtros: any): Observable<any> {
-      return this._api.get('/company', filtros);
+    getCompany(): Observable<any> {
+
+        return this._api.get('/company', {});
+
     }
 
-    salvarEmpresa(dados: any, id: number): Observable<any>{
-      return this._api.put('/company' + id, dados);
+    salvarEmpresa(dados: any): Observable<any> {
+
+        return this._api.put('/company', dados);
+
     }
 
 }

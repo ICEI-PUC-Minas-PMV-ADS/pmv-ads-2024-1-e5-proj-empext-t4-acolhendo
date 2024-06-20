@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { OnlyAdminDirective } from './components/onlyAdmin.directive';
 import { UsuarioDeslogadoDirective } from './components/usuarioDeslogado.directive';
+import { TextMaskModule } from './components/textMask.directive';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { UsuarioDeslogadoDirective } from './components/usuarioDeslogado.directi
     ],
     exports: [
         OnlyAdminDirective,
-        UsuarioDeslogadoDirective
+        UsuarioDeslogadoDirective,
+        TextMaskModule
     ]
 })
 export class DirectivesModule { }

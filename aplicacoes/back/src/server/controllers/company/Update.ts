@@ -15,10 +15,10 @@ export const updateCompanyByIdValidation: RequestHandler = validation((getSchema
     body: getSchema<IBodyProps>(
         YUP.object().shape({
             email: YUP.string().optional().email(),
-            telefone: YUP.string().optional().min(11).max(14),
-            instagram: YUP.string().optional().url(),
-            facebook: YUP.string().optional().url(),
-            youtube: YUP.string().optional().url(),
+            telefone: YUP.string().optional().max(15),
+            instagram: YUP.string().optional(),//.url(),
+            facebook: YUP.string().optional(),//.url(),
+            youtube: YUP.string().optional(),//.url(),
             chave_pix: YUP.string().optional(),
             banco: YUP.string().optional(),
             agencia: YUP.string().optional(),

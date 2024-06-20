@@ -6,118 +6,127 @@ import { Router } from '@angular/router';
 
 import { UtilsService } from '../../../../core/services/utils.service';
 import { EmpresaService } from '../../data-access/empresa.service';
+import { Masks } from '../../../../core/uteis/masks.utils';
+import { UtilsValidators } from '../../../../core/uteis/validators.utils';
 
 @Component({
-  selector: 'app-empresa',
-  templateUrl: './empresa.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-empresa',
+    templateUrl: './empresa.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmpresaComponent implements OnInit, OnDestroy {
 
-  private _unsubscribeAll: Subject<any> = new Subject<any>();
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-  formDados: UntypedFormGroup = new UntypedFormGroup({});
+    formDados: UntypedFormGroup = new UntypedFormGroup({});
 
-  empresa: any;
-  empresaId: number | null = null;
-  loading: boolean = false;
-  editMode: boolean = false;
+    empresa: any;
 
-  constructor(
-    private _empresaService: EmpresaService,
-    private _formBuilder: UntypedFormBuilder,
-    private _cd: ChangeDetectorRef,
-    private _router: Router
-  ) {}
+    loading: boolean = false;
 
-  ngOnInit(): void {
-    this.formDados = this._formBuilder.group({
-      id: [null, []],
-      titulo: [null, [Validators.required]],
-      email: [null, [Validators.email]],
-      telefone: [null, [Validators.minLength(11), Validators.maxLength(14)]],
-      instagram: [null, [Validators.pattern(/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9-_]+$/)]],
-      facebook: [null, [Validators.pattern(/^(https?:\/\/)?(www\.)?facebook\.com\/[A-Za-z0-9-_]+$/)]],
-      youtube: [null, [Validators.pattern(/^(https?:\/\/)?(www\.)?youtube\.com\/[A-Za-z0-9-_]+$/)]],
-      chave_pix: [null, []],
-      banco: [null, []],
-      agencia: [null, []],
-      conta: [null, []],
-      cnpj: [null, []],
-      nome: [null, []],
-    });
+    fone9Mask = Masks.fone9Mask;
+    cpfcnpjMask = Masks.cpfcnpjMask;
 
-    this.getDados();
-  }
+    constructor(
+        private _empresaService: EmpresaService,
+        private _formBuilder: UntypedFormBuilder,
+        private _cd: ChangeDetectorRef,
+        private _router: Router
+    ) {
 
-  ngOnDestroy() {
-    this._unsubscribeAll.next(null);
-    this._unsubscribeAll.complete();
-  }
-
-  getDados() {
-    if (this.empresaId) {
-      this.loading = true;
-      this._cd.detectChanges();
-
-      this._empresaService.getCompany(this.empresaId)
-        .pipe(
-          takeUntil(this._unsubscribeAll),
-          finalize(() => { this.loading = false; this._cd.detectChanges(); })
-        )
-        .subscribe({
-          next: res => {
-            this.editar(res);
-          },
-          error: err => {
-            this.voltar();
-          }
+        this.formDados = this._formBuilder.group({
+            id: [null, []],
+            email: [null, [Validators.required, UtilsValidators.validatorEmail]],
+            telefone: [null, []],
+            instagram: [null, []],
+            facebook: [null, []],
+            youtube: [null, []],
+            // chave_pix: [null, []],
+            // banco: [null, []],
+            // agencia: [null, []],
+            // conta: [null, []],
+            // cnpj: [null, [UtilsValidators.validatorCpfCnpj]],
+            // nome: [null, []],
         });
-    }
-  }
 
-  editar(dados: any) {
-    this.empresa = dados;
-    this.formDados.patchValue(this.empresa);
-    this.editMode = true;
-    this._cd.detectChanges();
-  }
-
-  voltar() {
-    this._router.navigate(['/company']);
-  }
-
-  async salvar() {
-    if (this.formDados.invalid) {
-      UtilsService.validateAllFormFields(this.formDados);
-      return;
     }
 
-    this.loading = true;
-    this._cd.detectChanges();
+    ngOnInit(): void {
 
-    const values = this.formDados.value;
+        this.getDados();
 
-    this._empresaService.salvarEmpresa(values, this.empresaId)
-      .pipe(
-        takeUntil(this._unsubscribeAll),
-        finalize(() => { this.loading = false; this._cd.detectChanges(); })
-      )
-      .subscribe({
-        next: res => {
-          this.recarregar(this.empresaId || res.id);
-          // this._dialog.showToast('Registro salvo com sucesso!', 'OK');
-        },
-        error: err => {
-          // this._dialog.error(err, 'Erro ao atualizar dados');
+    }
+
+    ngOnDestroy() {
+
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+
+    }
+
+    getDados() {
+
+        this.loading = true;
+        this._cd.detectChanges();
+
+        this._empresaService.getCompany()
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                finalize(() => { this.loading = false; this._cd.detectChanges(); })
+            )
+            .subscribe({
+                next: res => {
+
+                    this.editar(res);
+
+                },
+                error: err => {
+
+                    this._router.navigateByUrl('/')
+
+                }
+            });
+
+    }
+
+    editar(dados: any) {
+
+        this.empresa = dados;
+
+        this.formDados.patchValue(this.empresa);
+
+        this._cd.detectChanges();
+
+    }
+
+    async salvar() {
+
+        if (this.formDados.invalid) {
+            UtilsService.validateAllFormFields(this.formDados);
+            return;
         }
-      });
-  }
 
-  recarregar(id: number) {
-    if (!this.empresaId) {
-      this._router.navigate(['/company']);
+        this.loading = true;
+        this._cd.detectChanges();
+
+        const values = this.formDados.value;
+
+        this._empresaService.salvarEmpresa(values)
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                finalize(() => { this.loading = false; this._cd.detectChanges(); })
+            )
+            .subscribe({
+                next: res => {
+
+                    // this._dialog.showToast('Dados salvos com sucesso');
+
+                },
+                error: err => {
+                    // this._dialog.error(err, 'Erro ao atualizar dados');
+                }
+            });
+
     }
-    this.getDados();
-  }
+
 }
