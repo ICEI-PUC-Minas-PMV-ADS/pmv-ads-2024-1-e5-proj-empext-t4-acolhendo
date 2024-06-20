@@ -1,0 +1,4 @@
+Sitemap: https://acolhendo.com.br/sitemap.xml
+
+User-agent: *
+Allow: /

@@ -31,7 +31,8 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "src/uploads"
+                            "src/uploads",
+                            "src/sitemap.xml"
                         ],
                         "styles": [
                             "node_modules/slick-carousel/slick/slick.scss",
@@ -125,7 +126,8 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "src/uploads"
+                            "src/uploads",
+                            "src/sitemap.xml"
                         ],
                         "styles": [
                             "src/styles.scss"
