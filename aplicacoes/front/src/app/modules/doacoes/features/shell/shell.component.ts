@@ -2,28 +2,28 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 import { Subject, finalize, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { QuemSomosService } from '../../data-access/quem-somos.service';
+import { DoacoesService } from '../../data-access/doacoes.service';
 
 @Component({
-    selector: 'app-quem-somos',
+    selector: 'app-doacoes',
     templateUrl: './shell.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuemSomosComponent {
+export class DoacoesComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     dados: any;
 
     constructor(
-        private _quemSomosService: QuemSomosService,
+        private _doacoesService: DoacoesService,
         private _cd: ChangeDetectorRef,
         private _router: Router,
     ) { }
 
     ngOnInit() {
 
-        this.getQuemSomos();
+        this.getDoacoes();
 
     }
 
@@ -34,9 +34,9 @@ export class QuemSomosComponent {
 
     }
 
-    getQuemSomos() {
+    getDoacoes() {
 
-        this._quemSomosService.getQuemSomos()
+        this._doacoesService.getDoacoes()
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => {
@@ -66,7 +66,7 @@ export class QuemSomosComponent {
 
     editar() {
 
-        this._router.navigate(['/quem-somos/form']);
+        this._router.navigate(['/doacoes/form']);
 
     }
 

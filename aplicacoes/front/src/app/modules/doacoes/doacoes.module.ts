@@ -4,18 +4,18 @@ import { QuillModule } from 'ngx-quill';
 
 import { SharedModule } from '../../shared/shared.module';
 import { AuthGuard } from '../../core/guards/auth.guard';
-import { QuemSomosService } from './data-access/quem-somos.service';
-import { QuemSomosFormComponent } from './features/form/form.component';
-import { QuemSomosComponent } from './features/shell/shell.component';
+import { DoacoesService } from './data-access/doacoes.service';
+import { DoacoesFormComponent } from './features/form/form.component';
+import { DoacoesComponent } from './features/shell/shell.component';
 
 const ModuleRoute: Route[] = [
     {
-        path: '', component: QuemSomosComponent
+        path: '', component: DoacoesComponent
     },
     {
         path: 'form',
         canActivate: [AuthGuard],
-        component: QuemSomosFormComponent
+        component: DoacoesFormComponent
     },
 ];
 
@@ -26,11 +26,11 @@ const ModuleRoute: Route[] = [
         QuillModule.forRoot()
     ],
     declarations: [
-        QuemSomosComponent,
-        QuemSomosFormComponent
+        DoacoesComponent,
+        DoacoesFormComponent
     ],
     providers: [
-        QuemSomosService
+        DoacoesService
     ]
 })
-export class QuemSomosModule { }
+export class DoacoesModule { }

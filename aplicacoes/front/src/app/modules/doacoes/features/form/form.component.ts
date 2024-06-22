@@ -2,18 +2,19 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, View
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { QuillModules } from 'ngx-quill';
 import { Subject, finalize, iif, takeUntil } from 'rxjs';
-import { QuemSomosService } from '../../data-access/quem-somos.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { DoacoesService } from '../../data-access/doacoes.service';
 import { QuillToolbar } from '../../../../core/intefaces/quill';
 import { eArtigo } from '../../../../core/enums/artigo.enum';
 import { UtilsService } from '../../../../core/services/utils.service';
 
 @Component({
-    selector: 'app-quem-somos-form',
+    selector: 'app-doacoes-form',
     templateUrl: './form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuemSomosFormComponent {
+export class DoacoesFormComponent {
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -38,7 +39,7 @@ export class QuemSomosFormComponent {
     ];
 
     constructor(
-        private _quemSomosService: QuemSomosService,
+        private _doacoesService: DoacoesService,
         private _formBuilder: UntypedFormBuilder,
         private _cd: ChangeDetectorRef,
         private _router: Router,
@@ -62,7 +63,7 @@ export class QuemSomosFormComponent {
         this.formDados = this._formBuilder.group({
             id: [null, []],
             titulo: [' ', []],
-            tipo: [eArtigo.QUEMSOMOS, []],
+            tipo: [eArtigo.DOACOES, []],
             imagem_capa: [' ', []],
             texto: [null, [Validators.required]],
             tela_principal: [false, []],
@@ -84,8 +85,8 @@ export class QuemSomosFormComponent {
         this.loading = true;
         this._cd.detectChanges();
 
-        this._quemSomosService
-            .getQuemSomos()
+        this._doacoesService
+            .getDoacoes()
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -117,7 +118,7 @@ export class QuemSomosFormComponent {
 
     voltar() {
 
-        this._router.navigate(['/quem-somos']);
+        this._router.navigate(['/doacoes']);
 
     }
 
@@ -153,8 +154,8 @@ export class QuemSomosFormComponent {
         const values = this.formDados.value;
 
         iif(() => !!this.artigoId,
-            this._quemSomosService.salvarQuemSomos(values, this.artigoId),
-            this._quemSomosService.cadastraQuemSomos(values))
+            this._doacoesService.salvarDoacoes(values, this.artigoId),
+            this._doacoesService.cadastraDoacoes(values))
             .pipe(
                 takeUntil(this._unsubscribeAll),
                 finalize(() => { this.loading = false; this._cd.detectChanges() })
@@ -190,7 +191,7 @@ export class QuemSomosFormComponent {
 
             formData.append('image-article', file);
 
-            this._quemSomosService.uploadImagem(formData)
+            this._doacoesService.uploadImagem(formData)
                 .pipe(
                     takeUntil(this._unsubscribeAll)
                 )

@@ -3,5 +3,6 @@ export enum eArtigo {
     EVENTO = 2,
     NUTRICAO = 3,
     DEPOIMENTOS = 4,
-    QUEMSOMOS = 5
+    QUEMSOMOS = 5,
+    DOACOES = 6
 }

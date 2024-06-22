@@ -5,7 +5,7 @@ import { ApiService } from '../../../core/services/api.service';
 import { eArtigo } from '../../../core/enums/artigo.enum';
 
 @Injectable()
-export class QuemSomosService {
+export class DoacoesService {
 
     constructor(
         private _api: ApiService
@@ -13,19 +13,19 @@ export class QuemSomosService {
 
     }
 
-    getQuemSomos(): Observable<any> {
+    getDoacoes(): Observable<any> {
 
-        return this._api.get('/article', { tipo: eArtigo.QUEMSOMOS });
+        return this._api.get('/article', { tipo: eArtigo.DOACOES });
 
     }
 
-    cadastraQuemSomos(dados: any): Observable<any> {
+    cadastraDoacoes(dados: any): Observable<any> {
 
         return this._api.post('/article', dados);
 
     }
 
-    salvarQuemSomos(dados: any, id: number): Observable<any> {
+    salvarDoacoes(dados: any, id: number): Observable<any> {
 
         return this._api.put('/article/' + id, dados);
 

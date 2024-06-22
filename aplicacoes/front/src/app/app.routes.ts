@@ -46,10 +46,13 @@ export const appRoutes: Route[] = [
                 loadChildren: () => import('./modules/galeria/galeria.module').then(m => m.GaleriaModule)
             },
             {
-              path: 'empresa',
-              loadChildren: () => import('./modules/empresa/empresa.module').then(m => m.EmpresaModule)
+                path: 'empresa',
+                loadChildren: () => import('./modules/empresa/empresa.module').then(m => m.EmpresaModule)
+            },
+            {
+                path: 'doacoes',
+                loadComponent: () => import('./modules/doacoes/doacoes.module').then(m => m.DoacoesModule)
             }
-
         ]
     },
     // AUTH
