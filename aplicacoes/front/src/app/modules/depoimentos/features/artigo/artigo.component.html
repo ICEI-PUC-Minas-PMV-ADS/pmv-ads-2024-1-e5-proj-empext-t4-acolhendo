@@ -1,0 +1,50 @@
+<div class="flex flex-col w-full p-10">
+    <div class="flex">
+        <button
+            mat-icon-button
+            matTooltip="Voltar"
+            (click)="voltar()">
+            <span class="material-icons">
+                arrow_back
+            </span>
+        </button>
+
+        <div *onlyAdmin class="flex w-full justify-end">
+            <button
+                mat-raised-button
+                [color]="'primary'"
+                matTooltip="Editar artigo"
+                (click)="editar()">
+                <span class="material-icons">
+                    edit
+                </span>
+            </button>
+        </div>
+    </div>
+
+    @if (artigo) {
+        <div class="flex flex-col gap-8">
+            @if (artigo.titulo) {
+                <h1 class="flex flex-col md:flex-row w-full justify-center md:justify-around">
+                <div
+                    class="
+                        flex items-center justify-center px-4 text-xl
+                        text-center
+                    ">
+                    {{ artigo.titulo }}
+                </div>
+                </h1>
+            }
+
+            <article class="">
+                <div class="w-full flex justify-center">
+                    @if (artigo.data_inclusao) {
+                        <span class="text-base whitespace-pre-wrap">
+                            {{ artigo.texto }}
+                        </span>
+                    }
+                </div>
+            </article>
+        </div>
+    }
+</div>

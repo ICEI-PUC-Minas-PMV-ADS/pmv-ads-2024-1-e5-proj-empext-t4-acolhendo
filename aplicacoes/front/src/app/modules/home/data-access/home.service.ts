@@ -47,4 +47,16 @@ export class HomeService {
 
     }
 
+    getDepoimentos(): Observable<any> {
+
+        return this._api.get('/article-home', { tipo: eArtigo.DEPOIMENTOS });
+
+    }
+
+    getDoacoe(): Observable<any> {
+
+        return this._api.get('/article-home', { tipo: eArtigo.DOACOES });
+
+    }
+
 }

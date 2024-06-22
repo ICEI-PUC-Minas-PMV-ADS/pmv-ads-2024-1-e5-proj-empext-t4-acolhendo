@@ -51,7 +51,11 @@ export const appRoutes: Route[] = [
             },
             {
                 path: 'doacoes',
-                loadComponent: () => import('./modules/doacoes/doacoes.module').then(m => m.DoacoesModule)
+                loadChildren: () => import('./modules/doacoes/doacoes.module').then(m => m.DoacoesModule)
+            },
+            {
+                path: 'depoimentos',
+                loadChildren: () => import('./modules/depoimentos/depoimentos.module').then(m => m.DepoimentosModule)
             }
         ]
     },

@@ -1,13 +1,13 @@
 <div class="flex flex-col w-full p-10">
     <h1 class="flex text-2xl mb-8">
-        Galerias
+        Depoimentos
 
         <div *onlyAdmin class="flex w-full justify-end">
             <button
                 mat-raised-button
                 [color]="'primary'"
                 matTooltip="Adicionar artigo"
-                (click)="novoGaleria()">
+                (click)="novoArtigo()">
                 <span class="material-icons">
                     add
                 </span>
@@ -23,19 +23,23 @@
                         <article
                             class="
                                 flex flex-col gap-2 justify-center items-center
-                                bg-white pb-4 rounded-xl shadow-lg
+                                bg-white p-4 rounded-xl shadow-lg
                                 cursor-pointer hover:opacity-85
                                 transition duration-300 ease-out
                             "
-                            matTooltip="Visualizar galeria"
-                            (click)="abrirGaleria(item)">
-                            <img class="max-h-72 rounded" [src]="item.imagem_capa">
-    
+                            matTooltip="Visualizar artigo"
+                            (click)="abrirArtigo(item.id)">
                             <h2
-                                class="max-w-full block px-4 text-center"
+                                class="max-w-full block px-4 text-left font-semibold"
                                 matTooltip="{{ item.titulo }}">
                                 {{ item.titulo }}
                             </h2>
+
+                            <div
+                                class="italic overflow-hidden text-ellipsis max-h-[15rem]"
+                                style="display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical;">
+                                {{ item.texto }}
+                            </div>
                         </article>
                     }
                 </div>
@@ -50,7 +54,7 @@
             </div>
         } @else if (!!items) {
             <div class="p-8 sm:p-16 border-t text-2xl font-semibold tracking-tight text-center">
-                Nenhuma galeria encontrada!
+                Nenhum depoimento encontrado!
             </div>
         }
     </div>
