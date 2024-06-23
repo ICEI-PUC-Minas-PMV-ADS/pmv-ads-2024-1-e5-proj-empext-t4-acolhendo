@@ -19,7 +19,11 @@
         </div>
     </div>
 
-    <h2 class="font-semibold text-xl md:text-3xl text-secondary">Nutrir o corpo e a mente</h2>
+    <h2
+        class="font-semibold text-xl md:text-3xl text-secondary"
+        routerLink="/nutricao">
+        Nutrir o corpo e a mente
+    </h2>
 
     <div class="w-full px-2 py-1" [ngClass]="{ 'justify-around':  nutricao.length > 1}">
         <ngx-slick-carousel

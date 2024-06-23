@@ -32,12 +32,15 @@
             <img class="max-h-20 md:max-h-24" src="assets/logo.png">
         </a> -->
         @if (dadosEmpresa && dadosEmpresa.email) {
-            <div class="flex flex-row gap-4 justify-center items-center">
-                <i class="fa-regular fa-envelope text-secondary text-[2rem] md:text-[2.5rem]"></i>
-                <a href="mailto:{{dadosEmpresa.email}}" target="_blank">
-                    {{ dadosEmpresa.email }}
-                </a>
-            </div>
+            <a
+                href="mailto:{{dadosEmpresa.email}}"
+                target="_blank"
+                matTooltip="Enviar e-mail">
+                <div class="flex flex-row gap-4 justify-center items-center">
+                    <i class="fa-regular fa-envelope text-secondary text-[1.5rem] md:text-[2rem]"></i>
+                    <span>{{ dadosEmpresa.email }}</span>
+                </div>
+            </a>
         }
 
         <div class="flex flex-row gap-6 justify-center items-center">
