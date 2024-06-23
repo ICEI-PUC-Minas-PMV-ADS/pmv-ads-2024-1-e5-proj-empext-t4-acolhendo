@@ -53,7 +53,7 @@ export class HomeService {
 
     }
 
-    getDoacoe(): Observable<any> {
+    getDoacoes(): Observable<any> {
 
         return this._api.get('/article-home', { tipo: eArtigo.DOACOES });
 
