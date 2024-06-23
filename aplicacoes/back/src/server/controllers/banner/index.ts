@@ -4,7 +4,6 @@ import * as GetAll from './GetAll'
 import * as GetById from './GetById'
 import * as UpdateById from './UpdateById'
 import * as PostImage from './images/PostImage'
-import * as DeleteByImagePath from './images/DeleteByImagePath'
 import * as TelaPrincipal from './TelaPrincipal'
 
 
@@ -15,6 +14,5 @@ export const BannerController = {
     ...GetById,
     ...UpdateById,
     ...PostImage,
-    ...DeleteByImagePath,
     ...TelaPrincipal
 }

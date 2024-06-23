@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { UserController, ArticleController, CompanyController, BannerController, GalleryController} from '../controllers';
+import { UserController, ArticleController, CompanyController, BannerController, GalleryController, FaleConoscoController} from '../controllers';
 import { authValidator, UploadArticle, UploadBanner, UploadGaleria } from '../shared/middleware';
 import multer from 'multer';
 
@@ -56,7 +56,7 @@ router.delete('/gallery/images/:id', authValidator, GalleryController.deleteByIm
 
 //Banner Images
 router.post('/banner/images', authValidator, multer(UploadBanner.getConfig).fields([{name: 'image-banner', maxCount: 1}]), BannerController.postImage)
-router.delete('/banner/images/:path', authValidator, BannerController.deleteByImagePathValidation, BannerController.deleteByImagePath) // A API deverá fornecer um endpoint DELETE para excluir uma imagem de uma galeria
 
+router.post('/fale-conosco', FaleConoscoController.postMessageValidation, FaleConoscoController.postMessage)
 
 export { router }

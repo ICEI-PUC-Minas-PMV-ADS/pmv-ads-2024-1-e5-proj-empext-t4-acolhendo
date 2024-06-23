@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as YUP from 'yup';
-import { validation } from './../../shared/middleware/Validator';
+import { validation } from '../../shared/middleware/Validator';
 import { ArticleProvider } from '../../database/providers/article';
 import { IUpdateArtigo } from '../../database/models';
 

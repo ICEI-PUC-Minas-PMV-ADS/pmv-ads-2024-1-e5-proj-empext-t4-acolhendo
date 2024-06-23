@@ -6,7 +6,7 @@ import { UserProvider } from '../../database/providers/user'
 import { GenerateCode } from '../../shared/services/GenerateCode'
 import { ResetCodeProvider } from '../../database/providers/reset_code/'
 import { Mail } from '../../shared/services/EmailSender'
-import { EmailBody } from '../../utils/EmailBody'
+import { EmailBodyResetCode } from '../../utils/EmailBody'
 
 
 interface IParamsProps {
@@ -40,10 +40,11 @@ export const forgotPassword = async (request: Request<IParamsProps>, response: R
     }
     const generatedCode = await GenerateCode()
     await ResetCodeProvider.saveCode(request.params.email, generatedCode)
-    const message = EmailBody(generatedCode)
+    const message = EmailBodyResetCode(generatedCode)
     const mail = new Mail(
         request.params.email,
-        message
+        message,
+        'Código de Recuperação de Senha'
     )
     const sendMail = mail.sendMail()
     if ( sendMail instanceof Error){
@@ -52,7 +53,6 @@ export const forgotPassword = async (request: Request<IParamsProps>, response: R
                 default: sendMail.message
             }
         })
-
     }
 
     return response.status(StatusCodes.OK).json({

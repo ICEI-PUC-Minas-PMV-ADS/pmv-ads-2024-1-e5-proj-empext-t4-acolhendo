@@ -1,7 +1,7 @@
 import { IGaleriaImagem } from '../../../models';
 import { database } from '../../..';
 
-export const getByGalleryId = async (page: number, limit: number, id: number): Promise<IGaleriaImagem[] | Error> => {
+export const getByGalleryId = async (page?: number, limit?: number, id?: number): Promise<IGaleriaImagem[] | Error> => {
     try {
 
         page = Number(page)
