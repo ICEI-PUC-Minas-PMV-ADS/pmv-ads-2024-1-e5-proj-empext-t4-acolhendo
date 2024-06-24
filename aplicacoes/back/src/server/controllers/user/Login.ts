@@ -32,7 +32,7 @@ export const login = async (
         })
     }
 
-    /*  const passwordMatch = await PasswordCrypto.verifyPassword(
+    const passwordMatch = await PasswordCrypto.verifyPassword(
         senha,
         result.senha
     )
@@ -42,7 +42,7 @@ export const login = async (
                 default: 'Email ou senha inválidos',
             },
         })
-    } */
+    }
 
     const accessToken = JWTService.signIn({ email: result.email})
     if (accessToken === 'JWT_NOT_FOUND') {

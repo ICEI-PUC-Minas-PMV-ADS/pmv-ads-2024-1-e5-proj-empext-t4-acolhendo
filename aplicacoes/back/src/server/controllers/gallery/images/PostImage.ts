@@ -10,9 +10,8 @@ export const postImage = async (request: Request<{}, {}>, response: Response) =>
             },
         });
     }
-
-    // const image = request.files['image-gallery'][0].path.split('\\front\\src\\')[1]
-    const image = request.files['image-gallery'][0].path//.split('/front/src/')[1]
+    const imagePath = request.files['image-gallery'][0].path
+    const image = `https://imagens.acolhendo.com.br/imagens/${imagePath.split('/imagens/')[1]}`
 
     return response.status(StatusCodes.OK).json({ image });
 
