@@ -271,7 +271,6 @@ export class QuemSomosFormComponent {
                 imagem.onload = async () => {
                     let imagem = await this.uploadImagem(file);
                     if (imagem) {
-                        console.log(imagem)
                         const addImageRange = this.editorQuill.getSelection();
                         this.editorQuill.insertEmbed(addImageRange.index, 'image', imagem);
                         this.editorQuill.setSelection(addImageRange.index + 1);

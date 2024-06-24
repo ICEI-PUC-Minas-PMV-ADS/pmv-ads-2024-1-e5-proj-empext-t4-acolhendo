@@ -15,7 +15,7 @@
         </div>
     </h1>
 
-    <div class="flex justify-center">
+    <!-- <div class="flex justify-center">
         <mat-form-field
             class="w-full px-10 md:w-1/2">
             <button
@@ -49,7 +49,7 @@
                 </button>
             }
         </mat-form-field>
-    </div>
+    </div> -->
 
     <div id="lista" class="py-12">
         @if (items && items.length) {
@@ -68,7 +68,7 @@
                             <img class="max-h-72 rounded" [src]="item.imagem_capa">
     
                             <h2
-                                class="max-w-full block px-4 text-center"
+                                class="max-w-full block px-4 text-center text-sm"
                                 matTooltip="{{ item.titulo }}">
                                 {{ item.titulo }}
                             </h2>

@@ -1,74 +1,73 @@
 <div class="flex flex-col-reverse md:flex-row w-full min-h-16 mb-16 md:mb-0 pb-4 bg-secondary-200 justify-around items-center gap-4">
+    <!-- COLUNA INSTITUCIONAL -->
     <div class="flex flex-1 flex-col py-3 px-5 w-full md:w-auto gap-2 justify-center items-start">
-        <a
-            *usuarioDeslogado
-            class="text-sm md:text-base hover:underline"
-            routerLink="/login">
-            Acesso Administrador
-        </a>
+        <div class="flex flex-col gap-2">
+            <a routerLink="/fale-conosco" class="hover:underline">
+                Fale Conosco
+            </a>
+            <a routerLink="/quem-somos" class="hover:underline">
+                Quem Somos
+            </a>
+        </div>
 
-        <span
-            *onlyAdmin
-            (click)="deslogar()"
-            class="text-sm hover:cursor-pointer md:text-base hover:underline">
-            Deslogar Administrador
-        </span>
+        <div class="hidden md:block h-px w-3/4 bg-secondary my-4"></div>
 
-        <div class="flex flex-1 flex-col py-3 px-5 w-full md:w-auto gap-2 justify-center items-start">
-          <span
-              *onlyAdmin
-              routerLink="/empresa"
-              class="text-sm hover:cursor-pointer md:text-base hover:underline">
-              Dados da Empresa
-          </span>
-      </div>
+        <div>
+            <a *usuarioDeslogado class="text-xs md:text-base hover:underline" routerLink="/login">
+                Acesso Administrador
+            </a>
+    
+            <span *onlyAdmin (click)="deslogar()" class="text-xs hover:cursor-pointer md:text-base hover:underline">
+                Deslogar Administrador
+            </span>
+    
+            <div *onlyAdmin class="flex flex-1 flex-col py-3 px-5 w-full md:w-auto gap-2 justify-center items-start">
+                <span routerLink="/empresa" class="text-xs hover:cursor-pointer md:text-base hover:underline">
+                    Dados da Empresa
+                </span>
+            </div>
+        </div>
     </div>
-
 
     <div class="flex w-3/4 h-px md:w-px md:h-32 md:my-6 bg-secondary items-center justify-center"></div>
 
+    <!-- REDES SOCIAIS -->
     <div class="flex flex-1 flex-col md:flex-row items-center justify-center md:justify-around">
-        <!-- <a class="hidden md:flex h-24 md:h-28 items-center justify-center" routerLink="/">
-            <img class="max-h-20 md:max-h-24" src="assets/logo.png">
-        </a> -->
         @if (dadosEmpresa && dadosEmpresa.email) {
-            <a
-                href="mailto:{{dadosEmpresa.email}}"
-                target="_blank"
-                matTooltip="Enviar e-mail">
-                <div class="flex flex-row gap-4 justify-center items-center">
-                    <i class="fa-regular fa-envelope text-secondary text-[1.5rem] md:text-[2rem]"></i>
-                    <span>{{ dadosEmpresa.email }}</span>
-                </div>
-            </a>
+        <a href="mailto:{{dadosEmpresa.email}}" target="_blank" matTooltip="Enviar e-mail">
+            <div class="flex flex-row gap-4 justify-center items-center">
+                <i class="fa-regular fa-envelope text-secondary text-[1.5rem] md:text-[2rem]"></i>
+                <span>{{ dadosEmpresa.email }}</span>
+            </div>
+        </a>
         }
 
         <div class="flex flex-row gap-6 justify-center items-center">
             @if (dadosEmpresa && dadosEmpresa.instagram) {
-                <a [href]="dadosEmpresa.instagram" target="_blank">
-                    <i class="fa-brands fa-instagram text-secondary text-[2rem] md:text-[2.5rem]"></i>
-                </a>
+            <a [href]="dadosEmpresa.instagram" target="_blank">
+                <i class="fa-brands fa-instagram text-secondary text-[2rem] md:text-[2.5rem]"></i>
+            </a>
             }
 
             @if (dadosEmpresa && dadosEmpresa.facebook) {
-                <a [href]="dadosEmpresa.facebook" target="_blank">
-                    <i class="fa-brands fa-square-facebook text-secondary text-[2rem] md:text-[2.5rem]"></i>
-                </a>
+            <a [href]="dadosEmpresa.facebook" target="_blank">
+                <i class="fa-brands fa-square-facebook text-secondary text-[2rem] md:text-[2.5rem]"></i>
+            </a>
             }
 
             @if (dadosEmpresa && dadosEmpresa.youtube) {
-                <a [href]="dadosEmpresa.youtube" target="_blank">
-                    <i class="fa-brands fa-youtube text-secondary text-[2rem] md:text-[2.5rem]"></i>
-                </a>
+            <a [href]="dadosEmpresa.youtube" target="_blank">
+                <i class="fa-brands fa-youtube text-secondary text-[2rem] md:text-[2.5rem]"></i>
+            </a>
             }
 
             @if (dadosEmpresa && dadosEmpresa.telefone) {
-                <a (click)="openWhatsapp(false)" class="md:flex hidden cursor-pointer" matTooltip="Abrir WhatsApp">
-                    <i class="fa-brands fa-whatsapp text-secondary text-[2rem] md:text-[2.5rem]"></i>
-                </a>
-                <a (click)="openWhatsapp(true)" class="md:hidden flex cursor-pointer" matTooltip="Abrir WhatsApp">
-                    <i class="fa-brands fa-whatsapp text-secondary text-[2rem] md:text-[2.5rem]"></i>
-                </a>
+            <a (click)="openWhatsapp(false)" class="md:flex hidden cursor-pointer" matTooltip="Abrir WhatsApp">
+                <i class="fa-brands fa-whatsapp text-secondary text-[2rem] md:text-[2.5rem]"></i>
+            </a>
+            <a (click)="openWhatsapp(true)" class="md:hidden flex cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-secondary text-[2rem] md:text-[2.5rem]"></i>
+            </a>
             }
         </div>
     </div>

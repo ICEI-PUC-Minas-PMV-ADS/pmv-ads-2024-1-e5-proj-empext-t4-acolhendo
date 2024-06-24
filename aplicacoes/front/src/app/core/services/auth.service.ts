@@ -94,7 +94,6 @@ export class AuthService {
             return new Promise((resolve, reject) => {
 
                 if (_authService.token) {
-                    console.log(_authService.token)
                     _authService.usuarioAdmin = true;
 
                 }

@@ -30,13 +30,13 @@
                             matTooltip="Visualizar artigo"
                             (click)="abrirArtigo(item.id)">
                             <h2
-                                class="max-w-full block px-4 text-left font-semibold"
+                                class="max-w-full block px-4 text-left font-semibold w-full text-sm"
                                 matTooltip="{{ item.titulo }}">
                                 {{ item.titulo }}
                             </h2>
 
                             <div
-                                class="italic overflow-hidden text-ellipsis max-h-[15rem]"
+                                class="italic overflow-hidden text-ellipsis max-h-[15rem] text-xs"
                                 style="display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical;">
                                 {{ item.texto }}
                             </div>

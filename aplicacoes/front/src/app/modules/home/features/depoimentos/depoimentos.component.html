@@ -1,6 +1,6 @@
 <div class="flex flex-col w-full items-center justify-center gap-3 px-2 md:px-12">
     <h2
-        class="font-semibold text-xl md:text-3xl text-secondary"
+        class="font-semibold text-base md:text-2xl text-secondary cursor-pointer hover:opacity-85"
         routerLink="/depoimentos">
         Depoimentos
     </h2>
@@ -16,7 +16,7 @@
                         flex justify-center
                         cursor-pointer hover:opacity-85
                         transition duration-300 ease-out
-                        md:w-96 w-full
+                        w-96
                     "
                     (click)="abrirArtigo(b.id)">
                     <div
@@ -29,7 +29,7 @@
                         </div>
 
                         <div
-                            class="italic overflow-hidden text-ellipsis max-h-[15rem]"
+                            class="italic overflow-hidden text-ellipsis max-h-[15rem] text-sm"
                             style="display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical;">
                             {{ b.texto }}
                         </div>
